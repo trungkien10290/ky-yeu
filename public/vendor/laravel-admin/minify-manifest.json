@@ -1,0 +1,10 @@
+{
+    "css": [
+        "vendor/laravel-admin/laravel-admin.min.css?id=7ae434ddc3b654f668a7a11a1be85daf",
+        "http://ladmin.test/vendor/laravel-admin/custom.css"
+    ],
+    "js": [
+        "vendor/laravel-admin/laravel-admin.min.js?id=acd5093b4e227a1c5bf47a7b45595613",
+        "http://ladmin.test/vendor/laravel-admin/custom.js"
+    ]
+}
