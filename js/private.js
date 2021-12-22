@@ -74,7 +74,7 @@ $(document).ready(function() {
     })
     AOS.init({
         disable: function() {
-            var maxWidth = 767;
+            var maxWidth = 1200;
             return window.innerWidth < maxWidth;
         }
     });

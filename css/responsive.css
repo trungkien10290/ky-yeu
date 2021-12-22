@@ -30,6 +30,11 @@
     .banner .swiper-button-next {
         left: 40%;
     }
+    .list-re .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 30px;
+    }
 }
 @media screen and (min-width: 768px){
     .select-box-mb, .product-hot .title {
