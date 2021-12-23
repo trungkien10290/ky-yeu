@@ -1,3 +1,25 @@
 {
-
+    "Title vi": "Tiêu đề (vi)",
+    "Title en": "Tiêu đề (en)",
+    "Description vi": "Mô tả ngắn (vi)",
+    "Description en": "Mô tả ngắn (en)",
+    "Desc vi": "Mô tả ngắn (vi)",
+    "Desc en": "Mô tả ngắn (en)",
+    "Content vi": "Nội dung (vi)",
+    "Content en": "Nội dung (en)",
+    "Thumbnail": "Ảnh đại diện",
+    "Type": "Loại",
+    "Parent": "Danh mục cha",
+    "Is active": "Kích hoạt",
+    "Select image": "Chọn hình ảnh",
+    "admin": {
+        "new": "Thêm mới"
+    },
+    "Project category": "Danh mục dự án",
+    "Other category": "Danh mục khác",
+    "Bug category": "Danh mục bug",
+    "Reason vi": "Nguyên nhân (vi)",
+    "Reason en": "Nguyên nhân (en)",
+    "Consequence vi": "Hậu quả (en)",
+    "Consequence en": "Hậu quả (en)"
 }

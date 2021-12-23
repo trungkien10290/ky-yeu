@@ -86,7 +86,7 @@ class PermissionCommand extends Command
 
     private function getIgnoreTables()
     {
-        return [
+        $ignoreTable = [
             config('admin.database.users_table'),
             config('admin.database.roles_table'),
             config('admin.database.permissions_table'),
@@ -96,16 +96,13 @@ class PermissionCommand extends Command
             config('admin.database.role_users_table'),
             config('admin.database.role_permissions_table'),
             config('admin.database.role_menu_table'),
-            'failed_jobs',
-            'password_resets',
-            'migrations',
-            'personal_access_tokens'
         ];
+        return array_merge($ignoreTable, config('admin.permissions.ignoreTable'));
     }
 
     private function getPermissions()
     {
-        return config('admin.permissions', [
+        return config('admin.permissions.actions', [
             'list' => __('admin.list'),
             'view' => __('admin.view'),
             'create' => __('admin.create'),
@@ -163,6 +160,6 @@ class PermissionCommand extends Command
 
     private function generateName($table, $permission)
     {
-        return Str::ucfirst($table . ' '.$permission);
+        return Str::ucfirst($table . ' ' . $permission);
     }
 }

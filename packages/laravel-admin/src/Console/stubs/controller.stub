@@ -3,60 +3,69 @@
 namespace DummyNamespace;
 
 use DummyModelNamespace;
-use Encore\Admin\Controllers\AdminController;
+use App\Http\Controllers\Controller;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Layout\Content;
+use App\Admin\Traits\HasCreate;
+use App\Admin\Traits\HasEdit;
 
-class DummyClass extends AdminController
+class DummyClass extends Controller
 {
-    /**
-     * Title for current resource.
-     *
-     * @var string
-     */
+    use HasCreate;
+    use HasEdit;
+
     protected $title = 'DummyTitle';
 
-    /**
-     * Make a grid builder.
-     *
-     * @return Grid
-     */
-    protected function grid()
-    {
-        $grid = new Grid(new DummyModel());
+    protected $model = 'DummyModel::class';
 
+    protected $description = [
+        'index' => 'Index',
+        'show' => 'Show',
+        'edit' => 'Edit',
+        'create' => 'Create',
+    ];
+
+    public function index(Content $content, DummyModel $camelModel)
+    {
+        $grid = new Grid($camelModel);
+        
 DummyGrid
 
-        return $grid;
+        return $content
+            ->title(trans('Category'))
+            ->description(trans('admin.list'))
+            ->body($grid);
     }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
+    public function show(Content $content, DummyModel $camelModel)
     {
-        $show = new Show(DummyModel::findOrFail($id));
+
+        return $content
+            ->title($this->title)
+            ->description($this->description['show'] ?? trans('admin.show'))
+            ->body($this->detail($camelModel));
+    }
+
+
+    protected function detail(DummyModel $camelModel)
+    {
+        $show = new Show($camelModel);
 
 DummyShow
 
         return $show;
     }
 
-    /**
-     * Make a form builder.
-     *
-     * @return Form
-     */
     protected function form()
     {
-        $form = new Form(new DummyModel());
+        $camelModel = new DummyModel();
+        $form = new Form($camelModel);
 
 DummyForm
 
         return $form;
     }
+
 }

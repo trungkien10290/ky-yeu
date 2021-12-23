@@ -138,6 +138,10 @@ class MakeCommand extends GeneratorCommand
 
         return class_exists($this->modelName) && is_subclass_of($this->modelName, Model::class);
     }
+    
+    protected function dummyModel(){
+        return class_basename($this->modelName);
+    }
 
     /**
      * Replace the class name for the given stub.
@@ -150,6 +154,8 @@ class MakeCommand extends GeneratorCommand
     protected function replaceClass($stub, $name)
     {
         $stub = parent::replaceClass($stub, $name);
+        
+        $camelName =  Str::camel($this->dummyModel());
 
         return str_replace(
             [
@@ -159,14 +165,16 @@ class MakeCommand extends GeneratorCommand
                 'DummyGrid',
                 'DummyShow',
                 'DummyForm',
+                'camelModel'
             ],
             [
                 $this->modelName,
                 $this->getTitle(),
-                class_basename($this->modelName),
+                $this->dummyModel(),
                 $this->indentCodes($this->generator->generateGrid()),
                 $this->indentCodes($this->generator->generateShow()),
                 $this->indentCodes($this->generator->generateForm()),
+                $camelName
             ],
             $stub
         );

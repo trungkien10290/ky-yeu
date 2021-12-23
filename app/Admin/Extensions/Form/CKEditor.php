@@ -11,7 +11,7 @@ class CKEditor extends Field
         '/packages/ckeditor/adapters/jquery.js',
     ];
 
-    protected $view = 'admin.form.ckeditor';
+    protected $view = 'admin.form.editor';
 
     public function getElementClassString()
     {

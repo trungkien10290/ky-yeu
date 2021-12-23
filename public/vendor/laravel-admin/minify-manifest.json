@@ -1,10 +1,11 @@
 {
     "css": [
-        "vendor/laravel-admin/laravel-admin.min.css?id=7ae434ddc3b654f668a7a11a1be85daf",
+        "vendor/laravel-admin/laravel-admin.min.css?id=7760e7a72e624274608199015b4a7acb",
         "http://ladmin.test/vendor/laravel-admin/custom.css"
     ],
     "js": [
-        "vendor/laravel-admin/laravel-admin.min.js?id=acd5093b4e227a1c5bf47a7b45595613",
-        "http://ladmin.test/vendor/laravel-admin/custom.js"
+        "vendor/laravel-admin/laravel-admin.min.js?id=11febe9a4e5ebc55d8930fcd7758b04d",
+        "/packages/ckeditor/ckeditor.js",
+        "/packages/ckeditor/adapters/jquery.js"
     ]
 }

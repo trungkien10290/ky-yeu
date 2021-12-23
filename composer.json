@@ -9,13 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "doctrine/dbal": "2.*|3.*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "symfony/dom-crawler": "~3.1|~4.0|~5.0",
-        "doctrine/dbal": "2.*|3.*"
+        "symfony/dom-crawler": "~3.1|~4.0|~5.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -38,7 +38,9 @@
             "Database\\Seeders\\": "database/seeders/",
             "Encore\\Admin\\": "packages/laravel-admin/src/",
             "Encore\\Admin\\Helpers\\": "packages/laravel-admin-ext/helpers/src/",
-            "Encore\\Admin\\Media\\": "packages/laravel-admin-ext/media-manager/src/"
+            "Encore\\Admin\\Media\\": "packages/laravel-admin-ext/media-manager/src/",
+            "Encore\\Admin\\LogViewer\\": "packages/laravel-admin-ext/log-viewer/src/",
+            "Encore\\TMEditor\\": "packages/laravel-admin-ext/tmeditor/src/"
         },
         "files": [
             "app/Helpers/functions.php",
@@ -68,10 +70,8 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [],
             "providers": [
-                "Encore\\Admin\\Helpers\\HelpersServiceProvider",
-                "Encore\\Admin\\Media\\MediaServiceProvider"
+
             ],
             "aliases": {
                 "Admin": "Encore\\Admin\\Facades\\Admin"

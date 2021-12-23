@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
             AdminTablesSeeder::class,
             PermissionSeeder::class
         ]);
+        system('php artisan admin:generate-menu');
     }
 }

@@ -23,14 +23,13 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 
 //Form::forget(['map', 'editor']);
-Admin::js(url('vendor/laravel-admin/custom.js'));
 Admin::css(url('vendor/laravel-admin/custom.css'));
+Form::extend('editor', \App\Admin\Extensions\Form\CKEditor::class);
+
 
 Grid::init(function (Grid $grid) {
 
 //    $grid->disableActions();
-
-    $grid->disableFilter();
 
     $grid->disableRowSelector();
 
@@ -57,7 +56,6 @@ Grid::init(function (Grid $grid) {
 });
 
 
-Form::extend('ckeditor', \App\Admin\Extensions\Form\CKEditor::class);
 Form::init(function (Form $form) {
     $form->disableCreatingCheck();
     $form->disableEditingCheck();

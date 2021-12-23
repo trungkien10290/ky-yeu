@@ -177,8 +177,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         AdminServiceProvider::class,
-        \Encore\Admin\Helpers\HelpersServiceProvider::class,
-        \Encore\Admin\Media\MediaServiceProvider::class
 
     ],
 

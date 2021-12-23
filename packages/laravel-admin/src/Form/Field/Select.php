@@ -68,7 +68,7 @@ class Select extends Field
         if (is_callable($options)) {
             $this->options = $options;
         } else {
-            $this->options = (array) $options;
+            $this->options = (array)$options;
         }
 
         return $this;
@@ -123,10 +123,9 @@ class Select extends Field
         }
 
         $placeholder = json_encode([
-            'id'   => '',
+            'id' => '',
             'text' => trans('admin.choose'),
         ]);
-
         $strAllowClear = var_export($allowClear, true);
 
         $script = <<<EOT
@@ -160,8 +159,8 @@ EOT;
     /**
      * Load options for other selects on change.
      *
-     * @param array  $fields
-     * @param array  $sourceUrls
+     * @param array $fields
+     * @param array $sourceUrls
      * @param string $idField
      * @param string $textField
      *
@@ -173,7 +172,7 @@ EOT;
         $urlsStr = implode('^', $sourceUrls);
 
         $placeholder = json_encode([
-            'id'   => '',
+            'id' => '',
             'text' => trans('admin.choose'),
         ]);
 
@@ -259,21 +258,21 @@ EOT;
      * Load options from remote.
      *
      * @param string $url
-     * @param array  $parameters
-     * @param array  $options
+     * @param array $parameters
+     * @param array $options
      *
      * @return $this
      */
     protected function loadRemoteOptions($url, $parameters = [], $options = [])
     {
         $ajaxOptions = [
-            'url' => $url.'?'.http_build_query($parameters),
+            'url' => $url . '?' . http_build_query($parameters),
         ];
         $configs = array_merge([
-            'allowClear'         => true,
-            'placeholder'        => [
-                'id'        => '',
-                'text'      => trans('admin.choose'),
+            'allowClear' => true,
+            'placeholder' => [
+                'id' => '',
+                'text' => trans('admin.choose'),
             ],
         ], $this->config);
 
@@ -281,7 +280,6 @@ EOT;
         $configs = substr($configs, 1, strlen($configs) - 2);
 
         $ajaxOptions = json_encode(array_merge($ajaxOptions, $options));
-
         $this->script = <<<EOT
 
 $.ajax($ajaxOptions).done(function(data) {
@@ -316,14 +314,13 @@ EOT;
     public function ajax($url, $idField = 'id', $textField = 'text')
     {
         $configs = array_merge([
-            'allowClear'         => true,
-            'placeholder'        => $this->label,
-            'minimumInputLength' => 1,
+            'allowClear' => true,
+            'placeholder' => $this->label,
+//            'minimumInputLength' => 1,
         ], $this->config);
-
         $configs = json_encode($configs);
         $configs = substr($configs, 1, strlen($configs) - 2);
-
+        $params = json_encode(request()->route()->parameters());
         $this->script = <<<EOT
 
 $("{$this->getElementClassSelector()}").select2({
@@ -334,7 +331,8 @@ $("{$this->getElementClassSelector()}").select2({
     data: function (params) {
       return {
         q: params.term,
-        page: params.page
+        page: params.page,
+        params:'$params'
       };
     },
     processResults: function (data, params) {
@@ -370,7 +368,7 @@ EOT;
      * all configurations see https://select2.org/configuration/options-api
      *
      * @param string $key
-     * @param mixed  $val
+     * @param mixed $val
      *
      * @return $this
      */
@@ -415,9 +413,9 @@ EOT;
     public function render()
     {
         $configs = array_merge([
-            'allowClear'  => true,
+            'allowClear' => true,
             'placeholder' => [
-                'id'   => '',
+                'id' => '',
                 'text' => $this->label,
             ],
         ], $this->config);
@@ -427,7 +425,6 @@ EOT;
         if (empty($this->script)) {
             $this->script = "$(\"{$this->getElementClassSelector()}\").select2($configs);";
         }
-
         if ($this->options instanceof \Closure) {
             if ($this->form) {
                 $this->options = $this->options->bindTo($this->form->model());
@@ -437,15 +434,14 @@ EOT;
         }
 
         $this->options = array_filter($this->options, 'strlen');
-
         $this->addVariables([
             'options' => $this->options,
-            'groups'  => $this->groups,
+            'groups' => $this->groups,
         ]);
 
         $this->addCascadeScript();
 
-        $this->attribute('data-value', implode(',', (array) $this->value()));
+        $this->attribute('data-value', implode(',', (array)$this->value()));
 
         return parent::render();
     }

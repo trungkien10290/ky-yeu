@@ -37,8 +37,8 @@ class Grid
         Concerns\CanDoubleClick,
         ShouldSnakeAttributes,
         Macroable {
-            __call as macroCall;
-        }
+        __call as macroCall;
+    }
 
     /**
      * The grid data model instance.
@@ -142,16 +142,16 @@ class Grid
      * @var array
      */
     protected $options = [
-        'show_pagination'        => true,
-        'show_tools'             => true,
-        'show_filter'            => true,
-        'show_exporter'          => true,
-        'show_actions'           => true,
-        'show_row_selector'      => true,
-        'show_create_btn'        => true,
-        'show_column_selector'   => true,
+        'show_pagination' => true,
+        'show_tools' => true,
+        'show_filter' => true,
+        'show_exporter' => true,
+        'show_actions' => true,
+        'show_row_selector' => true,
+        'show_create_btn' => true,
+        'show_column_selector' => true,
         'show_define_empty_page' => true,
-        'show_perpage_selector'  => true,
+        'show_perpage_selector' => true,
     ];
 
     /**
@@ -166,11 +166,13 @@ class Grid
      */
     protected static $initCallbacks = [];
 
+    protected $createUrl;
+
     /**
      * Create a new grid instance.
      *
      * @param Eloquent $model
-     * @param Closure  $builder
+     * @param Closure $builder
      */
     public function __construct(Eloquent $model, Closure $builder = null)
     {
@@ -225,7 +227,7 @@ class Grid
      * Get or set option for grid.
      *
      * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return $this|mixed
      */
@@ -274,13 +276,13 @@ class Grid
     /**
      * Batch add column to grid.
      *
+     * @param array $columns
+     *
+     * @return Collection|null
      * @example
      * 1.$grid->columns(['name' => 'Name', 'email' => 'Email' ...]);
      * 2.$grid->columns('name', 'email' ...)
      *
-     * @param array $columns
-     *
-     * @return Collection|null
      */
     public function columns($columns = [])
     {
@@ -351,7 +353,7 @@ class Grid
             return $this;
         }
 
-        $name = ($this->shouldSnakeAttributes() ? Str::snake($relation) : $relation).'.'.$column;
+        $name = ($this->shouldSnakeAttributes() ? Str::snake($relation) : $relation) . '.' . $column;
 
         $this->model()->with($relation);
 
@@ -579,7 +581,7 @@ class Grid
     /**
      * Build the grid rows.
      *
-     * @param array      $data
+     * @param array $data
      * @param Collection $collection
      *
      * @return void
@@ -618,17 +620,23 @@ class Grid
      */
     public function getCreateUrl()
     {
+        if($this->createUrl){
+            return $this->createUrl;
+        }
         $queryString = '';
-
         if ($constraints = $this->model()->getConstraints()) {
             $queryString = http_build_query($constraints);
         }
-
         return sprintf(
             '%s/create%s',
             $this->resource(),
-            $queryString ? ('?'.$queryString) : ''
+            $queryString ? ('?' . $queryString) : ''
         );
+    }
+
+    public function setCreateUrl($url)
+    {
+        $this->createUrl = $url;
     }
 
     /**
@@ -837,7 +845,7 @@ class Grid
      * Set a view to render.
      *
      * @param string $view
-     * @param array  $variables
+     * @param array $variables
      */
     public function setView($view, $variables = [])
     {

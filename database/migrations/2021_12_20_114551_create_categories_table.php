@@ -17,13 +17,14 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('title_vi')->nullable();
             $table->string('title_en')->nullable();
+            $table->string('type')->nullable()->default('other');
             $table->text('desc_vi')->nullable();
             $table->text('desc_en')->nullable();
             $table->text('content_vi')->nullable();
             $table->text('content_en')->nullable();
             $table->text('thumbnail')->nullable();
             $table->integer('parent_id')->nullable();
-            $table->tinyInteger('is_active');
+            $table->tinyInteger('is_active')->nullable()->default(1);
             $table->timestamps();
         });
     }

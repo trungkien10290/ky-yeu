@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     @if(!is_null($favicon = Admin::favicon()))
-    <link rel="shortcut icon" href="{{$favicon}}">
+        <link rel="shortcut icon" href="{{$favicon}}">
     @endif
 
     {!! Admin::css() !!}
@@ -41,7 +41,7 @@
     <div class="content-wrapper" id="pjax-container">
         {!! Admin::style() !!}
         <div id="app">
-        @yield('content')
+            @yield('content')
         </div>
         {!! Admin::script() !!}
         {!! Admin::html() !!}
@@ -54,13 +54,36 @@
 <button id="totop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up"></i></button>
 
 <script>
-    function LA() {}
+    function LA() {
+    }
+
     LA.token = "{{ csrf_token() }}";
     LA.user = @json($_user_);
+    const baseUrl = '{{url('/')}}';
+    const adminUrl = '{{url('/')}}';
+    const Libraries = {
+        list: [],
+        loaded: [],
+        load() {
+            this.list.forEach(function (initFunction) {
+                initFunction();
+                Libraries.loaded.push(initFunction)
+            })
+        },
+        push(initFunction) {
+            console.log(initFunction)
+            this.list.push(initFunction)
+        }
+    }
 </script>
 
 <!-- REQUIRED JS SCRIPTS -->
 {!! Admin::js() !!}
-
+<script>
+    Libraries.load();
+</script>
+<script src="{{asset('/vendor/laravel-admin/helper.js')}}"></script>
+<script src="{{asset('/vendor/laravel-admin/custom.js')}}"></script>
+{!! \Encore\Admin\Admin::renderAppendsJs() !!}
 </body>
 </html>

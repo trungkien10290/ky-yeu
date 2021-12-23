@@ -1150,7 +1150,7 @@ class Field implements Renderable
      */
     public function getPlaceholder()
     {
-        return $this->placeholder ?: trans('admin.input').' '.$this->label;
+        return $this->placeholder ?: $this->label;
     }
 
     /**
@@ -1547,7 +1547,6 @@ class Field implements Renderable
         if ($this->callback instanceof Closure) {
             $this->value = $this->callback->call($this->form->model(), $this->value, $this);
         }
-
         Admin::script($this->script);
 
         return Admin::component($this->getView(), $this->variables());
