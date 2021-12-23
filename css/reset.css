@@ -51,9 +51,9 @@ h1, h2, h3, h4, h5, h6 {line-height: 1.25;}
 .mgl-10 {margin-left: 10px}
 .mgr-10 {margin-right: 10px}
 .mgt-50 {margin-top: 50px;}
-::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.6);font-size: 14px;}
-::-moz-placeholder { color: rgba(255, 255, 255, 0.6);font-size: 14px;}
-:-ms-input-placeholder { color: rgba(255, 255, 255, 0.6);font-size: 14px;}
+::-webkit-input-placeholder { color: rgba(255, 255, 255, 1);font-size: 16px;}
+::-moz-placeholder { color: rgba(255, 255, 255, 1);font-size: 16px;}
+:-ms-input-placeholder { color: rgba(255, 255, 255, 1);font-size: 16px;}
 .table {margin-bottom: 0}
 .zoom-2,.zoom {display: block;overflow: hidden;}
 .zoom-2:hover img,.zoom:hover img {transform: scale(1.1);-webkit-transform: scale(1.1);}

@@ -1,4 +1,4 @@
-<footer data-aos="fade-up" data-aos-duration="2000">
+<footer>
     <div class="container">
         <div class="ft-flex">
             <a href="" title="" class="ft-logo"><img src="images/logo.png" alt=""> </a>
@@ -14,6 +14,7 @@
 </footer>
 <!--Link js-->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.min.js"></script>
 <script type="text/javascript" src="js/private.js"></script>
 </body>
 </html>
