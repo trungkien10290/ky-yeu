@@ -23,7 +23,7 @@
 </head>
 <body>
 <header>
-    <div class="logo"><a href="" title=""><img src="images/logo.png" alt=""> </a> </div>
+    <div class="logo"><a href="index.php" title=""><img src="images/logo.png" alt=""> </a> </div>
     <div class="header_main">
         <div class="container">
             <div class="flex-center-end">

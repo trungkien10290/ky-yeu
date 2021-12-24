@@ -457,15 +457,22 @@ footer {
 .error-find {
     margin-bottom: 30px;
 }
+
 .error-find select, .error-find input {
     border: none;
     border-radius: 10px;
-    background-color: #323232;
     color: #fff;
     font-size: 16px;
     height: 52px;
     width: 100%;
     padding: 0 10px;
+}
+.error-find select {
+    background: #323232 url("../images/icon-down.png") no-repeat center right 10px;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    padding-right: 25px;
 }
 .frm-flex {
     position: relative;

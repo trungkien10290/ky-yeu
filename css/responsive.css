@@ -13,8 +13,35 @@
         left: 260px;
     }
     .pj-text h4 a {
+        font-size: 18px;
+    }
+    .banner-item img {
+        height: 100vh;
+    }
+    .container {
+        max-width: 1140px;
+    }
+    .ls-item h4 a, .re-text h4 a {
+        font-size: 16px;
+    }
+    .list-cache h2 a {
+        font-size: 18px;
+    }
+    .title-page, .projects-title {
         font-size: 24px;
     }
+    .list-error .container {
+        max-width: 1200px;
+    }
+    .login-box {
+        padding: 0 60px;
+    }
+    .login-inner h4 {
+        font-size: 18px;
+    }
+    .frm-input input::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.5);font-size: 15px;}
+    .frm-input input::-moz-placeholder { color: rgba(255, 255, 255, 0.5);font-size: 15px;}
+    .frm-input input:-ms-input-placeholder { color: rgba(255, 255, 255, 0.5);font-size: 15px;}
 }
 @media screen and (min-width: 768px) and (max-width: 1199px){
     .banner-social {
