@@ -27,8 +27,10 @@
 
 @include('public.layout.header')
 <main>
+    <script>
+        let base_url = '{{url(get_lang())}}/'
+    </script>
     @yield('content')
-
 </main>
 @include('public.layout.footer')
 

@@ -5,6 +5,7 @@ class AppConstants
 {
     const ADMIN_DEFAULT_LANGUAGE = 'vi';
     const PUBLIC_DEFAULT_LANGUAGE = 'vi';
+    const PUBLIC_LANGUAGES = ['vi','en'];
     const PERMISSION_VIEW = '.view';
     const PERMISSION_CREATE = '.create';
     const PERMISSION_DELETE = '.delete';

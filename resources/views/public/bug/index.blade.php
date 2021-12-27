@@ -21,7 +21,7 @@
     <section class="list-error">
         <div class="container">
             <div class="error-find">
-                <form id="form-search-bug">
+                <form id="form-search-bug" action="{{route('bug.index')}}">
                     <div class="row">
                         <div class="col-md-3">
                             <select name="project_id">
@@ -182,8 +182,9 @@
 @push('js')
     <script>
         function errorModal(bug_id) {
+            let url = base_url + `bugs/${bug_id}/modal`
             $.ajax({
-                url: '{{route('bug.modal',['bug'=>$bug->id])}}',
+                url: url,
                 success: function (html) {
                     $('#modalError .modal-dialog').html(html);
                     $('#modalError').modal('show');
