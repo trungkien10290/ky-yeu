@@ -111,20 +111,19 @@ class CategoryController extends Controller
             ->body($this->form()->edit($id));
     }
 
-    protected function form($type = '')
+    protected function form()
     {
         $category = new Category();
         $form = new Form($category);
+        $id = \request()->route('category');
         $form->text('title_vi', __('Title vi'))->rules('required');
         $form->image('thumbnail', __('Thumbnail'))->rules('sometimes');
-        if (!empty($type)) {
-            $form->hidden('type', $type);
-        } else {
-            $form->select('type')->options(AppConstants::CATEGORY_TYPES)->rules([
-                'required',
-                Rule::in(array_keys(AppConstants::CATEGORY_TYPES))
-            ])->default(AppConstants::CATEGORY_TYPE_DEFAULT);
-        }
+        $form->image('logo', __('Logo'))->rules('sometimes');
+        $form->select('type')->options(AppConstants::CATEGORY_TYPES)->rules([
+            'required',
+            Rule::in(array_keys(AppConstants::CATEGORY_TYPES))
+        ])->default(AppConstants::CATEGORY_TYPE_DEFAULT);
+
         $form->select('parent_id', __('Parent'))->options(function ($id) {
             return (new Select2(Category::class))->show($id);
         })->ajax(route('admin.categories.select2'))->rules('sometimes');

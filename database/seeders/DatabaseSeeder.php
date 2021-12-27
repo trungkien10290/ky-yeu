@@ -15,8 +15,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminTablesSeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+
         ]);
         system('php artisan admin:generate-menu');
+        if (app()->environment('local')) {
+            $this->call([
+                CategorySeeder::class,
+                ProjectSeeder::class,
+                BugSeeder::class,
+                BannerSeeder::class
+            ]);
+        }
+
     }
 }

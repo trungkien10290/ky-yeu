@@ -1,0 +1,196 @@
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+    .banner-social {
+        width: 160px
+    }
+    .logo {
+        padding: 0 5px;
+        width: 320px;
+    }
+    .banner .swiper-button-prev {
+        left: 162px;
+    }
+    .banner .swiper-button-next {
+        left: 260px;
+    }
+    .pj-text h4 a {
+        font-size: 18px;
+    }
+    .banner-item img {
+        height: 100vh;
+    }
+    .container {
+        max-width: 1140px;
+    }
+    .ls-item h4 a, .re-text h4 a {
+        font-size: 16px;
+    }
+    .list-cache h2 a {
+        font-size: 18px;
+    }
+    .title-page, .projects-title {
+        font-size: 24px;
+    }
+    .list-error .container {
+        max-width: 1200px;
+    }
+    .login-box {
+        padding: 0 60px;
+    }
+    .login-inner h4 {
+        font-size: 18px;
+    }
+    .frm-input input::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.5);font-size: 15px;}
+    .frm-input input::-moz-placeholder { color: rgba(255, 255, 255, 0.5);font-size: 15px;}
+    .frm-input input:-ms-input-placeholder { color: rgba(255, 255, 255, 0.5);font-size: 15px;}
+}
+@media screen and (min-width: 768px) and (max-width: 1199px){
+    .banner-social {
+        width: 17%;
+    }
+    .logo {
+        padding: 0 5px;
+        width: 34%;
+    }
+    .banner .swiper-button-prev {
+        left: 25%;
+    }
+    .banner .swiper-button-next {
+        left: 40%;
+    }
+    .list-re .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 30px;
+    }
+}
+@media screen and (min-width: 768px){
+    .select-box-mb, .product-hot .title {
+        display: none;
+    }
+    .visible-mobile {
+        display: none;
+    }
+    .visible-desktop {
+        display: block;
+    }
+    .show-search {
+        display: none;
+    }
+    #menu{
+        display: none !important;
+    }
+}
+@media screen and (min-width: 567px) and (max-width: 767px){
+    .list-ls .col-md-6, .list-re .col-md-3, .error-find .row > div {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 767px){
+    body {font-size: 15px}
+    .visible-mobile {
+        display: block;
+    }
+    .visible-desktop {
+        display: none;
+    }
+    .pd-60 {
+        padding: 30px 0;
+    }
+    .banner-item img {
+        height: 100vh;
+    }
+    .banner-social {
+        width: 17%;
+    }
+    .logo {
+        padding: 0 5px;
+        width: 34%;
+    }
+    .fixed-header .logo, .fixed-header .header_main {
+        height: 70px;
+    }
+    .header_main, .logo {
+        height: 120px;
+    }
+    .banner-social {
+        top: 120px;
+    }
+    .swiper-pagination div {
+        padding-right: 30px;
+    }
+    .swiper-pagination .current {
+        font-size: 60px;
+    }
+    .banner .swiper-button {
+        top: auto;
+        bottom: 20px;
+        z-index: 99;
+    }
+    .banner .swiper-button-prev {
+        left: 25%;
+    }
+    .banner .swiper-button-next {
+        left: 50%;
+    }
+    .list-re .col-md-3:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    .projects-title, .title-page {
+        font-size: 24px;
+    }
+    .ft-flex {
+        flex-wrap: wrap;
+    }
+    .ft-flex > * {
+        text-align: center;
+        width: 100%;
+    }
+    .ft-social {
+        margin: 20px 0;
+    }
+    .pj-text h4 a {
+        font-size: 18px;
+    }
+    .login-box {
+        padding: 0;
+    }
+    .banner-i img {
+        object-fit: cover;
+        height: 350px;
+    }
+    .banner-page h1 {
+        font-size: 24px;
+        letter-spacing: 5px;
+    }
+    .table-pagi > div {
+        flex-wrap: wrap;
+    }
+    .number-page {
+        margin-bottom: 20px;
+    }
+    .error-find .row > div:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    .modal-dt .modal-content {
+        padding: 30px 15px;
+    }
+    .er-tq, .er-gallery, .er-images {
+        flex-wrap: wrap;
+    }
+    .er-p {
+        margin-bottom: 10px;
+    }
+    .er-doc {
+        margin: 20px 0 0 0;
+    }
+    .er-images span {
+        margin-top: 10px;
+    }
+    .pj-related {
+        padding-top: 30px;
+    }
+    .pj-content h1 {
+        font-size: 24px;
+    }
+}

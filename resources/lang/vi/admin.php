@@ -57,6 +57,7 @@ return [
     'choose'                => 'Lựa chọn',
     'choose_file'           => 'Chọn tập tin',
     'choose_image'          => 'Chọn ảnh',
+    'choose_video'          => 'Chọn video',
     'more'                  => 'Hơn',
     'deny'                  => 'Quyền bị từ chối',
     'administrator'         => 'Người quản lý',

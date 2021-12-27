@@ -1,8 +1,10 @@
 <?php
 
+use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\BugController;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\PostController;
+use App\Admin\Controllers\ProjectController;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,8 @@ Route::group([
         $router->resource('categories', CategoryController::class)->whereNumber('category')->except('show');
         $router->resource('posts', PostController::class)->whereNumber('post')->except('show');
         $router->resource('bugs', BugController::class)->whereNumber('bug');
+        $router->resource('projects', ProjectController::class)->whereNumber('project');
+        $router->resource('banner', BannerController::class)->whereNumber('banner');
     });
 
     Route::prefix(config('admin.route.prefix') . '_api')->group(function (Router $router) {

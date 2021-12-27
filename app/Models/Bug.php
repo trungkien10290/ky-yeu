@@ -2,26 +2,74 @@
 
 namespace App\Models;
 
+use App\Traits\HasTranslation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Bug extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslation;
 
 
-    public function projectCategory()
+    protected $casts = [
+        'bug_images' => 'array',
+        'solution_images' => 'array',
+        'bug_files' => 'array',
+        'solution_files' => 'array',
+    ];
+
+    public function project()
     {
-        return $this->belongsTo(Category::class, 'project_category_id');
+        return $this->belongsTo(Project::class);
     }
 
-    public function otherCategory()
+    public function getSlugLinkAttribute()
     {
-        return $this->belongsTo(Category::class, 'other_category_id');
+        return 'bug/' . $this->id;
     }
 
-    public function bugCategory()
+
+    public function category()
     {
-        return $this->belongsTo(Category::class, 'bug_category_id');
+        return $this->belongsTo(Category::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
+    public function getBugFilesCountAttribute(): int
+    {
+        return count_array($this->bug_files);
+    }
+
+    public function getSolutionFilesCount(): int
+    {
+        return count_array($this->solutions_files);
+    }
+
+    protected static function booted()
+    {
+        static::created(function (Bug $bug) {
+            try {
+                $bug->project()->increment('bugs_count');
+            } catch (\Throwable $exception) {
+                Log::info($exception->getMessage());
+            }
+        });
+        static::deleted(function (Bug $bug) {
+            try {
+                $bug->project()->decrement('bugs_count');
+            } catch (\Throwable $exception) {
+                Log::info($exception->getMessage());
+            }
+        });
     }
 }

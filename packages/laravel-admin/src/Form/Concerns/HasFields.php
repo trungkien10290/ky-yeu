@@ -59,6 +59,8 @@ use Illuminate\Support\Arr;
  * @method Field\HasMany        morphMany($relationName, $label = '', $callback)
  * @method Field\BelongsTo      belongsTo($column, $selectable, $label = '')
  * @method Field\BelongsToMany  belongsToMany($column, $selectable, $label = '')
+ * @method Field\Video  video($column, $selectable, $label = '')
+ * @method Field\Editor  editor($column, $selectable, $label = '')
  */
 trait HasFields
 {
@@ -123,6 +125,7 @@ trait HasFields
         'morphMany'         => Field\HasMany::class,
         'belongsTo'         => Field\BelongsTo::class,
         'belongsToMany'     => Field\BelongsToMany::class,
+        'video'             => Field\Video::class
     ];
 
     /**

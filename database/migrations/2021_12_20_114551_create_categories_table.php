@@ -23,6 +23,8 @@ class CreateCategoriesTable extends Migration
             $table->text('content_vi')->nullable();
             $table->text('content_en')->nullable();
             $table->text('thumbnail')->nullable();
+            $table->text('banner')->nullable();
+            $table->text('logo')->nullable();
             $table->integer('parent_id')->nullable();
             $table->tinyInteger('is_active')->nullable()->default(1);
             $table->timestamps();

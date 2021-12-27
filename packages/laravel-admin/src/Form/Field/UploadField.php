@@ -87,6 +87,7 @@ trait UploadField
         'audio'  => '/^(og?|mp3|mp?g|wav)$/i',
         'pdf'    => '/^(pdf)$/i',
         'flash'  => '/^(swf)$/i',
+        'document' =>  '/^(gif|png|jpe?g|svg|webp|docx?|xlsx?|pptx?|pps|potx?|rtf|ods|odt|pages|ai|dxf|ttf|tiff?|wmf|e?ps|pdf)$/i',
     ];
 
     /**

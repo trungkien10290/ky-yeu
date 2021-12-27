@@ -18,14 +18,14 @@ class DummyClass extends Controller
 
     protected $title = 'DummyTitle';
 
-    protected $model = 'DummyModel::class';
+    protected $model = DummyModel::class;
 
-    protected $description = [
-        'index' => 'Index',
-        'show' => 'Show',
-        'edit' => 'Edit',
-        'create' => 'Create',
-    ];
+//    protected $description = [
+//        'index' => 'Index',
+//        'show' => 'Show',
+//        'edit' => 'Edit',
+//        'create' => 'Create',
+//    ];
 
     public function index(Content $content, DummyModel $camelModel)
     {
@@ -34,8 +34,8 @@ class DummyClass extends Controller
 DummyGrid
 
         return $content
-            ->title(trans('Category'))
-            ->description(trans('admin.list'))
+            ->title($this->title)
+            ->description($this->description['index'] ?? trans('admin.list'))
             ->body($grid);
     }
 

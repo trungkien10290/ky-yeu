@@ -61,6 +61,9 @@ Form::init(function (Form $form) {
     $form->disableEditingCheck();
     $form->disableViewCheck();
     $form->disableReset();
+    $form->tools(function (Form\Tools $tools){
+        $tools->disableView();
+    });
 });
 
 \Encore\Admin\Show::init(function (\Encore\Admin\Show $show) {

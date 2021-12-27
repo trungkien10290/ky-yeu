@@ -9,17 +9,31 @@
     "Content en": "Nội dung (en)",
     "Thumbnail": "Ảnh đại diện",
     "Type": "Loại",
+    "Type Category": "Loại danh mục",
     "Parent": "Danh mục cha",
     "Is active": "Kích hoạt",
     "Select image": "Chọn hình ảnh",
     "admin": {
         "new": "Thêm mới"
     },
+    "Project": "Dự án",
+    "Category": "Danh mục",
     "Project category": "Danh mục dự án",
     "Other category": "Danh mục khác",
     "Bug category": "Danh mục bug",
     "Reason vi": "Nguyên nhân (vi)",
     "Reason en": "Nguyên nhân (en)",
     "Consequence vi": "Hậu quả (en)",
-    "Consequence en": "Hậu quả (en)"
+    "Consequence en": "Hậu quả (en)",
+    "Desc bug vi": "Mô tả lỗi (vi)",
+    "Desc bug en": "Mô tả lỗi (en)",
+    "Bug images": "Ảnh mô tả lỗi",
+    "Bug files": "File mô tả lỗi",
+    "Solution vi": "Giải pháp (vi)",
+    "Solution en": "Giải pháp (en)",
+    "Solution images": "Ảnh giải pháp",
+    "Solution files": "File giải pháp",
+    "Created at": "Ngày tạo",
+    "Updated at": "Ngày cập nhật",
+    "Comments count": "Số bình luận"
 }
