@@ -3,6 +3,7 @@
 use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\BugController;
 use App\Admin\Controllers\CategoryController;
+use App\Admin\Controllers\CommentController;
 use App\Admin\Controllers\PostController;
 use App\Admin\Controllers\ProjectController;
 use Encore\Admin\Facades\Admin;
@@ -23,6 +24,7 @@ Route::group([
         $router->resource('bugs', BugController::class)->whereNumber('bug');
         $router->resource('projects', ProjectController::class)->whereNumber('project');
         $router->resource('banner', BannerController::class)->whereNumber('banner');
+        $router->resource('comments', CommentController::class)->whereNumber('comment');
     });
 
     Route::prefix(config('admin.route.prefix') . '_api')->group(function (Router $router) {
