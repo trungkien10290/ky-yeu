@@ -28,7 +28,7 @@
 @include('public.layout.header')
 <main>
     <script>
-        let base_url = '{{url('')}}/'
+        let base_url = '{{url(get_lang())}}/'
     </script>
     @yield('content')
 </main>

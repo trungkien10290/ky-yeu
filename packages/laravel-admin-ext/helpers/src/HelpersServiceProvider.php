@@ -12,7 +12,8 @@ class HelpersServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-admin-helpers');
-
-        Helpers::boot();
+        if(app()->environment('local')){
+            Helpers::boot();
+        }
     }
 }
