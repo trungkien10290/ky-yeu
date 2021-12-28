@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('set_lang', function () {
 
 })->name('set_lang');
-Route::prefix('{lang?}')->group(function () {
+//Route::prefix('{lang?}')->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/bugs', [\App\Http\Controllers\BugController::class, 'index'])->name('bug.index');
     Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
-});
+//});
