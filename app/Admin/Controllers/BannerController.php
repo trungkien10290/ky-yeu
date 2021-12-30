@@ -71,11 +71,12 @@ class BannerController extends Controller
 
     protected function form()
     {
+
         $banner = new Banner();
         $form = new Form($banner);
         $form->text('title_vi', __('Title vi'))->rules('required');
-        $form->image('thumbnail', __('Thumbnail'))->removable()->move('banners');
-        $form->video('video', __('Video'))->removable()->move('videos');
+        $form->image('thumbnail', __('Thumbnail'));
+        $form->file('video', __('Video'))->isVideo();
         $form->textarea('desc_vi', __('Desc vi'));
         $form->switch('is_active',__('Is active'))->default(1);
         $form->html('<hr>');

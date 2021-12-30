@@ -933,11 +933,12 @@ class Grid
     {
         $this->handleExportRequest(true);
 
-        try {
-            $this->build();
-        } catch (\Exception $e) {
-            return Handler::renderException($e);
-        }
+        $this->build();
+//        try {
+//            $this->build();
+//        } catch (\Exception $e) {
+//            return Handler::renderException($e);
+//        }
 
         $this->callRenderingCallback();
 

@@ -80,7 +80,7 @@ class PostController extends Controller
 
         $form->textarea('desc_en', __('Desc en'));
 
-        $form->textarea('content_en', __('Content en'));
+        $form->editor('content_en', __('Content en'));
 
 
         return $form;

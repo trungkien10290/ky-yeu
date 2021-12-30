@@ -24,3 +24,4 @@ Route::group(
         Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
     }
 );
+

@@ -65,7 +65,6 @@ class UserController extends AdminController
 
         $show = new Show($userModel::findOrFail($id));
         $class = fn_get_class_plural($userModel);
-        fn_admin()->authorize($class . AppConstants::PERMISSION_VIEW);
         $show->field('id', 'ID');
         $show->field('username', trans('admin.username'));
         $show->field('name', trans('admin.name'));

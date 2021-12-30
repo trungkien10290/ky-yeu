@@ -4,13 +4,17 @@ namespace App\Helpers;
 
 class Image
 {
-
-    public static function show($image)
+    const NO_IMAGE = 'no-image.png';
+    public static function show($image,$size = null)
     {
-
-        if (filter_var($image, FILTER_VALIDATE_URL)) {
+        if (strpos($image,'http') !== false) {
             return $image;
         }
-        return cloud_url($image);
+        if(file_exists(public_path($image))){
+            return asset($image);
+        }
+        else{
+            return asset(self::NO_IMAGE) ;
+        }
     }
 }

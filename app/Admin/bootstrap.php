@@ -22,10 +22,8 @@ use Encore\Admin\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 
-//Form::forget(['map', 'editor']);
-Admin::css(url('vendor/laravel-admin/custom.css'));
+Form::forget(['map', 'editor']);
 Form::extend('editor', \App\Admin\Extensions\Form\CKEditor::class);
-
 
 Grid::init(function (Grid $grid) {
 

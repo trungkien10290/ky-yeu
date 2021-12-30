@@ -1,0 +1,41 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.preview_multiple_file {
+    border: 1px solid #CCCCCC;
+    margin: 5px 0;
+    height: 125px;
+    overflow: auto;
+}
+
+.preview_multiple_file .item_multiple_preview {
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+    margin: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.item_multiple_preview .delete {
+    display: none;
+}
+
+.preview_multiple_file .item_multiple_preview .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    color: red;
+    text-align: center;
+    line-height: 20px;
+    z-index: 2;
+    font-size: 18px;
+    background-color: #ffffff;
+    display: block;
+}
+
+.column-__actions__ .btn {
+    margin: 3px 0;
+}

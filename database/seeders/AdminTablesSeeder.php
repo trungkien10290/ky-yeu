@@ -38,7 +38,7 @@ class AdminTablesSeeder extends Seeder
                 [
                     "parent_id" => 2,
                     "order" => 3,
-                    "title" => "Users",
+                    "title" => "Quản trị viên",
                     "icon" => "fa-users",
                     "uri" => "auth/users",
                     "permission" => NULL
@@ -46,19 +46,19 @@ class AdminTablesSeeder extends Seeder
                 [
                     "parent_id" => 2,
                     "order" => 4,
-                    "title" => "Roles",
+                    "title" => "Nhóm quyền",
                     "icon" => "fa-user",
                     "uri" => "auth/roles",
                     "permission" => NULL
                 ],
-                [
-                    "parent_id" => 2,
-                    "order" => 5,
-                    "title" => "Permission",
-                    "icon" => "fa-ban",
-                    "uri" => "auth/permissions",
-                    "permission" => NULL
-                ],
+//                [
+//                    "parent_id" => 2,
+//                    "order" => 5,
+//                    "title" => "Permission",
+//                    "icon" => "fa-ban",
+//                    "uri" => "auth/permissions",
+//                    "permission" => NULL
+//                ],
                 [
                     "parent_id" => 2,
                     "order" => 6,
@@ -70,7 +70,7 @@ class AdminTablesSeeder extends Seeder
                 [
                     "parent_id" => 2,
                     "order" => 7,
-                    "title" => "Operation log",
+                    "title" => "Logs",
                     "icon" => "fa-history",
                     "uri" => "auth/logs",
                     "permission" => NULL

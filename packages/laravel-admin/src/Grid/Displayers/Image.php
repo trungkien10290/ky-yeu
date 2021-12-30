@@ -14,13 +14,15 @@ class Image extends AbstractDisplayer
         }
 
         return collect((array) $this->value)->filter()->map(function ($path) use ($server, $width, $height) {
-            if (url()->isValidUrl($path) || strpos($path, 'data:image') === 0) {
-                $src = $path;
-            } elseif ($server) {
-                $src = rtrim($server, '/').'/'.ltrim($path, '/');
-            } else {
-                $src = Storage::disk(config('admin.upload.disk'))->url($path);
-            }
+
+//            if (url()->isValidUrl($path) || strpos($path, 'data:image') === 0) {
+//                $src = $path;
+//            } elseif ($server) {
+//                $src = rtrim($server, '/').'/'.ltrim($path, '/');
+//            } else {
+//                $src = Storage::disk(config('admin.upload.disk'))->url($path);
+//            }
+            $src = $path;
 
             return "<img src='$src' style='max-width:{$width}px;max-height:{$height}px' class='img img-thumbnail' />";
         })->implode('&nbsp;');

@@ -56,59 +56,13 @@ const SEO = {
         $(id).val(slug);
     }
 }
-
-function initTinyMCE() {
-    console.log('init')
-    tinymce.init({
-        height: "250",
-        selector: "textarea.tinyMCE",
-        file_picker_types: 'image',
-        images_upload_base_path: '/',
-        location: '/',
-        file_picker_callback: function (cb, value, meta) {
-            var input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-
-            input.onchange = function () {
-                var file = this.files[0];
-
-                var reader = new FileReader();
-                reader.onload = function () {
-                    uploadImage(file, function (data) {
-                        cb(image_upload_domain + '/' + data.url, {title: file.name});
-                    })
-                };
-                reader.readAsDataURL(file);
-            };
-
-            input.click();
-        },
-        setup: function (ed) {
-            ed.on('DblClick', function (e) {
-                if (e.target.nodeName == 'IMG') {
-                    tinyMCE.activeEditor.execCommand('mceImage');
-                }
-            });
-        },
-        plugins: [
-            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-            "  visualblocks visualchars code fullscreen  nonbreaking",
-            "table contextmenu directionality emoticons textcolor paste textcolor textpattern link code image",
-        ],
-
-        toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | code styleselect formatselect fontselect fontsizeselect cut copy paste  | bullist numlist | outdent indent blockquote  | table | hr removeformat | subscript superscript | charmap emoticons |  fullscreen | ltr rtl | spellchecker | link | image",
-        toolbar2: false,
-        menubar: false,
-        branding: false,
-        statusbar: false,
-        element_format: 'html',
-        extended_valid_elements: "iframe[src|width|height|name|align], embed[width|height|name|flashvars|src|align|play|loop|quality|allowscriptaccess|type|pluginspage]",
-        toolbar_items_size: 'small',
-        relative_urls: false,
-        remove_script_host: false,
-        convert_urls: true,
-        verify_html: false,
-
-    });
+function initEditor() {
+    var options = {
+        filebrowserImageBrowseUrl: '/admin/filemanager?type=Images',
+        filebrowserBrowseUrl: '/admin/filemanager?type=Files',
+        removeDialogTabs: 'image:advanced;image:Link',
+        image_previewText:''
+    };
+    var editor = $('textarea.ckEditor').ckeditor(options);
 }
+

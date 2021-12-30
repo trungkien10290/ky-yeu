@@ -196,7 +196,6 @@ class Form implements Renderable
         $this->setRelationFieldSnakeAttributes();
 
         $this->setFieldValue($id);
-
         return $this;
     }
 
@@ -1437,11 +1436,12 @@ class Form implements Renderable
      */
     public function render()
     {
-        try {
-            return $this->builder->render();
-        } catch (\Exception $e) {
-            return Handler::renderException($e);
-        }
+        return $this->builder->render();
+//        try {
+//            return $this->builder->render();
+//        } catch (\Exception $e) {
+//            return Handler::renderException($e);
+//        }
     }
 
     /**

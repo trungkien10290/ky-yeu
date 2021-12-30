@@ -15,7 +15,8 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "symfony/dom-crawler": "~3.1|~4.0|~5.0"
+        "symfony/dom-crawler": "~3.1|~4.0|~5.0",
+        "unisharp/laravel-filemanager": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

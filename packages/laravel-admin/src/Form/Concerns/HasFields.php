@@ -2,6 +2,10 @@
 
 namespace Encore\Admin\Form\Concerns;
 
+use App\Admin\Extensions\Form\File;
+use App\Admin\Extensions\Form\Image;
+use App\Admin\Extensions\Form\MultipleFile;
+use App\Admin\Extensions\Form\MultipleImage;
 use Encore\Admin\Form\Field;
 use Illuminate\Support\Arr;
 
@@ -24,7 +28,7 @@ use Illuminate\Support\Arr;
  * @method Field\Email          email($column, $label = '')
  * @method Field\Mobile         mobile($column, $label = '')
  * @method Field\Slider         slider($column, $label = '')
- * @method Field\File           file($column, $label = '')
+ * @method File           file($column, $label = '')
  * @method Field\Image          image($column, $label = '')
  * @method Field\Date           date($column, $label = '')
  * @method Field\Datetime       datetime($column, $label = '')
@@ -47,8 +51,8 @@ use Illuminate\Support\Arr;
  * @method Field\Tags           tags($column, $label = '')
  * @method Field\Icon           icon($column, $label = '')
  * @method Field\Embeds         embeds($column, $label = '', $callback)
- * @method Field\MultipleImage  multipleImage($column, $label = '')
- * @method Field\MultipleFile   multipleFile($column, $label = '')
+ * @method MultipleImage  multipleImage($column, $label = '')
+ * @method MultipleFile   multipleFile($column, $label = '')
  * @method Field\Captcha        captcha($column, $label = '')
  * @method Field\Listbox        listbox($column, $label = '')
  * @method Field\Table          table($column, $label, $builder)
@@ -87,10 +91,10 @@ trait HasFields
         'divider'           => Field\Divider::class,
         'embeds'            => Field\Embeds::class,
         'email'             => Field\Email::class,
-        'file'              => Field\File::class,
+        'file'              => File::class,
         'hidden'            => Field\Hidden::class,
         'id'                => Field\Id::class,
-        'image'             => Field\Image::class,
+        'image'             => Image::class,
         'ip'                => Field\Ip::class,
         'mobile'            => Field\Mobile::class,
         'month'             => Field\Month::class,
@@ -113,8 +117,8 @@ trait HasFields
         'html'              => Field\Html::class,
         'tags'              => Field\Tags::class,
         'icon'              => Field\Icon::class,
-        'multipleFile'      => Field\MultipleFile::class,
-        'multipleImage'     => Field\MultipleImage::class,
+        'multipleFile'      => MultipleFile::class,
+        'multipleImage'     => MultipleImage::class,
         'captcha'           => Field\Captcha::class,
         'listbox'           => Field\Listbox::class,
         'table'             => Field\Table::class,
@@ -125,7 +129,7 @@ trait HasFields
         'morphMany'         => Field\HasMany::class,
         'belongsTo'         => Field\BelongsTo::class,
         'belongsToMany'     => Field\BelongsToMany::class,
-        'video'             => Field\Video::class
+        'video'             => Field\Video::class,
     ];
 
     /**

@@ -16,7 +16,6 @@ Route::group([
     'middleware' => config('admin.route.middleware'),
     'as' => config('admin.route.prefix') . '.',
 ], function () {
-
     Route::prefix(config('admin.route.prefix'))->group(function (Router $router) {
         $router->get('/', [\App\Admin\Controllers\HomeController::class, 'index'])->name('home');
         $router->resource('categories', CategoryController::class)->whereNumber('category')->except('show');
@@ -32,4 +31,12 @@ Route::group([
         $router->get('categories/{type}/select2', [CategoryController::class, 'select2'])->name('categories.type.select2');
     });
 
+});
+
+
+Route::group([
+    'middleware' => config('admin.route.middleware'),
+    'prefix' =>'admin/filemanager'
+], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });
