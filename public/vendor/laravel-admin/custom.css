@@ -5,12 +5,11 @@ body {
 .preview_multiple_file {
     border: 1px solid #CCCCCC;
     margin: 5px 0;
-    height: 125px;
+    height: 115px;
     overflow: auto;
 }
 
 .preview_multiple_file .item_multiple_preview {
-    padding: 5px;
     border: 1px solid #CCCCCC;
     margin: 5px;
     position: relative;
@@ -34,6 +33,20 @@ body {
     font-size: 18px;
     background-color: #ffffff;
     display: block;
+}
+
+.preview_multiple_file .item_multiple_preview .file-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    text-align: center;
+    line-height: 1.3em;
+    max-height: 2.6em;
+    overflow: hidden;
 }
 
 .column-__actions__ .btn {

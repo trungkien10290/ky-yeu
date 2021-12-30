@@ -1,7 +1,6 @@
 (function ($) {
 
 
-
     function IsJsonString(str) {
         try {
             JSON.parse(str);
@@ -17,11 +16,8 @@
     })
 
     $.fn.filemanager = function (type, options) {
-
         type = $(this).data('type') ?? 'file';
-        console.log(type)
         var target_input = $('#' + $(this).data('input'));
-
         var target_preview = $('#' + $(this).data('preview'));
         var is_multiple = $(this).data('is_multiple')
         target_input.change(function () {
@@ -89,10 +85,12 @@
             });
             // target_input.val(JSON.stringify(lists));
         }
+
+        $(this).trigger('click')
     }
 
-    $(document).find('.lfm-btn').each(function(){
-        $(this).filemanager('image', {prefix:'/admin/filemanager'});
+    $(document).on('click', '.lfm-btn', function () {
+        $(this).filemanager('image', {prefix: '/admin/filemanager'});
     })
 
 })(jQuery);
