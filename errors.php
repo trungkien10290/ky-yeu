@@ -515,6 +515,17 @@
                                         <span><img src="images/image-.jpg" alt=""> </span>
                                         <span><img src="images/image-1.jpg" alt=""> </span>
                                         <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
+                                        <span><img src="images/image-2.jpg" alt=""> </span>
                                     </div>
                                     <div class="er-doc">
                                         <h4>File đính kèm:</h4>

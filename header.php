@@ -27,7 +27,12 @@
     <div class="header_main">
         <div class="container">
             <div class="flex-center-end">
-                <button class="btn-search"><i class="fal fa-search"></i> </button>
+                <div class="search-box">
+                    <form class="se-frm">
+                        <input type="text" placeholder="Từ khóa">
+                    </form>
+                    <button class="btn-search"><i class="fal fa-search"></i> </button>
+                </div>
                 <a href="" class="language" title="">VN</a>
                 <div class="user flex-center">
                     <span><img src="images/Avt.png" alt=""> </span>

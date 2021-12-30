@@ -24,9 +24,9 @@
             <div class="row">
                 <div class="col-md-6 mgb-30" data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-1.jpg" alt=""> </span></a>
+                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/image-.jpg" alt=""> </span></a>
                         <div class="list-cache relative">
-                            <h2><a href="errors.php" title="">Premier Village Hạ Long</a> </h2>
+                            <h2><a href="errors.php" title="">shophouse sun premier village halong bay</a> </h2>
                             <div class="list-ls">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -91,9 +91,9 @@
                 </div>
                 <div class="col-md-6 mgb-30"  data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-1.jpg" alt=""> </span></a>
+                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-9.jpg" alt=""> </span></a>
                         <div class="list-cache relative">
-                            <h2><a href="errors.php" title="">Premier Village Hạ Long</a> </h2>
+                            <h2><a href="errors.php" title="">cảng hàng không quốc tế vân đồn</a> </h2>
                             <div class="list-ls">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -152,15 +152,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm.png" alt=""> </a> </div>
+                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm-5.png" alt=""> </a> </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mgb-30"  data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-1.jpg" alt=""> </span></a>
+                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-3.jpg" alt=""> </span></a>
                         <div class="list-cache relative">
-                            <h2><a href="errors.php" title="">Premier Village Hạ Long</a> </h2>
+                            <h2><a href="errors.php" title="">yoko onsen quang hanh</a> </h2>
                             <div class="list-ls">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -219,13 +219,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm.png" alt=""> </a> </div>
+                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm-4.png" alt=""> </a> </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mgb-30" data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-1.jpg" alt=""> </span></a>
+                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-5.jpg" alt=""> </span></a>
                         <div class="list-cache relative">
                             <h2><a href="errors.php" title="">Premier Village Hạ Long</a> </h2>
                             <div class="list-ls">
@@ -292,9 +292,9 @@
                 </div>
                 <div class="col-md-6 mgb-30" data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-1.jpg" alt=""> </span></a>
+                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-6.jpg" alt=""> </span></a>
                         <div class="list-cache relative">
-                            <h2><a href="errors.php" title="">Premier Village Hạ Long</a> </h2>
+                            <h2><a href="errors.php" title="">cảng tàu khách quốc tế hạ long</a> </h2>
                             <div class="list-ls">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -353,15 +353,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm.png" alt=""> </a> </div>
+                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm-3.png" alt=""> </a> </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mgb-30" data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-1.jpg" alt=""> </span></a>
+                        <a href="errors.php" title="" class="zoom zoom-img"><span><img src="images/du-an-7.jpg" alt=""> </span></a>
                         <div class="list-cache relative">
-                            <h2><a href="errors.php" title="">Premier Village Hạ Long</a> </h2>
+                            <h2><a href="errors.php" title="">sun world halong complex</a> </h2>
                             <div class="list-ls">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -420,7 +420,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm.png" alt=""> </a> </div>
+                            <div class="ls-log flex-center-center"><a href="" title=""><img src="images/logo-sm-2.png" alt=""> </a> </div>
                         </div>
                     </div>
                 </div>
@@ -432,7 +432,7 @@
                         <div class="re-item flex">
                             <a href="errors.php" title="" class="zoom"><img src="images/image-3.jpg" alt=""> </a>
                             <div class="re-text">
-                                <h4><a href="" title="">Quy hoạch tổng thể</a> </h4>
+                                <h4><a href="errors.php" title="">Quy hoạch tổng thể</a> </h4>
                                 <p><span>200</span> lỗi</p>
                             </div>
                         </div>
@@ -484,10 +484,10 @@
                     </div>
                 </div>
                 <div class="pj-item relative swiper-slide">
-                    <a href="pj-intro.php" title="" class="zoom zoom-img"><span><img src="images/du-an-2.jpg" alt=""> </span></a>
+                    <a href="pj-intro.php" title="" class="zoom zoom-img"><span><img src="images/1.jpg" alt=""> </span></a>
                     <div class="pj-abs">
                         <div class="pj-text flex-center-center">
-                            <h4><a href="pj-intro.php" title="">cao tốc hạ long - vân đồn</a> </h4>
+                            <h4><a href="pj-intro.php" title="">sun world halong complex</a> </h4>
                             <a href="pj-intro.php" title="" class="btn-dt inflex-center-center"><i class="fal fa-search-plus"></i> </a>
                         </div>
                     </div>
@@ -496,7 +496,7 @@
                     <a href="pj-intro.php" title="pj-intro.php" class="zoom zoom-img"><span><img src="images/du-an-3.jpg" alt=""> </span></a>
                     <div class="pj-abs">
                         <div class="pj-text flex-center-center">
-                            <h4><a href="pj-intro.php" title="">cao tốc hạ long - vân đồn</a> </h4>
+                            <h4><a href="pj-intro.php" title="">yoko onsen quang hanh</a> </h4>
                             <a href="pj-intro.php" title="" class="btn-dt inflex-center-center"><i class="fal fa-search-plus"></i> </a>
                         </div>
                     </div>
@@ -505,7 +505,7 @@
                     <a href="pj-intro.php" title="" class="zoom zoom-img"><span><img src="images/du-an-4.jpg" alt=""> </span></a>
                     <div class="pj-abs">
                         <div class="pj-text flex-center-center">
-                            <h4><a href="pj-intro.php" title="">cao tốc hạ long - vân đồn</a> </h4>
+                            <h4><a href="pj-intro.php" title="">sun plaza grand world</a> </h4>
                             <a href="pj-intro.php" title="" class="btn-dt inflex-center-center"><i class="fal fa-search-plus"></i> </a>
                         </div>
                     </div>
