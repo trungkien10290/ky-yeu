@@ -61,27 +61,11 @@
     LA.user = @json($_user_);
     const baseUrl = '{{url('/')}}';
     const adminUrl = '{{url('/')}}';
-    const Libraries = {
-        list: [],
-        loaded: [],
-        load() {
-            this.list.forEach(function (initFunction) {
-                initFunction();
-                Libraries.loaded.push(initFunction)
-            })
-        },
-        push(initFunction) {
-            console.log(initFunction)
-            this.list.push(initFunction)
-        }
-    }
+
 </script>
 
 <!-- REQUIRED JS SCRIPTS -->
 {!! Admin::js() !!}
-<script>
-    Libraries.load();
-</script>
 <script src="{{asset('/vendor/laravel-admin/helper.js')}}"></script>
 <script src="{{asset('/vendor/laravel-admin/custom.js')}}"></script>
 {!! \Encore\Admin\Admin::renderAppendsJs() !!}

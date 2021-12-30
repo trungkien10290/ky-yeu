@@ -52,3 +52,8 @@ body {
 .column-__actions__ .btn {
     margin: 3px 0;
 }
+
+.img-circle, .user-image {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}

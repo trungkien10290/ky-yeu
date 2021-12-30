@@ -26,7 +26,6 @@ Form::forget(['map', 'editor']);
 Form::extend('editor', \App\Admin\Extensions\Form\CKEditor::class);
 
 Grid::init(function (Grid $grid) {
-
 //    $grid->disableActions();
 
     $grid->disableRowSelector();
