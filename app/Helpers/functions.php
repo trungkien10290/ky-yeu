@@ -41,6 +41,10 @@ function image($image, $size = '')
 {
     return \App\Helpers\Image::show($image, $size);
 }
+function thumbnail($image)
+{
+    return \App\Helpers\Image::thumbs($image);
+}
 
 function cloud_url($path){
     return \Illuminate\Support\Facades\Storage::disk('admin')->url($path);
