@@ -40,8 +40,10 @@
             window.open(route_prefix + '?type=' + type, 'FileManager', 'width=1200,height=700');
             window.SetUrl = function (items) {
                 let items_url = items.map(function (item) {
+
                     return item.url.replace(baseUrl, '');
                 });
+                console.log(items_url)
                 if (is_multiple) {
                     let currentValue = target_input.val();
                     currentValue = IsJsonString(currentValue) ? JSON.parse(currentValue) : [];
