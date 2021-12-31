@@ -78,7 +78,7 @@ trait InlineEditing
         return $this->datetime('YYYY-MM-DD');
     }
 
-    public function showDate($format = 'Y-m-d')
+    public function showDate($format = 'Y-m-d H:i')
     {
 
         $name = $this->name;

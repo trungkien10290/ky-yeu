@@ -2,12 +2,12 @@
 
 namespace Encore\Admin\Auth\Database;
 
+use App\Models\Project;
 use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Administrator.
@@ -47,7 +47,7 @@ class Administrator extends Model implements AuthenticatableContract
      */
     public function getAvatarAttribute($avatar)
     {
-        if(file_exists(public_path($avatar))){
+        if (file_exists(public_path($avatar))) {
             return $avatar;
         }
 //        if (url()->isValidUrl($avatar)) {
@@ -95,8 +95,13 @@ class Administrator extends Model implements AuthenticatableContract
 
     public function authorize($permission)
     {
-        if(!$this->cannot($permission)){
+        if (!$this->cannot($permission)) {
             abort(403);
         }
+    }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'admin_user_projects', 'user_id', 'project_id');
     }
 }

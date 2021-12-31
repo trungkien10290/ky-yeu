@@ -14,7 +14,7 @@ $img = in_array($extension, ['jpg', 'jpeg', 'png', 'svg', 'gif']) ? $item : ('/a
         <source src="{{$item}}" type="video/mp4">
     </video>
     <?php else: ?>
-    <img src="{{thumbnail($img)}}" alt="" height="100">
+    <img src="{{$img}}" alt="" height="100">
     <div class="file-name">{{$item}}</div>
     <?php endif ?>
     <input type="hidden" name="{{$name}}" value="{{$item}}">

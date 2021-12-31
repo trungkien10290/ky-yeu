@@ -19,7 +19,7 @@ if (!function_exists('fn_get_class_plural')) {
 if (!function_exists('fn_get_js_page_url')) {
     function fn_get_js_page_url($fileName): string
     {
-        return asset('admin/pages/' . $fileName . '.js');
+        return asset('admins/pages/' . $fileName . '.js');
     }
 }
 if (!function_exists('get_lang')) {

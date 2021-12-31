@@ -2,6 +2,8 @@
 
 namespace Encore\Admin\Auth\Database;
 
+use App\Models\Bug;
+use App\Models\Project;
 use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -164,5 +166,15 @@ class Permission extends Model
         static::deleting(function ($model) {
             $model->roles()->detach();
         });
+    }
+
+    public function projects()
+    {
+        return $this->morphedByMany(Project::class, 'permissions');
+    }
+
+    public function bugs()
+    {
+        return $this->morphedByMany(Bug::class, 'permissions');
     }
 }

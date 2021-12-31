@@ -16,15 +16,7 @@
             @include('admin::form.tab', compact('tabObj'))
         @else
             <div class="fields-group">
-                @if($errors->hasBag('default'))
-                    @foreach($errors->getBag('default')->getMessages() as $messages)
-                        @foreach($messages as $message)
-                            <div class="text-danger" ><i
-                                    class="fa fa-times-circle-o"></i> {{$message}}
-                            </div>
-                        @endforeach
-                    @endforeach
-                @endif
+
                 @if($form->hasRows())
                     @foreach($form->getRows() as $row)
                         {!! $row->render() !!}

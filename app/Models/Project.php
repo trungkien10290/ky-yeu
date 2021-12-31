@@ -15,13 +15,14 @@ class Project extends Model
         return $query->where('is_active', 1);
     }
 
+
     public function getSlugLinkAttribute()
     {
         return 'project/' . $this->id;
     }
 
-    public function getSearchLinkAttribute()
+    public function bugs()
     {
-        return 'dasdsa';
+        return $this->hasMany(Bug::class);
     }
 }

@@ -24,6 +24,7 @@ Route::group([
         $router->resource('projects', ProjectController::class)->whereNumber('project');
         $router->resource('banner', BannerController::class)->whereNumber('banner');
         $router->resource('comments', CommentController::class)->whereNumber('comment');
+        $router->resource('user_projects', \App\Admin\Controllers\UserProjectController::class)->whereNumber('user_project');
     });
 
     Route::prefix(config('admin.route.prefix') . '_api')->group(function (Router $router) {
