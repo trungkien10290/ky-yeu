@@ -4,6 +4,7 @@ namespace App\Constants;
 
 class AppConstants
 {
+    const AMOUNT = 10;
     const ADMIN_DEFAULT_LANGUAGE = 'vi';
     const PUBLIC_DEFAULT_LANGUAGE = 'vi';
     const PUBLIC_LANGUAGES = ['vi', 'en'];

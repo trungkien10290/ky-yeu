@@ -505,46 +505,20 @@
         <div class="list-re">
             <h2 class="title-page" data-aos="fade-up" data-aos-duration="2000">danh mục khác</h2>
             <div class="row">
+                @foreach ($other_category as $othc)
                 <div class="col-md-3" data-aos="fade-up" data-aos-duration="2000">
                     <div class="re-item flex">
-                        <a href="<?= route('bug.index') ?>" title="" class="zoom"><img src="frontend/images/image-3.jpg"
+                        <a href="<?= route('bug.index') ?>" title="" class="zoom"><img src="{{$othc->thumbnail}}"
                                                                                        alt=""> </a>
                         <div class="re-text">
-                            <h4><a href="" title="">Quy hoạch tổng thể</a></h4>
+                            <h4><a href="" title="{{$othc['title']}}">{{ $othc->trans('title') }}</a></h4>
                             <p><span>200</span> lỗi</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="re-item flex">
-                        <a href="<?= route('bug.index') ?>" title="" class="zoom"><img src="frontend/images/image-1.jpg"
-                                                                                       alt=""> </a>
-                        <div class="re-text">
-                            <h4><a href="<?= route('bug.index') ?>" title="">Giải pháp vật liệu</a></h4>
-                            <p><span>200</span> lỗi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="re-item flex">
-                        <a href="<?= route('bug.index') ?>" title="" class="zoom"><img src="frontend/images/image-2.jpg"
-                                                                                       alt=""> </a>
-                        <div class="re-text">
-                            <h4><a href="" title="">Kiến trúc</a></h4>
-                            <p><span>200</span> lỗi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-duration="2000">
-                    <div class="re-item flex">
-                        <a href="<?= route('bug.index') ?>" title="" class="zoom"><img src="frontend/images/image-3.jpg"
-                                                                                       alt=""> </a>
-                        <div class="re-text">
-                            <h4><a href="" title="">Kết cấu</a></h4>
-                            <p><span>200</span> lỗi</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
+                
             </div>
         </div>
     </div>
