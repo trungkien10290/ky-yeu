@@ -7,8 +7,20 @@
                 <a href="{{route('set_lang',['lang'=>get_lang() === 'vi' ? 'vi' : 'en'])}}" class="language"
                    title="">{{get_lang()}}</a>
                 <div class="user flex-center">
-                    <span><img src="frontend/images/Avt.png" alt=""> </span>
-                    Jane Doe
+                    @if (Session::has('user'))
+                        @php
+                            $user = Session::get('user');
+                        @endphp
+                        <a href="{{route('login.logOut')}}" 
+                        title="">Logout</a>
+                        <div class="user flex-center">
+                            <span><img src="{{$user['thumbnail']}}" alt=""> </span>
+                            {{$user['name']}}
+                        </div>
+                    @else
+                    <a href="{{route('login.index')}}" 
+                        title="">Login</a>
+                    @endif
                 </div>
             </div>
         </div>
