@@ -20,8 +20,8 @@ class BugService
             $query->where('category_id', request('category_id'));
         }
         if (request('dates')) {
-            $dates = explode(' - ',request('dates'));
-            if($dates){
+            $dates = explode(' - ', request('dates'));
+            if ($dates) {
                 $from = Carbon::createFromDate($dates[0])->toDateTimeString();
                 $to = Carbon::createFromDate($dates[1])->toDateTimeString();
             }

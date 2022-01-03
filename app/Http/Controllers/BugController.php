@@ -39,6 +39,4 @@ class BugController extends Controller
         }]);
         return view('public.bug.modal', ['bug' => $bug]);
     }
-
-    
 }
