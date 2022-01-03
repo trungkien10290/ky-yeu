@@ -12,7 +12,7 @@ class ProjectController extends Controller
     protected $projectService;
     protected $categoryService;
     protected $bugService;
-    public function __construct(ProjectService $projectService,CategoryService $categoryService,BugService $bugService)
+    public function __construct(ProjectService $projectService, CategoryService $categoryService, BugService $bugService)
     {
         $this->projectService = $projectService;
         $this->categoryService = $categoryService;
@@ -24,6 +24,6 @@ class ProjectController extends Controller
         $assign['projectDetail'] = $this->projectService->find($request->project_id);
         $assign['bugCategories'] = $this->categoryService->bugCategory();
         $assign['listBugs'] = $this->bugService->paginate();
-        return view('public.bug.index',$assign);
+        return view('public.bug.index', $assign);
     }
 }

@@ -8,11 +8,11 @@ class BugCateService
 {
     public function getCategroy()
     {
-        return Category::where('type','bug')->active()->get();
+        return Category::where('type', 'bug')->active()->get();
     }
 
     public function getCategroyOther()
     {
-        return Category::where('type','other')->active()->get();
+        return Category::where('type', 'other')->active()->get();
     }
 }

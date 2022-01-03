@@ -22,6 +22,6 @@ class CategoryService
 
     public function otherCategory()
     {
-        return Category::where('type',AppConstants::CATEGORY_TYPE_OTHER)->get();
+        return Category::where('type', AppConstants::CATEGORY_TYPE_OTHER)->get();
     }
 }

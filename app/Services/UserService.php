@@ -8,16 +8,18 @@ use Illuminate\Support\Facades\Session;
 
 class UserService
 {
-    public function LogIn($request){
-        $user = User::where('email',$request->email)->first();
+    public function LogIn($request)
+    {
+        $user = User::where('email', $request->email)->first();
         if (Hash::check($request->password, $user['password'])) {
-            Session::put('user',$user);
+            Session::put('user', $user);
             return true;
-        }       
+        }
         return false;
     }
 
-    public function LogOut(){
+    public function LogOut()
+    {
         Session::remove('user');
     }
 }

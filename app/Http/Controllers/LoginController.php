@@ -21,10 +21,10 @@ class LoginController extends Controller
     public function logIn(Request $request)
     {
         $checkLogin = $this->userService->LogIn($request);
-        if($checkLogin){
+        if ($checkLogin) {
             return redirect('/');
-        }else{
-            return back()->with('error','Sai email hoặc mật khẩu');
+        } else {
+            return back()->with('error', 'Sai email hoặc mật khẩu');
         }
     }
 

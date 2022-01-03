@@ -16,7 +16,6 @@ class BugService
             $query->where('project_id', request('project_id'));
         }
         if (request('category_id')) {
-
             $query->where('category_id', request('category_id'));
         }
         if (request('search')) {
@@ -24,5 +23,4 @@ class BugService
         }
         return $query->orderByDesc('id')->paginate(self::PAGINATE_LIMIT);
     }
-
 }

@@ -11,5 +11,4 @@ class BannerService
     {
         return Banner::active()->get();
     }
-
 }
