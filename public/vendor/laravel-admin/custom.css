@@ -65,3 +65,8 @@ body {
 .grid-table .empty-grid .icon {
     height: 60px;
 }
+
+
+span.label{
+    display: inline-block;
+}
