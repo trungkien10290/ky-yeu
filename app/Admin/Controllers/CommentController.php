@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\Selectable\BugSelectable;
+use App\Admin\Forms\Selectable\UserSelectable;
 use App\Admin\Traits\HasCreate;
 use App\Admin\Traits\HasEdit;
 use App\Http\Controllers\Controller;
@@ -30,10 +32,15 @@ class CommentController extends Controller
     public function index(Content $content, Comment $comment)
     {
         $grid = new Grid($comment);
+        if (!is_super_admin()) {
+            $grid->model()->whereHas('bug', function ($query) {
+                return $query->projectOwner();
+            });
+        }
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('bug_id', __('Bug id'));
+        $grid->column('user.name', __('User'));
+        $grid->column('bug.desc_vi', __('Bug'));
         $grid->column('content', __('Content'));
         $grid->column('is_active', __('Is active'))->switch();
         $grid->column('created_at', __('Created at'))->showDate();
@@ -75,8 +82,8 @@ class CommentController extends Controller
         $comment = new Comment();
         $form = new Form($comment);
 
-        $form->number('user_id', __('User id'));
-        $form->number('bug_id', __('Bug id'));
+        $form->belongsTo('user_id', UserSelectable::class, __('User'))->rules('required');
+        $form->belongsTo('bug_id',BugSelectable::class, __('Bug'))->rules('required');
         $form->textarea('content', __('Content'));
         $form->switch('is_active', __('Is active'))->default(1);
 

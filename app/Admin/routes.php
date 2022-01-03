@@ -19,7 +19,7 @@ Route::group([
     Route::prefix(config('admin.route.prefix'))->group(function (Router $router) {
         $router->get('/', [\App\Admin\Controllers\HomeController::class, 'index'])->name('home');
         $router->resource('categories', CategoryController::class)->whereNumber('category')->except('show');
-        $router->resource('posts', PostController::class)->whereNumber('post')->except('show');
+//        $router->resource('posts', PostController::class)->whereNumber('post')->except('show');
         $router->resource('bugs', BugController::class)->whereNumber('bug');
         $router->resource('projects', ProjectController::class)->whereNumber('project');
         $router->resource('banner', BannerController::class)->whereNumber('banner');

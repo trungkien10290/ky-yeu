@@ -20,7 +20,7 @@ class GenerateMenuCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'admin:generate-menu {--dry-run : Dry run}';
+    protected $signature = 'admin:generate-menu {--dry-run : Dry run} {--lang=}';
 
     /**
      * The console command description.
@@ -48,6 +48,8 @@ class GenerateMenuCommand extends Command
      */
     public function handle()
     {
+        $lang = $this->option('lang') ?? 'en';
+        app()->setLocale($lang);
         $routes = collect($this->router->getRoutes())->filter(function (Route $route) {
             $uri = $route->uri();
             // built-in, parameterized and no-GET are ignored
@@ -75,10 +77,10 @@ class GenerateMenuCommand extends Command
         // exclude exist ones
         $news = $routes->diffKeys($menus)->map(function ($item, $key) {
             return [
-                'title' => $item,
-                'uri'   => $key,
+                'title' => __($item),
+                'uri' => $key,
                 'order' => 10,
-                'icon'  => 'fa-list',
+                'icon' => 'fa-list',
             ];
         })->values()->toArray();
 
@@ -89,7 +91,7 @@ class GenerateMenuCommand extends Command
                 $this->line('<info>The following menu items will be created</info>: ');
                 $this->table(['Title', 'Uri'], array_map(function ($item) {
                     return [
-                        $item['title'],
+                        __($item['title']),
                         $item['uri'],
                     ];
                 }, $news));

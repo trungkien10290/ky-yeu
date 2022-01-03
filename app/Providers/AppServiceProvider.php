@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Encore\Admin\Helpers\HelpersServiceProvider;
 use Encore\Admin\LogViewer\LogViewerServiceProvider;
 use Encore\TMEditor\TMEditorServiceProvider;
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('local')) {
             $this->app->register(HelpersServiceProvider::class);
             $this->app->register(LogViewerServiceProvider::class);
+            $this->app->register(IdeHelperServiceProvider::class);
         }
 
         //

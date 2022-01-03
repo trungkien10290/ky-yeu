@@ -18,13 +18,14 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
 
         ]);
-        system('php artisan admin:generate-menu');
+        system('php artisan admin:generate-menu --lang=vi');
         if (app()->environment('local')) {
             $this->call([
                 CategorySeeder::class,
                 ProjectSeeder::class,
                 BugSeeder::class,
-                BannerSeeder::class
+                BannerSeeder::class,
+                UserSeeder::class
             ]);
         }
     }

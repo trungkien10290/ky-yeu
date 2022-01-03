@@ -51,14 +51,14 @@ class AdminTablesSeeder extends Seeder
                     "uri" => "auth/roles",
                     "permission" => null
                 ],
-            //                [
-            //                    "parent_id" => 2,
-            //                    "order" => 5,
-            //                    "title" => "Permission",
-            //                    "icon" => "fa-ban",
-            //                    "uri" => "auth/permissions",
-            //                    "permission" => NULL
-            //                ],
+                //                [
+                //                    "parent_id" => 2,
+                //                    "order" => 5,
+                //                    "title" => "Permission",
+                //                    "icon" => "fa-ban",
+                //                    "uri" => "auth/permissions",
+                //                    "permission" => NULL
+                //                ],
                 [
                     "parent_id" => 2,
                     "order" => 6,
@@ -123,6 +123,14 @@ class AdminTablesSeeder extends Seeder
                 ]
             ]
         );
+        \Encore\Admin\Auth\Database\Role::insert(
+            [
+                [
+                    "name" => "Editor",
+                    "slug" => "editor"
+                ]
+            ]
+        );
 
         // pivot tables
         DB::table('admin_role_menu')->truncate();
@@ -171,7 +179,7 @@ class AdminTablesSeeder extends Seeder
                 [
                     "username" => 'editor',
                     "password" => bcrypt('123qwe'),
-                    'name' => 'admin',
+                    'name' => 'editor',
                     'remember_token' => Str::random(10)
                 ]
             ]

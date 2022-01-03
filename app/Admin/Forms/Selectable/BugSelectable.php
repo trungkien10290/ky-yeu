@@ -13,6 +13,9 @@ class BugSelectable extends Selectable
 
     public function make()
     {
+        if (!is_super_admin()) {
+            $this->model()->projectOwner();
+        }
         $this->column('id');
         $this->column('project.title_vi', 'Tên dự án');
         $this->column('desc_vi');

@@ -57,3 +57,11 @@ body {
     aspect-ratio: 1/1;
     object-fit: cover;
 }
+
+.grid-table .empty-grid {
+    padding: 30px !important;
+}
+
+.grid-table .empty-grid .icon {
+    height: 60px;
+}

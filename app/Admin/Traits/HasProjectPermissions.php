@@ -23,7 +23,8 @@ trait HasProjectPermissions
 
     public function hasProjectPermission($action, $project)
     {
-        return !empty($this->permissionByProject()) && in_array($action, $this->permissionByProject[$project->id]['permissions']);
+        $id = $project->id ?? null;
+        return !empty($this->permissionByProject()) && in_array($action, $this->permissionByProject[$id]['permissions']);
     }
 
     public function canProject($action, $project): bool
@@ -34,5 +35,10 @@ trait HasProjectPermissions
     public function cannotProject($action, $project): bool
     {
         return !$this->canProject($action, $project);
+    }
+
+    public function getProjectOwnerIdsAttribute()
+    {
+        return $this->projectPermissions->pluck('project_id');
     }
 }
