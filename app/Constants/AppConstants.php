@@ -6,7 +6,7 @@ class AppConstants
 {
     const ADMIN_DEFAULT_LANGUAGE = 'vi';
     const PUBLIC_DEFAULT_LANGUAGE = 'vi';
-    const PUBLIC_LANGUAGES = ['vi','en'];
+    const PUBLIC_LANGUAGES = ['vi', 'en'];
     const PERMISSION_VIEW = '.view';
     const PERMISSION_CREATE = '.create';
     const PERMISSION_DELETE = '.delete';
@@ -24,4 +24,14 @@ class AppConstants
 
     const UPLOAD_FILE_ACCEPT = 'image/gif, image/jpeg, image/png,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document';
     const UPLOAD_FILE_RULES = 'mimes:png,jpg,jpeg,csv,txt,xlx,xls,doc,pdf,ppx';
+
+    const PROJECT_PERMISSIONS = [
+        'edit' => 'Sửa dự án',
+        'delete' => 'Xóa dự án',
+    ];
+
+    const PROJECT_PERMISSIONS_LABEL = [
+        'edit' => 'primary',
+        'delete' => 'danger',
+    ];
 }

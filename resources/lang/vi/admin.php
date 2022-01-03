@@ -6,7 +6,7 @@ return [
     'logout'                => 'Đăng xuất',
     'setting'               => 'Thiết lập',
     'name'                  => 'Tên',
-    'username'              => 'tên tài khoản',
+    'username'              => 'Tài khoản',
     'password'              => 'Mật khẩu',
     'password_confirmation' => 'xác nhận mật khẩu',
     'remember_me'           => 'Nhớ tôi',

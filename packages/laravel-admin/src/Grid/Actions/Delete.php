@@ -31,8 +31,9 @@ class Delete extends RowAction
             'failed' => trans('admin.delete_failed'),
             'succeeded' => trans('admin.delete_succeeded'),
         ];
+
         $class = fn_get_class_plural($model);
-        if (fn_admin()->cannot($class . AppConstants::PERMISSION_DELETE)) {
+        if (fn_admin()->cannot($class . AppConstants::PERMISSION_DELETE) || (method_exists($model, 'canDelete') && !$model->canDelete())) {
             return $this->response()->error(__('Permission denied'));
         }
 

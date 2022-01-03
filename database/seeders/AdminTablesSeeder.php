@@ -166,6 +166,27 @@ class AdminTablesSeeder extends Seeder
             ]
         );
 
+        DB::table('admin_users')->insert(
+            [
+                [
+                    "username" => 'editor',
+                    "password" => bcrypt('123qwe'),
+                    'name' => 'admin',
+                    'remember_token' => Str::random(10)
+                ]
+            ]
+        );
+        DB::table('admin_role_users')->truncate();
+        DB::table('admin_role_users')->insert(
+            [
+                [
+                    "role_id" => 1,
+                    "user_id" => 1,
+                ]
+            ]
+        );
+
+
         // finish
     }
 }

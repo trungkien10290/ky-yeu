@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Encore\Admin\Auth\Database\Administrator;
-use Encore\Admin\Auth\Database\Permission;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,14 +13,13 @@ class UserProject extends Model
     protected $table = 'admin_user_projects';
     public $timestamps = false;
 
+    protected $casts = [
+        'permissions' => 'array'
+    ];
+
     public function bugs()
     {
         return $this->belongsToMany(Bug::class, 'admin_user_project_bugs', 'user_project_id', 'bug_id');
-    }
-
-    public function permissions()
-    {
-        return $this->morphToMany(Permission::class, 'model', 'admin_model_permissions');
     }
 
     public function project()

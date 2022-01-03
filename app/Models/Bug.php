@@ -72,4 +72,15 @@ class Bug extends Model
             }
         });
     }
+
+    public function scopeProjectOwner($query)
+    {
+        $ownerProject = fn_admin()->projectPermissions->pluck('project_id');
+        return $query->whereIn('project_id', $ownerProject);
+    }
+
+    public function canDelete()
+    {
+        return fn_admin()->canProject('delete', $this->project);
+    }
 }

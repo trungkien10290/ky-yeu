@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Auth\Database;
 
+use App\Admin\Traits\HasProjectPermissions;
 use App\Models\Project;
 use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Auth\Authenticatable;
@@ -18,6 +19,7 @@ class Administrator extends Model implements AuthenticatableContract
 {
     use Authenticatable;
     use HasPermissions;
+    use HasProjectPermissions;
     use DefaultDatetimeFormat;
 
     protected $fillable = ['username', 'password', 'name', 'avatar'];
@@ -47,7 +49,7 @@ class Administrator extends Model implements AuthenticatableContract
      */
     public function getAvatarAttribute($avatar)
     {
-        if (file_exists(public_path($avatar))) {
+        if (!empty($avatar) && file_exists(public_path($avatar))) {
             return $avatar;
         }
 //        if (url()->isValidUrl($avatar)) {

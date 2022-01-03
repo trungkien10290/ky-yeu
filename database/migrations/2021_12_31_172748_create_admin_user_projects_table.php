@@ -17,8 +17,7 @@ class CreateAdminUserProjectsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('project_id');
-
-            $table->json('permission')->nullable();
+            $table->json('permissions')->nullable();
         });
     }
 

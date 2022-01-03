@@ -69,10 +69,8 @@ class HandleController extends Controller
     public function handleAction(Request $request)
     {
         $action = $this->resolveActionInstance($request);
-
         $model = null;
         $arguments = [];
-
         if ($action instanceof GridAction) {
             $model = $action->retrieveModel($request);
             $arguments[] = $model;
@@ -81,7 +79,6 @@ class HandleController extends Controller
         if (!$action->passesAuthorization($model)) {
             return $action->failedAuthorization();
         }
-
         if ($action instanceof RowAction) {
             $action->setRow($model);
         }

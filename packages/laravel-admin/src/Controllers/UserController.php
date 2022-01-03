@@ -3,7 +3,6 @@
 namespace Encore\Admin\Controllers;
 
 use App\Admin\Extensions\Form\ProjectPermission;
-use App\Admin\Forms\Selectable\ProjectSelectable;
 use Encore\Admin\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -92,32 +91,27 @@ class UserController extends AdminController
         $form = new Form(new $userModel());
         Form::extend('project_permission', ProjectPermission::class);
 
-        $form->tab('Thông tin', function ($form) {
-            $permissionModel = config('admin.database.permissions_model');
-            $roleModel = config('admin.database.roles_model');
-            $userTable = config('admin.database.users_table');
-            $connection = config('admin.database.connection');
-            $form->display('id', 'ID');
-            $form->text('username', trans('admin.username'))
-                ->creationRules(['required', "unique:{$connection}.{$userTable}"])
-                ->updateRules(['required', "unique:{$connection}.{$userTable},username,{{id}}"]);
+        $permissionModel = config('admin.database.permissions_model');
+        $roleModel = config('admin.database.roles_model');
+        $userTable = config('admin.database.users_table');
+        $connection = config('admin.database.connection');
+        $form->display('id', 'ID');
+        $form->text('username', trans('admin.username'))
+            ->creationRules(['required', "unique:{$connection}.{$userTable}"])
+            ->updateRules(['required', "unique:{$connection}.{$userTable},username,{{id}}"]);
 
-            $form->text('name', trans('admin.name'))->rules('required');
-            $form->image('avatar', trans('admin.avatar'));
-            $form->password('password', trans('admin.password'))->rules('required|confirmed');
-            $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
-                ->default(function ($form) {
-                    return $form->model()->password;
-                });
+        $form->text('name', trans('admin.name'))->rules('required');
+        $form->image('avatar', trans('admin.avatar'));
+        $form->password('password', trans('admin.password'))->rules('required|confirmed');
+        $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
+            ->default(function ($form) {
+                return $form->model()->password;
+            });
 
-            $form->ignore(['password_confirmation']);
+        $form->ignore(['password_confirmation']);
 
-            $form->multipleSelect('roles', trans('admin.roles'))->options($roleModel::all()->pluck('name', 'id'));
-            $form->multipleSelect('permissions', trans('admin.permissions'))->options($permissionModel::all()->pluck('name', 'id'));
-        });
-        $form->tab('Dự án', function (Form $form) {
-            $form->belongsToMany('projects', ProjectSelectable::class, 'Dự án');
-        });
+        $form->multipleSelect('roles', trans('admin.roles'))->options($roleModel::all()->pluck('name', 'id'));
+//            $form->multipleSelect('permissions', trans('admin.permissions'))->options($permissionModel::all()->pluck('name', 'id'));
 
 
         $form->saving(function (Form $form) {

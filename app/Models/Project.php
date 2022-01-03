@@ -25,4 +25,9 @@ class Project extends Model
     {
         return $this->hasMany(Bug::class);
     }
+
+    public function canDelete()
+    {
+        return fn_admin()->canProject('delete', $this);
+    }
 }

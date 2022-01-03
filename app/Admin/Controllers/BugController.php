@@ -4,7 +4,6 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Traits\HasCreate;
 use App\Admin\Traits\HasEdit;
-use App\Constants\AppConstants;
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
 use App\Models\Category;
@@ -33,7 +32,9 @@ class BugController extends Controller
     public function index(Content $content, Bug $bug)
     {
         $grid = new Grid($bug);
-
+        if (!is_super_admin()) {
+            $grid->model()->projectOwner();
+        }
         $grid->column('id', __('Id'));
         $grid->column('category.title_vi', __('Category'));
         $grid->column('project.title_vi', __('Project'));
@@ -44,6 +45,20 @@ class BugController extends Controller
         $grid->column('created_at', __('Created at'))->showDate();
         $grid->column('updated_at', __('Updated at'))->showDate();
 
+        $grid->actions(function (Grid\Displayers\Actions $actions) {
+            if (!is_super_admin()) {
+                $project = $actions->row->project ?? '';
+                if (empty($project) || fn_admin()->cannotProject('edit', $project)) {
+                    $actions->disableEdit();
+                }
+
+                if (empty($project) || fn_admin()->cannotProject('delete', $project)) {
+                    $actions->disableDelete();
+                }
+            }
+
+            $actions->disableView();
+        });
         return $content
             ->title(trans('Bug'))
             ->description(trans('admin.list'))
@@ -84,7 +99,12 @@ class BugController extends Controller
         $bug = new Bug();
         $form = new Form($bug);
         $id = request()->route()->parameter('bug');
-        $form->select('project_id', __('Project'))->options(Project::all()->pluck('title_vi', 'id'))->rules('required');
+        if (is_super_admin()) {
+            $projects = Project::all()->pluck('title_vi', 'id');
+        } else {
+            $projects = fn_admin()->projects->pluck('title_vi', 'id');
+        }
+        $form->select('project_id', __('Project'))->options($projects)->rules('required');
 
         $form->select('category_id', __('Category'))
             ->options(Category::all()->pluck('title_vi', 'id'))->rules('required');
@@ -111,5 +131,8 @@ class BugController extends Controller
         });
 
         return $form;
+    }
+    public function destroy(Bug $bug){
+        dd($bug);
     }
 }
