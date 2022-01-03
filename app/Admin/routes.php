@@ -31,7 +31,6 @@ Route::group([
         $router->get('categories/select2', [CategoryController::class, 'select2'])->name('categories.select2');
         $router->get('categories/{type}/select2', [CategoryController::class, 'select2'])->name('categories.type.select2');
     });
-
 });
 
 

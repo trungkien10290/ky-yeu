@@ -49,7 +49,6 @@ Grid::init(function (Grid $grid) {
             $actions->disableEdit();
         }
     });
-
 });
 
 
@@ -58,7 +57,7 @@ Form::init(function (Form $form) {
     $form->disableEditingCheck();
     $form->disableViewCheck();
     $form->disableReset();
-    $form->tools(function (Form\Tools $tools){
+    $form->tools(function (Form\Tools $tools) {
         $tools->disableView();
     });
 });

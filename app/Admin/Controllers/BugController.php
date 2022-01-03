@@ -93,14 +93,14 @@ class BugController extends Controller
 //        $form->text('code', __('Code'))->disable();
 
         $form->textarea('desc_vi', __('Desc bug vi'));
-        $form->multipleImage('bug_images',__('Bug images'));
+        $form->multipleImage('bug_images', __('Bug images'));
         $form->multipleFile('bug_files', __('Bug files'));
         $form->date('date', __('Date'))->default(date('Y-m-d'));
         $form->textarea('reason_vi', __('Reason vi'));
         $form->textarea('consequence_vi', __('Consequence vi'));
 
         $form->textarea('solution_vi', __('Solution vi'));
-        $form->multipleImage('solution_images',__('Solution images'));
+        $form->multipleImage('solution_images', __('Solution images'));
         $form->multipleFile('solution_files', __('Solution files'));
         $form->html('<hr>');
         $form->textarea('desc_en', __('Desc bug en'));
@@ -112,5 +112,4 @@ class BugController extends Controller
 
         return $form;
     }
-
 }

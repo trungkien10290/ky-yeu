@@ -16,5 +16,4 @@ class BannerSeeder extends Seeder
     {
         Banner::factory(5)->create();
     }
-
 }

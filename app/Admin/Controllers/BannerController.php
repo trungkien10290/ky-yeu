@@ -34,7 +34,7 @@ class BannerController extends Controller
         $grid->column('id', __('Id'));
         $grid->column('title_vi', __('Title vi'));
         $grid->column('thumbnail', __('Thumbnail'))->image('', 100, 100);
-        $grid->column('is_active',__('Is active'))->switch();
+        $grid->column('is_active', __('Is active'))->switch();
 
         return $content
             ->title($this->title)
@@ -78,12 +78,11 @@ class BannerController extends Controller
         $form->image('thumbnail', __('Thumbnail'));
         $form->file('video', __('Video'))->isVideo();
         $form->textarea('desc_vi', __('Desc vi'));
-        $form->switch('is_active',__('Is active'))->default(1);
+        $form->switch('is_active', __('Is active'))->default(1);
         $form->html('<hr>');
         $form->text('title_en', __('Title en'));
         $form->textarea('desc_en', __('Desc en'));
 
         return $form;
     }
-
 }

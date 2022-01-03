@@ -25,7 +25,7 @@ class AdminTablesSeeder extends Seeder
                     "title" => "Dashboard",
                     "icon" => "fa-bar-chart",
                     "uri" => "/",
-                    "permission" => NULL
+                    "permission" => null
                 ],
                 [
                     "parent_id" => 0,
@@ -33,7 +33,7 @@ class AdminTablesSeeder extends Seeder
                     "title" => "Admin",
                     "icon" => "fa-tasks",
                     "uri" => "",
-                    "permission" => NULL
+                    "permission" => null
                 ],
                 [
                     "parent_id" => 2,
@@ -41,7 +41,7 @@ class AdminTablesSeeder extends Seeder
                     "title" => "Quản trị viên",
                     "icon" => "fa-users",
                     "uri" => "auth/users",
-                    "permission" => NULL
+                    "permission" => null
                 ],
                 [
                     "parent_id" => 2,
@@ -49,23 +49,23 @@ class AdminTablesSeeder extends Seeder
                     "title" => "Nhóm quyền",
                     "icon" => "fa-user",
                     "uri" => "auth/roles",
-                    "permission" => NULL
+                    "permission" => null
                 ],
-//                [
-//                    "parent_id" => 2,
-//                    "order" => 5,
-//                    "title" => "Permission",
-//                    "icon" => "fa-ban",
-//                    "uri" => "auth/permissions",
-//                    "permission" => NULL
-//                ],
+            //                [
+            //                    "parent_id" => 2,
+            //                    "order" => 5,
+            //                    "title" => "Permission",
+            //                    "icon" => "fa-ban",
+            //                    "uri" => "auth/permissions",
+            //                    "permission" => NULL
+            //                ],
                 [
                     "parent_id" => 2,
                     "order" => 6,
                     "title" => "Menu",
                     "icon" => "fa-bars",
                     "uri" => "auth/menu",
-                    "permission" => NULL
+                    "permission" => null
                 ],
                 [
                     "parent_id" => 2,
@@ -73,7 +73,7 @@ class AdminTablesSeeder extends Seeder
                     "title" => "Logs",
                     "icon" => "fa-history",
                     "uri" => "auth/logs",
-                    "permission" => NULL
+                    "permission" => null
                 ]
             ]
         );

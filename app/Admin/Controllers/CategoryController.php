@@ -14,7 +14,6 @@ use Encore\Admin\Show;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-
 class CategoryController extends Controller
 {
 

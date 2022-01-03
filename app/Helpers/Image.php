@@ -35,5 +35,4 @@ class Image
             return asset(self::NO_IMAGE);
         }
     }
-
 }

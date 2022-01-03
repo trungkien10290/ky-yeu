@@ -19,15 +19,14 @@ class ProjectSelectable extends Selectable
         $this->filter(function (Filter $filter) {
             $filter->like('title_vi');
         });
-
     }
     public function renderFormGrid($values)
     {
 
         $this->make();
-        $this->column('project_permission_create','Thêm')->switch();
-        $this->column('project_permission_edit','Sửa')->switch();
-        $this->column('project_permission_delete','Xóa')->switch();
+        $this->column('project_permission_create', 'Thêm')->switch();
+        $this->column('project_permission_edit', 'Sửa')->switch();
+        $this->column('project_permission_delete', 'Xóa')->switch();
 //        $this->column('bugs')->belongsToMany(BugSelectable::class);
         $this->appendRemoveBtn(false);
         $this->model()->whereKey(Arr::wrap($values));
@@ -38,6 +37,4 @@ class ProjectSelectable extends Selectable
         });
         return $this->grid;
     }
-
-
 }

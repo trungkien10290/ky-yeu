@@ -93,8 +93,8 @@ class UserProjectController extends Controller
                 $id = \request()->route('user_project');
 
                 $query->where('user_id', request('user_id'))->where('project_id', request('project_id'));
-                if(!empty($id)){
-                    $query->where('id','!=',$id);
+                if (!empty($id)) {
+                    $query->where('id', '!=', $id);
                 }
             })]);
 //        $form->morphMany('permissions', function (Form\NestedForm $form) {
@@ -111,5 +111,4 @@ class UserProjectController extends Controller
 //        $form->belongsToMany('bugs', BugSelectable::class, 'Lỗi');
         return $form;
     }
-
 }

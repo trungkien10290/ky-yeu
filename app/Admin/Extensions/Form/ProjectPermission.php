@@ -15,6 +15,4 @@ class ProjectPermission extends Field
         $this->addVariables(['projects' => Project::all()]);
         return parent::render();
     }
-
-
 }

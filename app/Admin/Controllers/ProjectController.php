@@ -33,7 +33,7 @@ class ProjectController extends Controller
 
         $grid->column('id', __('Id'));
         $grid->column('title_vi', __('Title vi'));
-        $grid->column('thumbnail', __('Thumbnail'))->image('',100,100);
+        $grid->column('thumbnail', __('Thumbnail'))->image('', 100, 100);
         $grid->column('is_active', __('Is active'))->switch();
         $grid->column('created_at', __('Created at'))->showDate();
         $grid->column('updated_at', __('Updated at'))->showDate();
@@ -95,5 +95,4 @@ class ProjectController extends Controller
 
         return $form;
     }
-
 }

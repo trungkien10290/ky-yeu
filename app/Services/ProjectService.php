@@ -8,6 +8,6 @@ class ProjectService
 {
     public function getAllActive()
     {
-       return Project::active()->get();
+        return Project::active()->get();
     }
 }

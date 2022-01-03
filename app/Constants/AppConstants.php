@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Constants;
+
 class AppConstants
 {
     const ADMIN_DEFAULT_LANGUAGE = 'vi';

@@ -18,5 +18,4 @@ class MultipleImage extends IsFilePicker
         ]);
         return parent::render();
     }
-
 }

@@ -19,5 +19,4 @@ class MultipleFile extends IsFilePicker
 
         return parent::render();
     }
-
 }

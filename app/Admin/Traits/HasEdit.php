@@ -18,5 +18,4 @@ trait HasEdit
             ->description($this->description['edit'] ?? trans('admin.edit'))
             ->body($this->form()->edit($id));
     }
-
 }

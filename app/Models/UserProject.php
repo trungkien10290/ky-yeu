@@ -21,7 +21,7 @@ class UserProject extends Model
 
     public function permissions()
     {
-        return $this->morphToMany(Permission::class, 'model','admin_model_permissions');
+        return $this->morphToMany(Permission::class, 'model', 'admin_model_permissions');
     }
 
     public function project()
@@ -33,5 +33,4 @@ class UserProject extends Model
     {
         return $this->belongsTo(Administrator::class);
     }
-
 }

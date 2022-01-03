@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('set_lang', function () {
-
 })->name('set_lang');
 Route::group(
     ['prefix' => '/{lang?}/', 'where' => ['lang' => 'vi|en']],
@@ -24,4 +23,3 @@ Route::group(
         Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
     }
 );
-

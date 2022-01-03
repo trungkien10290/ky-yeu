@@ -10,6 +10,4 @@ class UserProjectBug extends Model
     use HasFactory;
 
     protected $table = 'admin_user_project_bugs';
-
-
 }

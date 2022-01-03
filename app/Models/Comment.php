@@ -28,7 +28,6 @@ class Comment extends Model
             } catch (\Throwable $exception) {
                 Log::info($exception->getMessage());
             }
-
         });
 
         static::deleted(function (Comment $comment) {
@@ -38,8 +37,6 @@ class Comment extends Model
             } catch (\Throwable $exception) {
                 Log::info($exception->getMessage());
             }
-
         });
     }
-
 }

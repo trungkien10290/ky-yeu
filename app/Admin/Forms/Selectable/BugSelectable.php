@@ -20,5 +20,4 @@ class BugSelectable extends Selectable
             $filter->like('desc_vi');
         });
     }
-
 }

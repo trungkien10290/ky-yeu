@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('local')) {
             $this->app->register(HelpersServiceProvider::class);
             $this->app->register(LogViewerServiceProvider::class);
-
         }
 
         //
