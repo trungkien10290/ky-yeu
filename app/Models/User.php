@@ -88,11 +88,11 @@ class User extends Authenticatable implements LdapAuthenticatable
     {
         return 'guid';
     }
-    public function getAvatarAttribute($avatar){
+    public function getAvatarAttribute($avatar)
+    {
         if (!empty($avatar) && file_exists(public_path($avatar))) {
             return asset($avatar);
         }
         return asset('frontend/images/Avt.png');
     }
-
 }

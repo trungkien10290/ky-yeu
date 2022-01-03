@@ -27,8 +27,7 @@ class AuthController extends Controller
                 'username' => 'required',
                 'password' => 'required'
             ]);
-        }
-        catch (\Throwable $exception){
+        } catch (\Throwable $exception) {
             return redirect()->back()->withErrors(['error' => __('public.required data')]);
         }
         $credentials = [
