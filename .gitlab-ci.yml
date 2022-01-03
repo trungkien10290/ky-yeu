@@ -1,0 +1,32 @@
+cache: &global_cache
+  key:
+    files:
+      - composer.lock
+  paths:
+    - vendor
+stages:
+  - preparation
+  - unit-test
+image: php:7.4-fpm-alpine
+composer:
+  stage: preparation
+  cache:
+    <<: *global_cache
+  before_script:
+    - apk add --update build-base supervisor libpng libpng-dev libjpeg-turbo-dev imagemagick imagemagick-libs imagemagick-dev
+    - apk add --update build-base libpng libpng-dev libjpeg-turbo-dev
+    - apk --update --no-cache add autoconf g++ make
+    - pecl install -f imagick
+    - docker-php-ext-configure gd --enable-gd --with-jpeg
+    - docker-php-ext-install pdo pdo_mysql gd exif
+    - docker-php-ext-enable pdo_mysql gd imagick exif
+  script:
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.0.9
+    - composer install --optimize-autoloader --no-scripts --no-interaction
+    - composer update
+    - cp env.example .env
+    - ./vendor/bin/phpcs
+  artifacts:
+    paths:
+      - ./vendor
+      - .env
