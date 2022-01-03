@@ -21,5 +21,6 @@ Artisan::command('inspire', function () {
 Artisan::command('install-hooks', function () {
     file_put_contents(base_path('.git/hooks/pre-commit'), '#!/bin/sh
 phpcs
+phpcbf
 ');
 })->purpose('Display an inspiring quote');
