@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 
 /**
  * App\Models\User
@@ -38,9 +40,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends Authenticatable implements LdapAuthenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use  AuthenticatesWithLdap;
 
     /**
      * The attributes that are mass assignable.
@@ -76,4 +79,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+    public function getLdapDomainColumn()
+    {
+        return 'domain';
+    }
+
+    public function getLdapGuidColumn()
+    {
+        return 'guid';
+    }
+    public function getAvatarAttribute($avatar){
+        if (!empty($avatar) && file_exists(public_path($avatar))) {
+            return asset($avatar);
+        }
+        return asset('frontend/images/Avt.png');
+    }
+
 }

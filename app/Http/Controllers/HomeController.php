@@ -25,6 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        url_change_lang();
         $assign['bugCates'] = $this->bugCateService->getCategroy();
         $assign['projects'] = $this->projectService->getAllActive();
         $assign['banners'] = $this->bannerService->homeList();

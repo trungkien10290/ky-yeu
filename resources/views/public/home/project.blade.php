@@ -8,7 +8,7 @@
             @foreach($projects as $project)
                 <div class="pj-item relative swiper-slide">
                     <a href="<?= route('project',['project_id' => $project->id]) ?>" title="" class="zoom zoom-img"><span><img
-                                src="{{$project->thumbnail}}"
+                                src="{{image($project->thumbnail)}}"
                                 alt="{{$project->trans('title')}}"> </span></a>
                     <div class="pj-abs">
                         <div class="pj-text flex-center-center">

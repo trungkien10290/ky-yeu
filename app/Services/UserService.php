@@ -2,24 +2,20 @@
 
 namespace App\Services;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
     public function login($request)
     {
-        $user = User::where('email', $request->email)->first();
-        if (Hash::check($request->password, $user['password'])) {
-            Session::put('user', $user);
-            return true;
-        }
-        return false;
+
+
+
+        return view('public.home.index');
     }
 
     public function logout()
     {
-        Session::remove('user');
+        \auth()->logout();
     }
 }
