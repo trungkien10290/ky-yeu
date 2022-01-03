@@ -24,7 +24,7 @@ composer:
     - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.0.9
     - composer install --optimize-autoloader --no-scripts --no-interaction
     - composer update
-    - cp env.example .env
+    - cp .env.example .env
     - ./vendor/bin/phpcs
   artifacts:
     paths:
