@@ -7,13 +7,13 @@
         <div class="swiper-wrapper">
             @foreach($projects as $project)
                 <div class="pj-item relative swiper-slide">
-                    <a href="{{$project->slugLink}}" title="" class="zoom zoom-img"><span><img
+                    <a href="<?= route('project',['project_id' => $project->id]) ?>" title="" class="zoom zoom-img"><span><img
                                 src="{{$project->thumbnail}}"
-                                alt="{{$project->title}}"> </span></a>
+                                alt="{{$project->trans('title')}}"> </span></a>
                     <div class="pj-abs">
                         <div class="pj-text flex-center-center">
-                            <h4><a href="{{$project->slugLink}}" title="">{{$project->title}}</a></h4>
-                            <a href="{{$project->searchLink}}" title="{{$project->title}}" class="btn-dt inflex-center-center"><i
+                            <h4><a href="<?= route('project',['project_id' => $project->id]) ?>" title="{{$project->trans('title')}}">{{$project->trans('title')}}</a></h4>
+                            <a href="<?= route('project',['project_id' => $project->id]) ?>" title="{{$project->trans('title')}}" class="btn-dt inflex-center-center"><i
                                     class="fal fa-search-plus"></i> </a>
                         </div>
                     </div>

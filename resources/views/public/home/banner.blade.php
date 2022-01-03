@@ -13,8 +13,10 @@
     </div>
     <div class="banner-slider swiper">
         <div class="swiper-wrapper">
-            <div class="banner-item swiper-slide"><img src="frontend/images/banner-1.jpg" alt=""> </div>
-            <div class="banner-item swiper-slide"><img src="frontend/images/banner-2.jpg" alt=""> </div>
+            @foreach ($banners as $banner)
+                <div class="banner-item swiper-slide"><img src="@if($banner['video']) {{$banner['video']}} @else {{$banner['thumbnail']}} @endif " alt=""> </div>
+            @endforeach
+            
         </div>
     </div>
     <div class="swiper-button swiper-button-prev"><i class="fal fa-arrow-left"></i> prev</div>

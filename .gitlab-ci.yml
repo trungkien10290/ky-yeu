@@ -4,9 +4,11 @@ image: nguyentruongson93/php:7.4
 composer:
   stage: preparation
   before_script:
+    - apt-get install libldb-dev libldap2-dev
+    - ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
     - docker-php-ext-configure gd --enable-gd --with-jpeg
-    - docker-php-ext-install pdo pdo_mysql gd exif
-    - docker-php-ext-enable pdo_mysql gd imagick exif
+    - docker-php-ext-install pdo pdo_mysql gd exif ldap
+    - docker-php-ext-enable pdo_mysql gd imagick exif ldap
   script:
     - composer install
     - ./vendor/bin/phpcs
