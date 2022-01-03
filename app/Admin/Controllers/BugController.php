@@ -132,6 +132,7 @@ class BugController extends Controller
 
         return $form;
     }
-    public function destroy(Bug $bug){
+    public function destroy(Bug $bug)
+    {
     }
 }

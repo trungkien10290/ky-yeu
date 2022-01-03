@@ -83,7 +83,7 @@ class CommentController extends Controller
         $form = new Form($comment);
 
         $form->belongsTo('user_id', UserSelectable::class, __('User'))->rules('required');
-        $form->belongsTo('bug_id',BugSelectable::class, __('Bug'))->rules('required');
+        $form->belongsTo('bug_id', BugSelectable::class, __('Bug'))->rules('required');
         $form->textarea('content', __('Content'));
         $form->switch('is_active', __('Is active'))->default(1);
 
