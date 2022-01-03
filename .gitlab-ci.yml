@@ -1,14 +1,14 @@
 stages:
   - preparation
-image: nguyentruongson93/php:7.4
+image: php:7.4-fpm-alpine
 composer:
   stage: preparation
-  before_script:
+  script:
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.0.9
     - apt-get install libldb-dev libldap2-dev
     - ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
     - docker-php-ext-configure gd --enable-gd --with-jpeg
     - docker-php-ext-install pdo pdo_mysql gd exif ldap
     - docker-php-ext-enable pdo_mysql gd imagick exif ldap
-  script:
     - composer install
     - ./vendor/bin/phpcs
