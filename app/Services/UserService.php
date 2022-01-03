@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class UserService
 {
-    public function LogIn($request)
+    public function login($request)
     {
         $user = User::where('email', $request->email)->first();
         if (Hash::check($request->password, $user['password'])) {
@@ -18,7 +18,7 @@ class UserService
         return false;
     }
 
-    public function LogOut()
+    public function logout()
     {
         Session::remove('user');
     }

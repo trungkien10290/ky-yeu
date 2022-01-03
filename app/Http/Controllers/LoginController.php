@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     protected $userService;
-    
+
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
@@ -18,9 +18,9 @@ class LoginController extends Controller
         return view('public.home.login');
     }
 
-    public function logIn(Request $request)
+    public function login(Request $request)
     {
-        $checkLogin = $this->userService->LogIn($request);
+        $checkLogin = $this->userService->login($request);
         if ($checkLogin) {
             return redirect('/');
         } else {
@@ -28,9 +28,9 @@ class LoginController extends Controller
         }
     }
 
-    public function logOut()
+    public function logout()
     {
-        $this->userService->LogOut();
+        $this->userService->logout();
         return redirect('/');
     }
 }
