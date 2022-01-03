@@ -22,6 +22,7 @@ Route::group(
         Route::get('/login', [\App\Http\Controllers\LogInController::class, 'index'])->name('login.index');
         Route::post('/login', [\App\Http\Controllers\LogInController::class, 'logIn'])->name('login.logIn');
         Route::get('/logout', [\App\Http\Controllers\LogInController::class, 'logOut'])->name('login.logOut');
+        Route::get('/project', [\App\Http\Controllers\ProjectController::class, 'show'])->name('project');
         Route::get('/bugs', [\App\Http\Controllers\BugController::class, 'index'])->name('bug.index');
         Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
     }

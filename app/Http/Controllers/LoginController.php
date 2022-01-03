@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     protected $userService;
+    
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;

@@ -10,4 +10,9 @@ class ProjectService
     {
         return Project::active()->get();
     }
+
+    public function find($id)
+    {
+        return Project::find($id);
+    }
 }

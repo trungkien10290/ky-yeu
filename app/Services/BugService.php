@@ -16,12 +16,13 @@ class BugService
             $query->where('project_id', request('project_id'));
         }
         if (request('category_id')) {
+
             $query->where('category_id', request('category_id'));
         }
         if (request('search')) {
             $query->where('desc_' . get_lang(), 'like', '%' . request('search') . '%');
         }
-
         return $query->orderByDesc('id')->paginate(self::PAGINATE_LIMIT);
     }
+
 }

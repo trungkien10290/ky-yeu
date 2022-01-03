@@ -21,15 +21,15 @@
     <section class="list-error">
         <div class="container">
             <div class="error-find">
-                <form id="form-search-bug" action="{{route('bug.index')}}">
+                <form id="form-search-bug" action="{{route('project')}}">
                     <div class="row">
                         <div class="col-md-3">
                             <select name="project_id">
                                 <option value="">Tất cả</option>
                                 @foreach($projects as $project)
                                     <option value="{{$project->id}}"
-                                            @if(request('project') == $project->id) selected @endif
-                                    >{{$project->title}}</option>
+                                            @if($projectDetail->id == $project->id) selected @endif
+                                    >{{$project->trans('title')}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -39,7 +39,7 @@
                                 @foreach($bugCategories as $category)
                                     <option value="{{$category->id}}"
                                             @if(request('category_id') == $category->id) selected @endif
-                                    >{{$category->title}}</option>
+                                    >{{$category->trans('title')}}</option>
                                 @endforeach
 
                             </select>
