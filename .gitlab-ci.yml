@@ -5,8 +5,8 @@ composer:
   stage: preparation
   before_script:
     - docker-php-ext-configure gd --enable-gd --with-jpeg
-    - docker-php-ext-install pdo pdo_mysql gd exif
-    - docker-php-ext-enable pdo_mysql gd imagick exif
+    - docker-php-ext-install pdo pdo_mysql gd exif ldap
+    - docker-php-ext-enable pdo_mysql gd imagick exif ldap
   script:
     - composer install
     - ./vendor/bin/phpcs
