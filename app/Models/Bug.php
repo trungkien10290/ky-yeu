@@ -133,7 +133,7 @@ class Bug extends Model
 
     public function scopeProjectOwner($query)
     {
-        $ownerProject = fn_admin()->projectOwnerIds;
+         $ownerProject = fn_admin()->projectOwnerIds;
         return $query->whereIn('project_id', $ownerProject);
     }
 

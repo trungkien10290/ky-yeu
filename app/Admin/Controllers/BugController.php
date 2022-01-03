@@ -60,9 +60,9 @@ class BugController extends Controller
             $actions->disableView();
         });
         return $content
-            ->title(trans('Bug'))
-            ->description(trans('admin.list'))
-            ->body($grid);
+        ->title(trans('Bug'))
+        ->description(trans('admin.list'))
+        ->body($grid);
     }
 
     protected function detail(Bug $bug)
