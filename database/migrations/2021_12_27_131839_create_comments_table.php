@@ -18,6 +18,8 @@ class CreateCommentsTable extends Migration
             $table->integer('user_id');
             $table->integer('bug_id');
             $table->text('content')->nullable();
+            $table->text('images');
+            $table->text('files');
             $table->boolean('is_active');
             $table->timestamps();
         });

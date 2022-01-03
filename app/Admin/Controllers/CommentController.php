@@ -42,6 +42,8 @@ class CommentController extends Controller
         $grid->column('user.name', __('User'));
         $grid->column('bug.desc_vi', __('Bug'));
         $grid->column('content', __('Content'));
+        $grid->column('images', __('MultipleImage'));
+        $grid->column('files', __('MultipleFile'));
         $grid->column('is_active', __('Is active'))->switch();
         $grid->column('created_at', __('Created at'))->showDate();
         $grid->column('updated_at', __('Updated at'))->showDate();
@@ -70,6 +72,8 @@ class CommentController extends Controller
         $show->field('user_id', __('User id'));
         $show->field('bug_id', __('Bug id'));
         $show->field('content', __('Content'));
+        $show->field('images', __('MultipleImage'));
+        $show->field('files', __('MultipleFile'));
         $show->field('is_active', __('Is active'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -85,6 +89,8 @@ class CommentController extends Controller
         $form->belongsTo('user_id', UserSelectable::class, __('User'))->rules('required');
         $form->belongsTo('bug_id', BugSelectable::class, __('Bug'))->rules('required');
         $form->textarea('content', __('Content'));
+        $form->multipleImage('images', __('MultipleImage'))->rules('sometimes');
+        $form->multipleFile('files', __('MultipleFile'))->rules('sometimes');
         $form->switch('is_active', __('Is active'))->default(1);
 
         return $form;

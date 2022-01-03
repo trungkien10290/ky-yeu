@@ -6,6 +6,7 @@ use App\Models\Bug;
 use App\Services\BugService;
 use App\Services\CategoryService;
 use App\Services\ProjectService;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
 class BugController extends Controller
@@ -21,11 +22,12 @@ class BugController extends Controller
         $this->bugService = $bugService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         Paginator::useBootstrap();
-        $assign['bugCategories'] = $this->categoryService->bugCategory();
         $assign['projects'] = $this->projectService->getAllActive();
+        $assign['projectDetail'] = $this->projectService->find($request->project_id);
+        $assign['bugCategories'] = $this->categoryService->bugCategory();
         $assign['listBugs'] = $this->bugService->paginate();
         return view('public.bug.index', $assign);
     }
@@ -37,4 +39,6 @@ class BugController extends Controller
         }]);
         return view('public.bug.modal', ['bug' => $bug]);
     }
+
+    
 }

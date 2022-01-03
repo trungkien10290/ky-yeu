@@ -21,14 +21,15 @@
     <section class="list-error">
         <div class="container">
             <div class="error-find">
-                <form id="form-search-bug" action="{{route('project')}}">
+                <form id="form-search-bug" action="{{route('bug.index')}}">
                     <div class="row">
                         <div class="col-md-3">
                             <select name="project_id">
                                 <option value="">Tất cả</option>
                                 @foreach($projects as $project)
+                               
                                     <option value="{{$project->id}}"
-                                            @if($projectDetail->id == $project->id) selected @endif
+                                            @if(request('project_id') == $project->id) selected @endif
                                     >{{$project->trans('title')}}</option>
                                 @endforeach
                             </select>
@@ -45,11 +46,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <select>
-                                <option>Tháng này</option>
-                                <option>Tháng này</option>
-                                <option>Tháng này</option>
-                            </select>
+                            <input name="dates" type="text" placeholder="Chọn ngày" value="{{request('dates')}}">
                         </div>
                         <div class="col-md-4">
                             <div class="flex-center frm-flex">

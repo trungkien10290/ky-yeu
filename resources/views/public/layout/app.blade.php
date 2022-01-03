@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="frontend/css/daterangepicker.css">
     <link rel="stylesheet" type="text/css" href="frontend/css/jquery.fancybox.min.css">
     <link rel="stylesheet" type="text/css" href="frontend/css/styles.css">
     <link rel="stylesheet" type="text/css" href="frontend/css/responsive.css">
@@ -37,6 +38,8 @@
 
 <!--Link js-->
 <script type="text/javascript" src="frontend/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="frontend/js/moment.min.js"></script>
+<script type="text/javascript" src="frontend/js/daterangepicker.js"></script>
 <script type="text/javascript" src="frontend/js/jquery.fancybox.min.js"></script>
 <script type="text/javascript" src="frontend/js/private.js"></script>
 

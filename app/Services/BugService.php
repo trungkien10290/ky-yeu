@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Bug;
+use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class BugService
@@ -17,6 +18,14 @@ class BugService
         }
         if (request('category_id')) {
             $query->where('category_id', request('category_id'));
+        }
+        if (request('dates')) {
+            $dates = explode(' - ',request('dates'));
+            if($dates){
+                $from = Carbon::createFromDate($dates[0])->toDateTimeString();
+                $to = Carbon::createFromDate($dates[1])->toDateTimeString();
+            }
+            $query->whereBetween('created_at', [$from, $to]);
         }
         if (request('search')) {
             $query->where('desc_' . get_lang(), 'like', '%' . request('search') . '%');
