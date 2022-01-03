@@ -86,8 +86,8 @@ class CommentController extends Controller
         $comment = new Comment();
         $form = new Form($comment);
 
-        $form->belongsTo('user_id', UserSelectable::class, __('User'))->rules('required');
-        $form->belongsTo('bug_id', BugSelectable::class, __('Bug'))->rules('required');
+        $form->belongsTo('user_id', UserSelectable::class, __('User'))->creationRules('required');
+        $form->belongsTo('bug_id', BugSelectable::class, __('Bug'))->creationRules('required');
         $form->textarea('content', __('Content'));
         $form->multipleImage('images', __('MultipleImage'))->rules('sometimes');
         $form->multipleFile('files', __('MultipleFile'))->rules('sometimes');

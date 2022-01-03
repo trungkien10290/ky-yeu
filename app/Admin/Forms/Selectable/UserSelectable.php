@@ -14,7 +14,7 @@ class UserSelectable extends Selectable
     public function make()
     {
         $this->column('id');
-        $this->column('name', 'Tên dự án');
+        $this->column('name', 'Tên');
         $this->filter(function (Filter $filter) {
             $filter->like('name');
         });
