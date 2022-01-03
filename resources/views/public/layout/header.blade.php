@@ -3,7 +3,13 @@
     <div class="header_main">
         <div class="container">
             <div class="flex-center-end">
-                <button class="btn-search"><i class="fal fa-search"></i></button>
+                <div class="search-box">
+                    <form class="se-frm">
+                        <input type="text" placeholder="{{__('public.keyword')}}">
+                    </form>
+                    <button class="btn-search"><i class="fal fa-search"></i></button>
+                </div>
+
                 <a href="{{url_change_lang()}}" class="language"
                    title="">{{get_lang()}}</a>
                 <div class="user flex-center">
@@ -14,10 +20,10 @@
                             {{auth()->user()->name}}
                         </div>
                         <a href="{{route('login.logOut')}}"
-                           title="">Logout</a>
+                           title="">{{__('public.logout')}}</a>
                     @else
                         <a href="{{route('login.index')}}"
-                           title="">Login</a>
+                           title="">{{__('public.login')}}</a>
                     @endif
                 </div>
             </div>

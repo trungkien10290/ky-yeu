@@ -23,7 +23,7 @@
                                                     <h4>
                                                         <a href="<?= route('project', ['project_id' => $project->id, 'category_id' => $bugCate->id]) ?>"
                                                            title="">{{$bugCate->trans('title')}}</a></h4>
-                                                    <p><span>200</span> lỗi</p>
+                                                    <p><span>200</span> {{__('public.error')}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
 
         </div>
         <div class="list-re">
-            <h2 class="title-page" data-aos="fade-up" data-aos-duration="2000">danh mục khác</h2>
+            <h2 class="title-page" data-aos="fade-up" data-aos-duration="2000">{{__('public.other category')}}</h2>
             <div class="row">
                 @foreach ($otherCate as $category)
                     <div class="col-md-3 mb-3" data-aos="fade-up" data-aos-duration="2000">

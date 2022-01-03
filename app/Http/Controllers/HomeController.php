@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Services\BannerService;
 use App\Services\BugCateService;
 use App\Services\CategoryService;
 use App\Services\ProjectService;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
