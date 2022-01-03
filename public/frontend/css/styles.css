@@ -301,6 +301,9 @@ header {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.re-text h4 a:hover {
+    color: #ffc20e;
+}
 .re-text p {
     color: #fff;
     font-weight: 500;
@@ -473,6 +476,9 @@ footer {
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
     padding-right: 25px;
+}
+.error-find input {
+    background: #323232
 }
 .frm-flex {
     position: relative;
@@ -665,12 +671,14 @@ button.cmt-bn:hover {
 }
 .er-images {
     display: flex;
+    flex-wrap: wrap;
 }
 .er-images span {
     border-radius: 10px;
     flex: 0 0 90px;
     max-width: 90px;
     margin-right: 12px;
+    margin-bottom: 10px;
 }
 .er-images span img {
     border-radius: 10px;
@@ -680,6 +688,8 @@ button.cmt-bn:hover {
 }
 .er-doc {
     margin-left: 30px;
+    flex: 0 0 200px;
+    max-width: 200px;
 }
 .er-doc h4 {
     color: rgba(255, 255, 255, 0.5);
@@ -766,6 +776,7 @@ button.cmt-bn:hover {
     background-color: #464646;
     border-radius: 0 10px 10px 10px;
     padding: 20px;
+    width: 100%;
 }
 .view_text > p {
     color: rgba(255, 255, 255, 0.8);
@@ -988,4 +999,25 @@ main.login:before {
 .login-inner button:hover {
     background: transparent;
     color: #ffc20e;
+}
+.banner-i img {
+    height: 446px;
+    object-fit: cover;
+    width: 100%;
+}
+.search-box {
+    display: flex;
+}
+.se-frm input {
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    height: 32px;
+    transition: all ease 0.3s;
+    width: 0;
+}
+.se-frm.show input {
+
+    width: 193px;
 }

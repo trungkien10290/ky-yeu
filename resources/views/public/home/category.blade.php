@@ -22,22 +22,25 @@
                                                 <p><span>200</span> lỗi</p>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="ls-log flex-center-center">
+                                <a href="{{$project->slugLink}}"
+                                   title="{{$project->trans('title')}}">
+                                    <img
+                                        src="{{image($project->logo)}}"
+                                        alt="{{$project->logo}}">
+                                </a>
                             </div>
                         </div>
-                        <div class="ls-log flex-center-center"><a href="" title=""><img
-                                    src="frontend/images/logo-sm.png"
-                                    alt=""> </a></div>
                     </div>
                 </div>
-            </div>
             @endforeach
-            
-            
+
         </div>
         <div class="list-re">
-            <h2 class="title-page" data-aos="fade-up" data-aos-duration="2000">danh mục khác</h2>
+            <h2 class="title-page" data-aos="fade-up" data-aos-duration="2000">{{__('public.other category')}}</h2>
             <div class="row">
                 @foreach ($otherCate as $othc)
                 <div class="col-md-3" data-aos="fade-up" data-aos-duration="2000">
@@ -49,10 +52,7 @@
                             <p><span>200</span> lỗi</p>
                         </div>
                     </div>
-                </div>
                 @endforeach
-                
-                
             </div>
         </div>
     </div>

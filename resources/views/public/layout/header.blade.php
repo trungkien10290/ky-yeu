@@ -3,23 +3,27 @@
     <div class="header_main">
         <div class="container">
             <div class="flex-center-end">
-                <button class="btn-search"><i class="fal fa-search"></i></button>
-                <a href="{{route('set_lang',['lang'=>get_lang() === 'vi' ? 'vi' : 'en'])}}" class="language"
+                <div class="search-box">
+                    <form class="se-frm">
+                        <input type="text" placeholder="{{__('public.keyword')}}">
+                    </form>
+                    <button class="btn-search"><i class="fal fa-search"></i></button>
+                </div>
+
+                <a href="{{url_change_lang()}}" class="language"
                    title="">{{get_lang()}}</a>
                 <div class="user flex-center">
-                    @if (Session::has('user'))
-                        @php
-                            $user = Session::get('user');
-                        @endphp
-                        <a href="{{route('login.logOut')}}" 
-                        title="">Logout</a>
-                        <div class="user flex-center">
-                            <span><img src="{{$user['thumbnail']}}" alt=""> </span>
-                            {{$user['name']}}
+                    @if (auth()->check())
+
+                        <div class="user flex-center mr-2">
+                            <span><img src="{{auth()->user()->avatar}}" alt="Avatar"> </span>
+                            {{auth()->user()->name}}
                         </div>
+                        <a href="{{route('login.logOut')}}"
+                           title="">{{__('public.logout')}}</a>
                     @else
-                    <a href="{{route('login.index')}}" 
-                        title="">Login</a>
+                        <a href="{{route('login.index')}}"
+                           title="">{{__('public.login')}}</a>
                     @endif
                 </div>
             </div>

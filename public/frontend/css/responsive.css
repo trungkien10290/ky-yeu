@@ -193,4 +193,25 @@
     .pj-content h1 {
         font-size: 24px;
     }
+    .se-frm {
+        background: #323232;
+        position: absolute;
+        bottom: -40px;
+        right: 0;
+        z-index: 999;
+        width: 220px;
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease 0.3s;
+    }
+    .se-frm input,.se-frm.show input {
+        border-bottom: transparent;
+        height: 40px;
+        width: 100%;
+        padding: 0 10px;
+    }
+    .se-frm.show {
+        visibility: visible;
+        opacity: 1;
+    }
 }

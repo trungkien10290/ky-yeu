@@ -36,17 +36,32 @@ if (!function_exists('count_array')) {
     }
 }
 
-
-function image($image, $size = '')
-{
-    return \App\Helpers\Image::show($image, $size);
+if (!function_exists('image')) {
+    function image($image, $size = '')
+    {
+        return \App\Helpers\Image::show($image, $size);
+    }
 }
-function thumbnail($image)
-{
-    return \App\Helpers\Image::thumbs($image);
+if (!function_exists('thumbnail')) {
+    function thumbnail($image)
+    {
+        return \App\Helpers\Image::thumbs($image);
+    }
 }
+if (!function_exists('lang_change')) {
 
-function cloud_url($path)
+    function lang_change(): string
+    {
+        return get_lang() === 'vi' ? 'en' : 'vi';
+    }
+}
+if (!function_exists('url_change_lang')) {
+    function url_change_lang()
+    {
+        return str_replace(url(get_lang()), url(lang_change()), url()->current());
+    }
+}
+function public_logo(): string
 {
-    return \Illuminate\Support\Facades\Storage::disk('admin')->url($path);
+    return 'frontend/images/logo.png';
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Services\BannerService;
 use App\Services\BugCateService;
 use App\Services\CategoryService;
 use App\Services\ProjectService;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -25,6 +27,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        url_change_lang();
         $assign['bugCates'] = $this->bugCateService->getCategroy();
         $assign['projects'] = $this->projectService->getAllActive();
         $assign['banners'] = $this->bannerService->homeList();

@@ -66,7 +66,20 @@ return [
         ],
         'ldap' => [
             'driver' => 'ldap',
-            'model' => \LdapRecord\Models\ActiveDirectory\User::class,
+            'model' => LdapRecord\Models\OpenLDAP\User::class,
+            'rules' => [],
+            'database' => [
+                'model' => \App\Models\User::class,
+                'sync_passwords' => true,
+                'sync_attributes' => [
+                    'name' => 'cn',
+                    'email' => 'mail',
+                ],
+                'sync_existing' => [
+                    'email' => 'mail',
+                ],
+                'password_column' => 'password',
+            ],
         ],
 
         // 'users' => [
