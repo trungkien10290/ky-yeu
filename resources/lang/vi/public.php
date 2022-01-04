@@ -4,9 +4,11 @@ return [
     'auth' => [
         'failed' => 'Sai thông tin tài khoản hoặc mật khẩu'
     ],
-    'keyword' =>'Từ khóa',
+    'keyword' => 'Từ khóa',
     'login' => 'Đăng nhập',
     'logout' => 'Đăng xuất',
-    'other category ' =>'Danh mục khác',
-    'error' => 'lỗi'
+    'other category ' => 'Danh mục khác',
+    'error' => 'lỗi',
+    'project introduction' => 'giới thiệu dự án',
+    'other projects' => 'Dự án khác'
 ];

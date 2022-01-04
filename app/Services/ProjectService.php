@@ -2,12 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\Bug;
 use App\Models\Project;
-use Illuminate\Support\Facades\DB;
 
 class ProjectService
 {
+    const OTHER_PROJECT_LIMIT = 3;
     public function getAllActive()
     {
         return Project::active()->get();
@@ -15,14 +14,11 @@ class ProjectService
 
     public function find($id)
     {
-        return Project::find($id);
+        return Project::active()->find($id);
     }
 
-    public static function makeStatisticData()
+    public function otherProjects($id, $limit = self::OTHER_PROJECT_LIMIT)
     {
-    }
-
-    public function getAmoutBugByCategory($projectId, $categoryId)
-    {
+        return Project::active()->where('id', '!=', $id)->limit($limit)->orderByDesc('id')->get();
     }
 }

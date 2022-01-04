@@ -65,3 +65,8 @@ function public_logo(): string
 {
     return 'frontend/images/logo.png';
 }
+
+function base_url_lang($slug = '')
+{
+    return url(get_lang() . '/' . $slug);
+}
