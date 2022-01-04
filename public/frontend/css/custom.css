@@ -21,3 +21,6 @@
     color: #282a30;
     font-weight: 600;
 }
+.er-tbl .desc p{
+    white-space: break-spaces;
+}
