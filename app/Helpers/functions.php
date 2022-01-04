@@ -61,12 +61,21 @@ if (!function_exists('url_change_lang')) {
         return str_replace(url(get_lang()), url(lang_change()), url()->current());
     }
 }
-function public_logo(): string
+function public_logo()
 {
-    return 'frontend/images/logo.png';
+    return setting('logo', 'frontend/images/logo.png');
 }
 
 function base_url_lang($slug = '')
 {
     return url(get_lang() . '/' . $slug);
+}
+
+function setting($key = null, $default = null)
+{
+    if ($key === null) {
+        return \App\Helpers\Setting::ins();
+    }
+
+    return \App\Helpers\Setting::ins()->get($key, $default);
 }

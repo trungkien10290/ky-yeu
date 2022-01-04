@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Seo;
 use App\Models\Project;
 use App\Services\BugService;
 use App\Services\CategoryService;
@@ -24,11 +25,11 @@ class ProjectController extends Controller
     {
         $assign['project'] = $project = Project::findOrFail($id);
         $assign['otherProjects'] = $this->projectService->otherProjects($id);
-        $assign['SEO'] = [
+        Seo::setting([
             'title' => $project->trans('title'),
             'description' => $project->trans('desc'),
             'thumbnail' => image($project->thumbnail)
-        ];
+        ]);
         return view('public.project.show', $assign);
     }
 }

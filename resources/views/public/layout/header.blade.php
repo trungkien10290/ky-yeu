@@ -1,5 +1,5 @@
 <header>
-    <div class="logo"><a href="" title=""><img src="frontend/images/logo.png" alt=""> </a></div>
+    <div class="logo"><a href="" title=""><img src="{{public_logo()}}" alt=""> </a></div>
     <div class="header_main">
         <div class="container">
             <div class="flex-center-end">
