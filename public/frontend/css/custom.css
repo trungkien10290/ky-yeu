@@ -21,16 +21,3 @@
     color: #282a30;
     font-weight: 600;
 }
-
-.error-find select {
-    background: #323232 !important;
-    color: white;
-}
-
-.error-find select option {
-    color: white;
-}
-
-#form-search-bug input {
-    color: inherit !important;
-}
