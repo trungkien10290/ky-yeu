@@ -2,8 +2,10 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\Selectable\CategorySelectable;
 use App\Admin\Traits\HasCreate;
 use App\Admin\Traits\HasEdit;
+use App\Constants\AppConstants;
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
 use App\Models\Category;
@@ -35,8 +37,21 @@ class BugController extends Controller
         if (!is_super_admin()) {
             $grid->model()->projectOwner();
         }
+
+        $grid->filter(function (Grid\Filter $filter) {
+
+            $filter->where(function ($query) {
+                return $query->whereHas('category', function ($query) {
+                    return $query->where('type', $this->input);
+                });
+            }, 'Loại danh mục')->select(AppConstants::CATEGORY_TYPES);
+            $filter->equal('category_id', 'Danh mục')->select(Category::all()->pluck('title_vi', 'id'));
+            $filter->equal('project_id', 'Dự án')->select(Project::getAllCanView()->pluck('title_vi', 'id'));
+        });
+
         $grid->column('id', __('Id'));
         $grid->column('category.title_vi', __('Category'));
+        $grid->column('category.type', __('Loại danh mục'));
         $grid->column('project.title_vi', __('Project'));
         $grid->column('desc_vi', __('Desc bug vi'));
         $grid->column('comments_count', __('Comments count'));
@@ -60,9 +75,9 @@ class BugController extends Controller
             $actions->disableView();
         });
         return $content
-        ->title(trans('Bug'))
-        ->description(trans('admin.list'))
-        ->body($grid);
+            ->title(trans('Bug'))
+            ->description(trans('admin.list'))
+            ->body($grid);
     }
 
     protected function detail(Bug $bug)
@@ -96,18 +111,29 @@ class BugController extends Controller
 
     protected function form()
     {
+
         $bug = new Bug();
         $form = new Form($bug);
         $id = request()->route()->parameter('bug');
-        if (is_super_admin()) {
-            $projects = Project::all()->pluck('title_vi', 'id');
-        } else {
-            $projects = fn_admin()->projects->pluck('title_vi', 'id');
-        }
-        $form->select('project_id', __('Project'))->options($projects)->rules('required');
+        $projects = Project::getAllCanView()->pluck('title_vi', 'id');
 
-        $form->select('category_id', __('Category'))
-            ->options(Category::all()->pluck('title_vi', 'id'))->rules('required');
+        if (empty($id)) {
+            $form->belongsTo('category_id', CategorySelectable::class, __('Category'))->rules('required');
+            $form->select('project_id', __('Project'))->options($projects)->rules([
+                function ($attribute, $value, $fail) {
+                    $category = Category::select('type')->find(request('category_id'));
+                    $type = $category->type ?? '';
+                    if (empty(request('project_id')) && $type === AppConstants::CATEGORY_TYPE_BUG) {
+                        return $fail('Dự án là bắt buộc nếu chọn danh mục lỗi');
+                    }
+                }
+            ]);
+        } else {
+            $form->display('project.title_vi', __('Project'))->disable();
+            $form->display('category.type', 'Loại danh mục');
+            $form->display('category.title_vi', __('Category'))->disable();
+        }
+
 
         $form->switch('is_active', __('Is active'))->default(1);
 //        $form->text('code', __('Code'))->disable();
@@ -118,7 +144,6 @@ class BugController extends Controller
         $form->date('date', __('Date'))->default(date('Y-m-d'));
         $form->textarea('reason_vi', __('Reason vi'));
         $form->textarea('consequence_vi', __('Consequence vi'));
-
         $form->textarea('solution_vi', __('Solution vi'));
         $form->multipleImage('solution_images', __('Solution images'));
         $form->multipleFile('solution_files', __('Solution files'));
@@ -132,6 +157,7 @@ class BugController extends Controller
 
         return $form;
     }
+
     public function destroy(Bug $bug)
     {
     }

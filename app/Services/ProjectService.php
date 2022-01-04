@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Bug;
 use App\Models\Project;
+use Illuminate\Support\Facades\DB;
 
 class ProjectService
 {
@@ -14,5 +16,13 @@ class ProjectService
     public function find($id)
     {
         return Project::find($id);
+    }
+
+    public static function makeStatisticData()
+    {
+    }
+
+    public function getAmoutBugByCategory($projectId, $categoryId)
+    {
     }
 }

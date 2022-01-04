@@ -68,4 +68,13 @@ class Project extends Model
     {
         return fn_admin()->canProject('delete', $this);
     }
+
+    public static function getAllCanView()
+    {
+        if (is_super_admin()) {
+            return static::all();
+        } else {
+            return fn_admin()->projects;
+        }
+    }
 }

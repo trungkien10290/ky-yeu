@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $grid->column('title_vi', __('Title vi'));
         $grid->column('type', __('Type Category'))->using(AppConstants::CATEGORY_TYPES);
         $grid->column('thumbnail', __('Thumbnail'))->image('', 100, 100);
-        $grid->column('parent.title_vi', __('Parent'))->label('info');
+//        $grid->column('parent.title_vi', __('Parent'))->label('info');
         $grid->column('is_active', __('Is active'))->switch();
         $grid->column('created_at', __('Created at'))->display(function () {
             return $this->created_at->format('Y-m-d');
@@ -123,9 +123,9 @@ class CategoryController extends Controller
             Rule::in(array_keys(AppConstants::CATEGORY_TYPES))
         ])->default(AppConstants::CATEGORY_TYPE_DEFAULT);
 
-        $form->select('parent_id', __('Parent'))->options(function ($id) {
-            return (new Select2(Category::class))->show($id);
-        })->ajax(route('admin.categories.select2'))->rules('sometimes');
+//        $form->select('parent_id', __('Parent'))->options(function ($id) {
+//            return (new Select2(Category::class))->show($id);
+//        })->ajax(route('admin.categories.select2'))->rules('sometimes');
 
         $form->switch('is_active', __('Is active'))->rules([
             'required'])->default(1);
