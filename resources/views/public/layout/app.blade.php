@@ -22,6 +22,7 @@
     <script type="text/javascript" src="frontend/js/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    {!! setting('script_header') !!}
 </head>
 <body>
 
@@ -33,7 +34,7 @@
     @yield('content')
 </main>
 @include('public.layout.footer')
-
+{!! setting('script_footer') !!}
 
 <!--Link js-->
 <script type="text/javascript" src="frontend/js/bootstrap.min.js"></script>
