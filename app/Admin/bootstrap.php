@@ -40,6 +40,7 @@ Grid::init(function (Grid $grid) {
         $grid->disableCreateButton();
     }
     $grid->disableExport();
+    $grid->model()->orderBy('id', 'desc');
     $grid->actions(function (Grid\Displayers\Actions $actions) use ($class) {
         $actions->disableView();
         if (fn_admin()->cannot($class . \App\Constants\AppConstants::PERMISSION_DELETE)) {

@@ -110,7 +110,7 @@
                                 </td>
                                 <td>
                                     <div class="desc">
-                                        <p> {{$bug->trans('solutions')}}</p>
+                                        <p> {{$bug->trans('solution')}}</p>
                                     </div>
                                 </td>
                                 <td>
