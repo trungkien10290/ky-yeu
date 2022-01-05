@@ -32,5 +32,6 @@ return [
     'search' => 'Search',
     'send your feedback' =>'Send your feedback',
     'choose date' =>'Choose date',
-    'share this post' =>'Share this post'
+    'share this post' =>'Share this post',
+    'feedback more' => 'Feedback more'
 ];

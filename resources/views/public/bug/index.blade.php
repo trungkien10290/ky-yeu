@@ -84,7 +84,7 @@
                                            data-fancybox="images_{{$bug->id}}"><img
                                                 src="{{image($bugImages[0] ?? '')}}" alt="Bug image"></a>
                                         <span>
-                                            <i class="fal fa-image"></i> {{$bug->bugFilesCount}}
+                                            <i class="fal fa-image"></i> {{count($bugImages)}}
                                         </span>
                                     </div>
                                     <div class="gl-hidden">
@@ -116,7 +116,7 @@
                                            data-fancybox="images_solution_{{$bug->id}}"><img
                                                 src="{{image($solutionImages[0] ?? '')}}" alt="Bug image"></a>
                                         <span>
-                                            <i class="fal fa-image"></i> {{$bug->bugFilesCount}}
+                                            <i class="fal fa-image"></i> {{count($solutionImages)}}
                                         </span>
                                     </div>
                                     <div class="gl-hidden">
@@ -131,8 +131,8 @@
                                     <div class="er-cmt">
                                     <span class="cmt-bn inflex-center-center">{{$bug->comments_count}} <i
                                             class="fal fa-comment-alt-lines"></i> </span>
-                                        <button class="cmt-bn" onclick="errorModal('{{$bug->id}}')">góp ý thêm
-                                        </button>
+                                        <button class="cmt-bn"
+                                                onclick="errorModal('{{$bug->id}}')">{{__('public.feedback more')}}</button>
                                     </div>
                                 </td>
                             </tr>
