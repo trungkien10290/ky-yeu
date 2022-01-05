@@ -59,6 +59,7 @@
                         <tr>
                             <th>{{__('public.error code')}}</th>
                             <th>{{__('public.desc bug')}}</th>
+                            <th>{{__('public.document')}}</th>
                             <th>{{__('public.reason')}}</th>
                             <th>{{__('public.consequence')}}</th>
                             <th>{{__('public.solution')}}</th>
@@ -77,21 +78,23 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="tl">
-                                        <?php $bugImages = is_array($bug->bug_images) ? $bug->bug_images : []; ?>
-                                        <a href="{{image($bugImages[0] ?? '')}}" title="{{$bug->trans('title')}}"
-                                           class="zoom"
-                                           data-fancybox="images_{{$bug->id}}"><img
-                                                src="{{image($bugImages[0] ?? '')}}" alt="Bug image"></a>
-                                        <span>
+                                    <?php $bugImages = is_array($bug->bug_images) ? $bug->bug_images : []; ?>
+                                    @if(!empty($bugImages))
+                                        <div class="tl">
+                                            <a href="{{image($bugImages[0] ?? '')}}" title="{{$bug->trans('title')}}"
+                                               class="zoom"
+                                               data-fancybox="images_{{$bug->id}}"><img
+                                                    src="{{image($bugImages[0] ?? '')}}" alt="Bug image"></a>
+                                            <span>
                                             <i class="fal fa-image"></i> {{count($bugImages)}}
                                         </span>
-                                    </div>
-                                    <div class="gl-hidden">
-                                        @foreach($bugImages as $image)
-                                            <a href="{{image($image)}}" data-fancybox="images_{{$bug->id}}"></a>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                        <div class="gl-hidden">
+                                            @foreach($bugImages as $image)
+                                                <a href="{{image($image)}}" data-fancybox="images_{{$bug->id}}"></a>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="desc">
@@ -109,22 +112,25 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="tl">
-                                        <?php $solutionImages = is_array($bug->solution_images) ? $bug->solution_images : []; ?>
-                                        <a href="{{image($solutionImages[0] ?? '')}}" title="{{$bug->trans('title')}}"
-                                           class="zoom"
-                                           data-fancybox="images_solution_{{$bug->id}}"><img
-                                                src="{{image($solutionImages[0] ?? '')}}" alt="Bug image"></a>
-                                        <span>
+                                    <?php $solutionImages = is_array($bug->solution_images) ? $bug->solution_images : []; ?>
+                                    @if(!empty($solutionImages))
+                                        <div class="tl">
+                                            <a href="{{image($solutionImages[0] ?? '')}}"
+                                               title="{{$bug->trans('title')}}"
+                                               class="zoom"
+                                               data-fancybox="images_solution_{{$bug->id}}"><img
+                                                    src="{{image($solutionImages[0] ?? '')}}" alt="Bug image"></a>
+                                            <span>
                                             <i class="fal fa-image"></i> {{count($solutionImages)}}
                                         </span>
-                                    </div>
-                                    <div class="gl-hidden">
-                                        @foreach($solutionImages as $image)
-                                            <a href="{{image($image)}}"
-                                               data-fancybox="images_solution_{{$bug->id}}"></a>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                        <div class="gl-hidden">
+                                            @foreach($solutionImages as $image)
+                                                <a href="{{image($image)}}"
+                                                   data-fancybox="images_solution_{{$bug->id}}"></a>
+                                            @endforeach
+                                        </div>
+                                    @endif
 
                                 </td>
                                 <td>
