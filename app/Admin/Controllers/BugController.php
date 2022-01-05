@@ -117,22 +117,16 @@ class BugController extends Controller
         $id = request()->route()->parameter('bug');
         $projects = Project::getAllCanView()->pluck('title_vi', 'id');
 
-        if (empty($id)) {
-            $form->belongsTo('category_id', CategorySelectable::class, __('Category'))->rules('required');
-            $form->select('project_id', __('Project'))->options($projects)->rules([
-                function ($attribute, $value, $fail) {
-                    $category = Category::select('type')->find(request('category_id'));
-                    $type = $category->type ?? '';
-                    if (empty(request('project_id')) && $type === AppConstants::CATEGORY_TYPE_BUG) {
-                        return $fail('Dự án là bắt buộc nếu chọn danh mục lỗi');
-                    }
+        $form->belongsTo('category_id', CategorySelectable::class, __('Category'))->rules('required');
+        $form->select('project_id', __('Project'))->options($projects)->rules([
+            function ($attribute, $value, $fail) {
+                $category = Category::select('type')->find(request('category_id'));
+                $type = $category->type ?? '';
+                if (empty(request('project_id')) && $type === AppConstants::CATEGORY_TYPE_BUG) {
+                    return $fail('Dự án là bắt buộc nếu chọn danh mục lỗi');
                 }
-            ]);
-        } else {
-            $form->display('project.title_vi', __('Project'))->disable();
-            $form->display('category.type', 'Loại danh mục');
-            $form->display('category.title_vi', __('Category'))->disable();
-        }
+            }
+        ]);
 
 
         $form->switch('is_active', __('Is active'))->default(1);
