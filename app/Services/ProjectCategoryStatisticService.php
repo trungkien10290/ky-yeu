@@ -46,7 +46,7 @@ class ProjectCategoryStatisticService
         return $this->data;
     }
 
-    public function getAmoutBugByCategory($projectId, $categoryId)
+    public function getBugsCountActive($projectId, $categoryId)
     {
         return Arr::get($this->data(), $this->getKeyStatistic($projectId, $categoryId), 0);
     }

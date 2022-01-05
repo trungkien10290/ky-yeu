@@ -25,7 +25,7 @@
                                                         <a href="<?= route('bug.index', ['project_id' => $project->id, 'category_id' => $bugCate->id]) ?>"
                                                            title="">{{$bugCate->trans('title')}}</a></h4>
                                                     <p>
-                                                        <span>{{app(\App\Services\ProjectCategoryStatisticService::class)->getAmoutBugByCategory($project->id,$bugCate->id)}}</span> {{__('public.error')}}
+                                                        <span>{{$projectCategoryStatistic->getBugsCountActive($project->id,$bugCate->id)}}</span> {{__('public.error')}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -60,7 +60,7 @@
                                 <h4><a href="<?= route('bug.index', ['category_id' => $category->id]) ?>"
                                        title="{{$category->trans('title')}}">{{ $category->trans('title') }}</a></h4>
                                 <p>
-                                    <span>{{app(\App\Services\ProjectCategoryStatisticService::class)->getAmoutBugByCategory(null,$category->id)}}</span>
+                                    <span>{{$projectCategoryStatistic->getBugsCountActive(null,$category->id)}}</span>
                                     lỗi</p>
                             </div>
                         </div>
