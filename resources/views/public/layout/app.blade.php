@@ -9,6 +9,8 @@
     <meta name="description" content="{{\App\Helpers\Seo::description()}}"/>
     <meta name="keywords" content="{{\App\Helpers\Seo::keyword()}}"/>
     <meta property="og:image" content="{{\App\Helpers\Seo::thumbnail()}}">
+    <link rel="canonical" href="{{url()->current()}}">
+    <link rel="icon" href="{{\App\Helpers\Seo::favicon()}}" sizes="32x32">
 
     <!--link css-->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>

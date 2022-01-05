@@ -2,7 +2,13 @@ window.alert = function (message) {
     console.warn(message)
 }
 $(document).ready(function () {
-    $('input[name="dates"]').daterangepicker({
+   initDaterangePicker();
+
+})
+
+function initDaterangePicker(){
+    let input = $('.date-range-picker');
+    input.daterangepicker({
         ranges: {
             'Today': [moment(), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -12,10 +18,19 @@ $(document).ready(function () {
             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         },
         "alwaysShowCalendars": true,
-        "drops": "auto"
+        "drops": "auto",
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        }
     });
-
-})
+    input.on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    });
+    input.on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+}
 $(document).on('change', '#files', function (e) {
     let text_element = $('#file-count-text');
     if (this.files.length) {

@@ -1,5 +1,5 @@
 <header>
-    <div class="logo"><a href="" title="{{setting()->trans('seo_title')}}">
+    <div class="logo"><a href="{{base_url_lang()}}" title="{{setting()->trans('seo_title')}}">
             <img src="{{public_logo()}}"
                  alt="{{setting()->trans('seo_title')}}">
         </a></div>

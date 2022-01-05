@@ -20,7 +20,8 @@ class Seo
 
     public static function thumbnail()
     {
-        return Arr::get(self::$options, 'thumbnail') ?? setting()->trans('seo_thumbnail');
+        $image =  Arr::get(self::$options, 'thumbnail') ?? setting()->get('logo');
+        return image($image);
     }
 
     public static function description()
@@ -31,5 +32,10 @@ class Seo
     public static function keyword()
     {
         return Arr::get(self::$options, 'keyword') ?? setting()->trans('seo_keyword');
+    }
+    public static function favicon()
+    {
+        $image =  Arr::get(self::$options, 'favicon') ?? setting()->get('favicon');
+        return image($image);
     }
 }

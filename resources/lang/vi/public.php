@@ -30,5 +30,7 @@ return [
     'send' => 'Gửi',
     'selected' => 'Đã chọn',
     'search' => 'Tìm kiếm',
-    'send your feedback' =>'Gửi góp ý của bạn'
+    'send your feedback' =>'Gửi góp ý của bạn',
+    'choose date' => 'Chọn ngày',
+    'share this post' =>'Chia sẻ bài viết này'
 ];

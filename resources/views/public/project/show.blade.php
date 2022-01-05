@@ -2,14 +2,7 @@
 @section('content')
 
     <section class="banner relative">
-        <div class="banner-social">
-            <div class="social">
-                <a href="" title="" class="fab fa-instagram"></a>
-                <a href="" title="" class="fab fa-twitter"></a>
-                <a href="" title="" class="fab fa-linkedin-in"></a>
-                <a href="" title="" class="fab fa-facebook-f"></a>
-            </div>
-        </div>
+        @include('public._block.banner_social')
         <div class="banner-i relative">
             <img src="{{image($project->thumbnail)}}" alt="{{$project->thumbnail}}">
             <div class="banner-page">
@@ -29,11 +22,13 @@
                             <div class="date"><i class="fal fa-calendar"></i> {{$project->created_at->format('d.m.Y')}}
                             </div>
                             <div class="share flex-center-end">
-                                <span>Chia sẻ bài viết này</span>
-                                <a href="" title="" class="fab fa-instagram"></a>
-                                <a href="" title="" class="fab fa-twitter"></a>
-                                <a href="" title="" class="fab fa-linkedin-in"></a>
-                                <a href="" title="" class="fab fa-facebook-f"></a>
+                                <span>{{__('public.share this post')}}</span>
+                                <a target="_blank" href="https://www.instagram.com/?url={{url()->current()}}" title="Instagram" class="fab fa-instagram"></a>
+                                <a target="_blank"
+                                   href="http://twitter.com/share?text={{$project->trans('title')}}&amp;url={{url()->current()}}"
+                                   title="Twitter" class="fab fa-twitter"></a>
+                                <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url={{url()->current()}}" title="Linkedin" class="fab fa-linkedin-in"></a>
+                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" title="Facebook" class="fab fa-facebook-f"></a>
                             </div>
                         </div>
                         <div class="pj-article">

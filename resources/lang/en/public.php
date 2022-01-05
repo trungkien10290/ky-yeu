@@ -30,5 +30,7 @@ return [
     'send' => 'Send',
     'selected' => 'Selected',
     'search' => 'Search',
-    'send your feedback' =>'Send your feedback'
+    'send your feedback' =>'Send your feedback',
+    'choose date' =>'Choose date',
+    'share this post' =>'Share this post'
 ];

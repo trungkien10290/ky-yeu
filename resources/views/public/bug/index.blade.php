@@ -39,11 +39,13 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <input name="dates" type="text" placeholder="Chọn ngày" value="{{request('dates')}}">
+                            <input name="dates" class="date-range-picker" autocomplete="off" type="text" readonly
+                                   placeholder="{{__('public.choose date')}}" value="{{request('dates')}}">
                         </div>
                         <div class="col-md-4">
                             <div class="flex-center frm-flex">
-                                <input name="search" value="{{request('search')}}" type="text" placeholder="{{__('public.search')}}">
+                                <input name="search" value="{{request('search')}}" type="text"
+                                       placeholder="{{__('public.search')}}">
                                 <button type="submit"><i class="fal fa-search"></i></button>
                             </div>
                         </div>
