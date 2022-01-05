@@ -10,5 +10,16 @@ return [
     'other category ' => 'Danh mục khác',
     'error' => 'lỗi',
     'project introduction' => 'giới thiệu dự án',
-    'other projects' => 'Dự án khác'
+    'other projects' => 'Dự án khác',
+    'bug detail' => 'Chi tiết lỗi',
+    'code' => 'Mã',
+    'created date' => 'Ngày tạo',
+    'category' => 'Danh mục',
+    'unit' => 'Đơn vị',
+    'desc bug' => 'Mô tả lỗi',
+    'attach files' => 'File đính kèm',
+    'reason' => 'Nguyên nhân',
+    'consequence' => 'Hậu quả',
+    'solution' =>'Giải pháp',
+    'feedback' => 'Góp ý'
 ];

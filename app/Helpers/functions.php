@@ -61,21 +61,34 @@ if (!function_exists('url_change_lang')) {
         return str_replace(url(get_lang()), url(lang_change()), url()->current());
     }
 }
-function public_logo()
-{
-    return setting('logo', 'frontend/images/logo.png');
-}
-
-function base_url_lang($slug = '')
-{
-    return url(get_lang() . '/' . $slug);
-}
-
-function setting($key = null, $default = null)
-{
-    if ($key === null) {
-        return \App\Helpers\Setting::ins();
+if (!function_exists('public_logo')) {
+    function public_logo()
+    {
+        return setting('logo', 'frontend/images/logo.png');
     }
+}
 
-    return \App\Helpers\Setting::ins()->get($key, $default);
+if (!function_exists('base_url_lang')) {
+    function base_url_lang($slug = '')
+    {
+        return url(get_lang() . '/' . $slug);
+    }
+}
+if (!function_exists('setting')) {
+
+    function setting($key = null, $default = null)
+    {
+        if ($key === null) {
+            return \App\Helpers\Setting::ins();
+        }
+
+        return \App\Helpers\Setting::ins()->get($key, $default);
+    }
+}
+if (!function_exists('string_break_line_to_array')) {
+
+    function string_break_line_to_array($content)
+    {
+        return explode("\n", str_replace("\r", "", $content));
+    }
 }

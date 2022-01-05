@@ -34,8 +34,11 @@ use Illuminate\Support\Facades\Log;
 class Comment extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'images' => 'array',
+        'files' => 'array'
+    ];
 
-    
     public function bug()
     {
         return $this->belongsTo(Bug::class);

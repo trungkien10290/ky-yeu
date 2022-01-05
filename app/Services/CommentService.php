@@ -6,7 +6,8 @@ use App\Models\Comment;
 
 class CommentService
 {
-    public function save($data){
+    public function save($data)
+    {
         $comment = new Comment();
         $comment->bug_id = $data['bug_id'];
         $comment->content = $data['content'];
@@ -14,7 +15,6 @@ class CommentService
         $comment->images = $data['images']??null;
         $comment->files = $data['files']??null;
         $comment->is_active = 1;
-        $comment->save(); 
+        $comment->save();
     }
-    
 }
