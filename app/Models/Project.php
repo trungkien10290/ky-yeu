@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\HasTranslation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\Project
@@ -56,7 +57,8 @@ class Project extends Model
 
     public function getSlugLinkAttribute()
     {
-        return 'project/' . $this->id;
+        $slug = Str::slug($this->getAttribute('title_' . get_lang())) . '__p' . $this->id;
+        return base_url_lang($slug);
     }
 
     public function bugs()
@@ -67,5 +69,14 @@ class Project extends Model
     public function canDelete()
     {
         return fn_admin()->canProject('delete', $this);
+    }
+
+    public static function getAllCanView()
+    {
+        if (is_super_admin()) {
+            return static::all();
+        } else {
+            return fn_admin()->projects;
+        }
     }
 }

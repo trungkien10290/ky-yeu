@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\ProjectCategoryStatisticService;
 use App\Traits\HasTranslation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -116,18 +117,24 @@ class Bug extends Model
     protected static function booted()
     {
         static::created(function (Bug $bug) {
-            try {
-                $bug->project()->increment('bugs_count');
-            } catch (\Throwable $exception) {
-                Log::info($exception->getMessage());
-            }
+            ProjectCategoryStatisticService::clearCache();
+            // try {
+            //     $bug->project()->increment('bugs_count');
+            // } catch (\Throwable $exception) {
+            //     Log::info($exception->getMessage());
+            // }
         });
+        static::updating(function () {
+            ProjectCategoryStatisticService::clearCache();
+        });
+
         static::deleted(function (Bug $bug) {
-            try {
-                $bug->project()->decrement('bugs_count');
-            } catch (\Throwable $exception) {
-                Log::info($exception->getMessage());
-            }
+            ProjectCategoryStatisticService::clearCache();
+            // try {
+            //     $bug->project()->decrement('bugs_count');
+            // } catch (\Throwable $exception) {
+            //     Log::info($exception->getMessage());
+            // }
         });
     }
 

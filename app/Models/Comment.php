@@ -35,6 +35,7 @@ class Comment extends Model
 {
     use HasFactory;
 
+    
     public function bug()
     {
         return $this->belongsTo(Bug::class);

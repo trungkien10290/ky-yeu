@@ -23,5 +23,6 @@ Route::group(
         Route::get('/bugs', [\App\Http\Controllers\BugController::class, 'index'])->name('bug.index');
         Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
         Route::post('/comment/create', [\App\Http\Controllers\CommentController::class, 'create'])->name('comment.create');
+        Route::get('{slug}__p{id}', [\App\Http\Controllers\ProjectController::class, 'show'])->whereNumber('id');
     }
 );

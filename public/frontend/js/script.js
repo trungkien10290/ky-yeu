@@ -20,17 +20,20 @@ $(document).on('submit', '.form_modal', function(e) {
     url = $(this).attr('action');
     var formData = new FormData(this);
     let TotalFiles = $('#files')[0].files.length;
-    var content = $(this).find('input[name=content]');
+    var content = $(this).find('textarea[name=content]').val();
+    var bugId = $(this).attr('data-bug-id');
     let files = $('#files')[0];
     for (let i = 0; i < TotalFiles; i++) {
         formData.append('files' + i, files.files[i]);
     }
+    formData.append('TotalFiles', TotalFiles);
+    formData.append('bugId', bugId);
     formData.append('content', content);
     $.ajax({
         url: url,
         type: 'POST',
         data: formData,
-        dataType: 'json',
+        dataType: 'html',
         cache: false,
         contentType: false,
         processData: false,
@@ -38,7 +41,7 @@ $(document).on('submit', '.form_modal', function(e) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
-            alert('Data: ' + data);
+            $('.box-view').append(data);
         },
         error: function(request, error) {
             alert("Request: " + JSON.stringify(request));

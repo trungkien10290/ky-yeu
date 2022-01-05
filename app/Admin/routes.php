@@ -4,7 +4,6 @@ use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\BugController;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\CommentController;
-use App\Admin\Controllers\PostController;
 use App\Admin\Controllers\ProjectController;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
@@ -25,6 +24,10 @@ Route::group([
         $router->resource('banner', BannerController::class)->whereNumber('banner');
         $router->resource('comments', CommentController::class)->whereNumber('comment');
         $router->resource('user_projects', \App\Admin\Controllers\UserProjectController::class)->whereNumber('user_project');
+
+
+        $router->post('settings/save', [\App\Admin\Controllers\SettingController::class, 'submit'])->name('settings.save');
+        $router->get('settings', [\App\Admin\Controllers\SettingController::class, 'index']);
     });
 
     Route::prefix(config('admin.route.prefix') . '_api')->group(function (Router $router) {
@@ -36,7 +39,7 @@ Route::group([
 
 Route::group([
     'middleware' => config('admin.route.middleware'),
-    'prefix' =>'admin/filemanager'
+    'prefix' => 'admin/filemanager'
 ], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

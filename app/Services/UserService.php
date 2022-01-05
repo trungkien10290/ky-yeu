@@ -8,9 +8,6 @@ class UserService
 {
     public function login($request)
     {
-
-
-
         return view('public.home.index');
     }
 

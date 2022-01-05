@@ -8,9 +8,10 @@ class Image
 
     public static function show($image, $size = null)
     {
-        if (strpos($image, 'http') !== false) {
+        if (url()->isValidUrl($image) || strpos($image, 'data:image') === 0) {
             return $image;
         }
+
         if (!empty($image) && file_exists(public_path($image))) {
             return asset($image);
         } else {
@@ -20,9 +21,10 @@ class Image
 
     public static function thumbs($image)
     {
-        if (strpos($image, 'http') !== false) {
+        if (url()->isValidUrl($image) || strpos($image, 'data:image') === 0) {
             return $image;
         }
+
         if (file_exists(public_path($image))) {
             $folder = $image = explode('/', $image);
             $imageName = array_pop($folder);

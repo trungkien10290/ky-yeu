@@ -4,7 +4,8 @@
             @foreach ($projects as $project)
                 <div class="col-md-6 mgb-30" data-aos="fade-up" data-aos-duration="2000">
                     <div class="list-item">
-                        <a href="<?= route('bug.index', ['project_id' => $project->id])?>" title="" class="zoom zoom-img"><span><img
+                        <a href="<?= route('bug.index', ['project_id' => $project->id])?>" title=""
+                           class="zoom zoom-img"><span><img
                                     src="{{image($project->thumbnail)}}"
                                     alt="{{$project->thumbnail}}"> </span></a>
                         <div class="list-cache relative">
@@ -23,7 +24,9 @@
                                                     <h4>
                                                         <a href="<?= route('bug.index', ['project_id' => $project->id, 'category_id' => $bugCate->id]) ?>"
                                                            title="">{{$bugCate->trans('title')}}</a></h4>
-                                                    <p><span>200</span> {{__('public.error')}}</p>
+                                                    <p>
+                                                        <span>{{$projectCategoryStatistic->getBugsCountActive($project->id,$bugCate->id)}}</span> {{__('public.error')}}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -42,7 +45,6 @@
                     </div>
                 </div>
             @endforeach
-
         </div>
         <div class="list-re">
             <h2 class="title-page" data-aos="fade-up" data-aos-duration="2000">{{__('public.other category')}}</h2>
@@ -50,14 +52,16 @@
                 @foreach ($otherCate as $category)
                     <div class="col-md-3 mb-3" data-aos="fade-up" data-aos-duration="2000">
                         <div class="re-item flex">
-                            <a href="<?= route('bug.index', ['project_id' => $category->id]) ?>" title=""
+                            <a href="<?= route('bug.index', ['category_id' => $category->id]) ?>" title=""
                                class="zoom"><img
                                     src="{{image($category->thumbnail)}}"
                                     alt="{{$category->thumbnail}}"> </a>
                             <div class="re-text">
-                                <h4><a href="<?= route('bug.index', ['project_id' => $category->id]) ?>"
+                                <h4><a href="<?= route('bug.index', ['category_id' => $category->id]) ?>"
                                        title="{{$category->trans('title')}}">{{ $category->trans('title') }}</a></h4>
-                                <p><span>200</span> lỗi</p>
+                                <p>
+                                    <span>{{$projectCategoryStatistic->getBugsCountActive(null,$category->id)}}</span>
+                                    lỗi</p>
                             </div>
                         </div>
                     </div>

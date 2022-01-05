@@ -118,24 +118,25 @@
                 </div>
             @endforeach
 
-            <div class="view_item">
-                <span><img src="frontend/images/Avt.png" alt=""> </span>
-                <div class="view_cmt">
-                    <form method="POST" action="<?= route('comment.create')?>" class="form_modal" enctype="multipart/form-data">
-                        @csrf
-                        <textarea placeholder="Gửi góp ý của bạn" name="content"></textarea>
-                        <div class="flex-end-between">
-                            <div class="file-fake">
-                                <label class="relative">
-                                    <input type="file" multiple name="files[]" id="files">
-                                    <span class="flex-center-center"><i class="fal fa-camera"></i> </span>
-                                </label>
-                            </div>
-                            <button type="submit" class="btn-submit">Send <i
-                                    class="fal fa-long-arrow-right"></i></button>
+            
+        </div>
+        <div class="view_item">
+            <span><img src="frontend/images/Avt.png" alt=""> </span>
+            <div class="view_cmt">
+                <form method="POST" action="<?= route('comment.create')?>" class="form_modal" enctype="multipart/form-data" data-bug-id="{{$bug->id}}">
+                    @csrf
+                    <textarea placeholder="Gửi góp ý của bạn" name="content"></textarea>
+                    <div class="flex-end-between">
+                        <div class="file-fake">
+                            <label class="relative">
+                                <input type="file" multiple name="files[]" id="files">
+                                <span class="flex-center-center"><i class="fal fa-camera"></i> </span>
+                            </label>
                         </div>
-                    </form>
-                </div>
+                        <button type="submit" class="btn-submit">Send <i
+                                class="fal fa-long-arrow-right"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

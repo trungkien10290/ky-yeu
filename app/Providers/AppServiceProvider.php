@@ -27,10 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        $this->app->register(TMEditorServiceProvider::class);
+        $this->app->register(LogViewerServiceProvider::class);
         if (app()->environment('local')) {
             $this->app->register(HelpersServiceProvider::class);
-            $this->app->register(LogViewerServiceProvider::class);
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
