@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectCategoryStatisticService
 {
-    const CACHE_SECONDS = 60 * 5;
+    const CACHE_SECONDS = 60 * 60;
     const CACHE_KEY = 'project_category_statistics';
     private $data;
 
@@ -30,12 +30,15 @@ class ProjectCategoryStatisticService
     {
         if (!$this->data) {
             $this->data = cache()->remember(self::CACHE_KEY, self::CACHE_SECONDS, function () {
-                $data = DB::table('project_category_statistics')->get();
+                $bugs = Bug::selectRaw('project_id ,category_id, count(id) as bugs_count')->where('is_active', 1)->groupBy(['project_id', 'category_id'])->get();
+                // $data = DB::table('project_category_statistics')->get();
                 $result = [];
-                foreach ($data as $row) {
+
+                foreach ($bugs as $row) {
                     $key = $this->getKeyStatistic($row->project_id, $row->category_id);
                     $result[$key] = $row->bugs_count;
                 }
+
                 return $result;
             });
         }

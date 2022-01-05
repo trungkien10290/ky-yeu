@@ -118,19 +118,23 @@ class Bug extends Model
     {
         static::created(function (Bug $bug) {
             ProjectCategoryStatisticService::clearCache();
-            try {
-                $bug->project()->increment('bugs_count');
-            } catch (\Throwable $exception) {
-                Log::info($exception->getMessage());
-            }
+            // try {
+            //     $bug->project()->increment('bugs_count');
+            // } catch (\Throwable $exception) {
+            //     Log::info($exception->getMessage());
+            // }
         });
+        static::updating(function () {
+            ProjectCategoryStatisticService::clearCache();
+        });
+
         static::deleted(function (Bug $bug) {
             ProjectCategoryStatisticService::clearCache();
-            try {
-                $bug->project()->decrement('bugs_count');
-            } catch (\Throwable $exception) {
-                Log::info($exception->getMessage());
-            }
+            // try {
+            //     $bug->project()->decrement('bugs_count');
+            // } catch (\Throwable $exception) {
+            //     Log::info($exception->getMessage());
+            // }
         });
     }
 
