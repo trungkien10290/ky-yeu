@@ -17,23 +17,13 @@ $(document).ready(function() {
 })
 $(document).on('submit', '.form_modal', function(e) {
     e.preventDefault();
-    url = $(this).attr('action');
-    var formData = new FormData(this);
-    let TotalFiles = $('#files')[0].files.length;
-    var content = $(this).find('textarea[name=content]').val();
-    var bugId = $(this).attr('data-bug-id');
-    let files = $('#files')[0];
-    for (let i = 0; i < TotalFiles; i++) {
-        formData.append('files' + i, files.files[i]);
-    }
-    formData.append('TotalFiles', TotalFiles);
-    formData.append('bugId', bugId);
-    formData.append('content', content);
+    let url = $(this).attr('action');
+    var formData = new FormData($(this)[0]);
     $.ajax({
         url: url,
         type: 'POST',
         data: formData,
-        dataType: 'html',
+        dataType: 'json',
         cache: false,
         contentType: false,
         processData: false,
@@ -41,7 +31,11 @@ $(document).on('submit', '.form_modal', function(e) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
-            $('.box-view').append(data);
+            if (data.html !== '') {
+                $('.box_view').append(data.html)
+            } else {
+
+            }
         },
         error: function(request, error) {
             alert("Request: " + JSON.stringify(request));

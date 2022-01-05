@@ -1,10 +1,10 @@
 <div class="view_item">
     <span><img src="{{$comment->user->avatar ?? 'frontend/images/Avt.png'}}" alt=""> </span>
     <div class="view_text">
-        <p>{{$comment->content}}</p>
+        <p>{{$comment['content']}}</p>
         <div class="er-gallery">
             <div class="er-images">
-                @if ($comment->images)
+                @if (isset($comment['images']))
                     @foreach ($comment->images as $image)
                     <span><img src="frontend/images/image-.jpg" alt=""> </span>
                     @endforeach
