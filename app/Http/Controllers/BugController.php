@@ -35,7 +35,7 @@ class BugController extends Controller
     public function modal(Bug $bug)
     {
         $bug->load(['category', 'project', 'comments' => function ($query) {
-            return $query->with('user')->orderByDesc('id');
+            return $query->with('user');
         }]);
         return view('public.bug.modal', ['bug' => $bug]);
     }

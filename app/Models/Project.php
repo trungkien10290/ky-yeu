@@ -57,8 +57,20 @@ class Project extends Model
 
     public function getSlugLinkAttribute()
     {
-        $slug = Str::slug($this->getAttribute('title_' . get_lang())) . '__p' . $this->id;
-        return base_url_lang($slug);
+        return $this->getSlugLink(get_lang());
+    }
+
+    public function getSlugLink($langCode)
+    {
+        $title = $this->getAttribute('title_' . $langCode);
+        $title = $title ?? $this->getAttribute('title_' . lang_change($langCode));
+        $slug = Str::slug($title) . '__p' . $this->id;
+        return base_url_lang($slug, $langCode);
+    }
+
+    public function getSlugLinkChangeAttribute()
+    {
+        return $this->getSlugLink(lang_change());
     }
 
     public function bugs()

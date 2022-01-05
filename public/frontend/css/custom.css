@@ -21,6 +21,11 @@
     color: #282a30;
     font-weight: 600;
 }
-.er-tbl .desc p{
+
+.er-tbl .desc p {
+    white-space: break-spaces;
+}
+
+.view_text > p {
     white-space: break-spaces;
 }

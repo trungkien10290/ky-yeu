@@ -1,16 +1,20 @@
 <header>
-    <div class="logo"><a href="" title=""><img src="{{public_logo()}}" alt=""> </a></div>
+    <div class="logo"><a href="" title="{{setting()->trans('seo_title')}}">
+            <img src="{{public_logo()}}"
+                 alt="{{setting()->trans('seo_title')}}">
+        </a></div>
     <div class="header_main">
         <div class="container">
             <div class="flex-center-end">
                 <div class="search-box">
-                    <form class="se-frm">
-                        <input type="text" placeholder="{{__('public.keyword')}}">
+                    <form class="se-frm" action="{{route('bug.index')}}">
+                        <input name="search" value="{{request('search')}}" type="text"
+                               placeholder="{{__('public.keyword')}}">
                     </form>
                     <button class="btn-search"><i class="fal fa-search"></i></button>
                 </div>
 
-                <a href="{{url_change_lang()}}" class="language"
+                <a href="{{$urlLangChange ?? url_change_lang()}}" class="language"
                    title="">{{get_lang()}}</a>
                 <div class="user flex-center">
                     @if (auth()->check())

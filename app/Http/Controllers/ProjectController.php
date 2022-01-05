@@ -28,8 +28,9 @@ class ProjectController extends Controller
         Seo::setting([
             'title' => $project->trans('title'),
             'description' => $project->trans('desc'),
-            'thumbnail' => image($project->thumbnail)
+            'thumbnail' => image($project->thumbnail),
         ]);
+        $assign['urlLangChange'] = $project->slugLinkChange;
         return view('public.project.show', $assign);
     }
 }

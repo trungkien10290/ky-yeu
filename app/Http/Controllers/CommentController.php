@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Constants\AppConstants;
+use App\Http\Requests\CommentRequest;
 use App\Services\BugService;
 use App\Services\CommentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {
@@ -18,15 +20,9 @@ class CommentController extends Controller
         $this->bugService = $bugService;
     }
 
-    public function create(Request $request)
+    public function create(CommentRequest $request)
     {
-        $data = $request->validate([
-            'bug_id' => 'required',
-            'files' => [
-                'nullable',
-            ],
-            'files.*' => AppConstants::UPLOAD_FILE_RULES
-        ]);
+        $data = $request->validated();
         if (!$this->bugService->findOrFail($request->bug_id)) {
             return [
                 'type' => 'warning',
@@ -34,8 +30,7 @@ class CommentController extends Controller
                 'html' => ''
             ];
         }
-        $data['bug_id'] = $request->bugId;
-        $data['content'] = $request->content;
+
         if (!auth()->user()->id) {
             return [
                 'type' => 'warning',
@@ -44,35 +39,29 @@ class CommentController extends Controller
             ];
         }
         $data['user_id'] = auth()->user()->id;
+        $files = [];
+        $images = [];
         if (!empty($request->file('files'))) {
-            $files = [];
-            $images = [];
-            $allowedMimeTypes = ['image/jpeg', 'image/gif', 'image/png', 'image/bmp', 'image/svg+xml'];
-            foreach ($request->file('files') as $key => $file) {
-                $filename = time() . '-' . $file->getClientOriginalName();
-
-                if (in_array($file->mimeType(), $allowedMimeTypes)) {
-                    $file->move(storage_path('app/public/images'), $filename);
-                    $images[] = storage_path('app/public/images/') . $filename;
+            $imageTypes = ['image/jpeg', 'image/gif', 'image/png', 'image/bmp', 'image/svg+xml'];
+            $folder = 'user_uploads/' . auth()->user()->id;
+            foreach ($request->file('files') as $file) {
+                $uploaded = Storage::disk('public')->put($folder, $file);
+                $publicFilePath = '/storage/' . $uploaded;
+                if (in_array($file->getClientMimeType(), $imageTypes)) {
+                    $images[] = $publicFilePath;
                 } else {
-                    $file->move(storage_path('app/public/files'), $filename);
-                    $files[] = storage_path('app/public/files/') . $filename;
+                    $files[] = $publicFilePath;
                 }
             }
-            if ($images) {
-                $data['images'] = json_encode($images);
-            }
-            if ($files) {
-                $data['files'] = json_encode($files);
-            }
         }
-        $this->commentService->save($data);
-        $assign['comment'] = $data;
-
+        $data['images'] = $images;
+        $data['files'] = $files;
+        $data['is_active'] = 1;
+        $comment = $this->commentService->save($data);
         return [
             'type' => 'success',
             'message' => '',
-            'html' => view('comment.blade.php', $assign)->render()
+            'html' => view('public.bug.comment', compact('comment'))->render()
         ];
     }
 }

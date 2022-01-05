@@ -1,8 +1,8 @@
 <footer>
     <div class="container">
         <div class="ft-flex">
-            <a href="" title="" class="ft-logo"><img src="{{setting('logo','frontend/images/logo.png')}}"
-                                                     alt="{{setting()->trans('title')}}"> </a>
+            <a href="" title="{{setting()->trans('seo_title')}}" class="ft-logo"><img src="{{public_logo()}}"
+                                                     alt="{{setting()->trans('seo_title')}}"> </a>
             <div class="ft-social flex-center-center">
                 <a href="{{setting('facebook')}}" title="Facebook" target="_blank" class="fab fa-facebook-f"></a>
                 <a href="{{setting('linkedin')}}" title="Linkedin" target="_blank" class="fab fa-linkedin-in"></a>

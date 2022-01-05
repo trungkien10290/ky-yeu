@@ -34,6 +34,16 @@ use Illuminate\Support\Facades\Log;
 class Comment extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'bug_id',
+        'user_id',
+        'content',
+        'files',
+        'images',
+        'is_active'
+    ];
+
     protected $casts = [
         'images' => 'array',
         'files' => 'array'

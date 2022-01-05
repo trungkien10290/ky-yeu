@@ -1,17 +1,6 @@
 @if(!empty($banners) && $banners->count() > 0)
     <section class="banner relative">
-        <div class="banner-social">
-            <div class="social">
-                <a href="" title="" class="fab fa-instagram" data-aos="fade-up" data-aos-duration="1500"
-                   data-delay="500"></a>
-                <a href="" title="" class="fab fa-twitter" data-aos="fade-up" data-aos-duration="1500"
-                   data-delay="500"></a>
-                <a href="" title="" class="fab fa-linkedin-in" data-aos="fade-up" data-aos-duration="1500"
-                   data-delay="500"></a>
-                <a href="" title="" class="fab fa-facebook-f" data-aos="fade-up" data-aos-duration="1500"
-                   data-delay="500"></a>
-            </div>
-        </div>
+        @include('public._block.banner_social')
         <div class="banner-slider swiper">
             <div class="swiper-wrapper">
                 @foreach ($banners as $banner)

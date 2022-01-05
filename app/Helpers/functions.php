@@ -50,9 +50,10 @@ if (!function_exists('thumbnail')) {
 }
 if (!function_exists('lang_change')) {
 
-    function lang_change(): string
+    function lang_change($lang = null): string
     {
-        return get_lang() === 'vi' ? 'en' : 'vi';
+        $lang = $lang ?? get_lang();
+        return $lang === 'vi' ? 'en' : 'vi';
     }
 }
 if (!function_exists('url_change_lang')) {
@@ -69,9 +70,10 @@ if (!function_exists('public_logo')) {
 }
 
 if (!function_exists('base_url_lang')) {
-    function base_url_lang($slug = '')
+    function base_url_lang($slug = '', $lang = null)
     {
-        return url(get_lang() . '/' . $slug);
+        $lang = $lang ?? get_lang();
+        return url($lang . '/' . $slug);
     }
 }
 if (!function_exists('setting')) {
@@ -89,6 +91,18 @@ if (!function_exists('string_break_line_to_array')) {
 
     function string_break_line_to_array($content)
     {
-        return explode("\n", str_replace("\r", "", $content));
+        $contentArray = explode("\n", str_replace("\r", "", $content));
+        return array_filter($contentArray, function ($item) {
+            return trim($item) !== '';
+        });
     }
+}
+
+function show_file_name($files)
+{
+    if (empty($files)) {
+        return $files;
+    }
+    $fileArray = explode('/', $files);
+    return array_pop($fileArray);
 }

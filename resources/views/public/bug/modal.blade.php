@@ -6,7 +6,7 @@
         <div class="er-p"><span>{{__('public.unit')}}: </span>{{$bug->project->title_vi ?? ''}}</div>
         <div class="er-p"><span>{{__('public.category')}}:</span>{{$bug->category->title_vi ?? ''}}</div>
         <div class="er-p"><span>{{__('public.code')}}:</span>{{$bug->id}}</div>
-        <div class="er-p"><span>{{__('public.created date')}}</span>:</span>{{date('d/m/Y',strtotime($bug->date))}}
+        <div class="er-p"><span>{{__('public.created date')}}</span>: </span>{{date('d/m/Y',strtotime($bug->date))}}
         </div>
     </div>
     <div class="er-p mgb-10"><span>{{__('public.desc bug')}}:</span>{{$bug->trans('desc')}}
@@ -18,16 +18,19 @@
                 <span><img src="{{image($image)}}" alt="{{$image}}"> </span>
             @endforeach
         </div>
-        <div class="er-doc">
-            <h4>{{__('public.attach files')}}:</h4>
-            <ul>
-                <?php $bugFiles = is_array($bug->bug_files) ? $bug->bug_files : []?>
-                @foreach($bugFiles as $file)
-                    <li><a href="{{image($file)}}" title="" target="_blank"><i class="fal fa-file"></i>{{$file}} </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+        <?php $bugFiles = is_array($bug->bug_files) ? $bug->bug_files : []?>
+        @if(!empty($bugFiles))
+            <div class="er-doc">
+                <h4>{{__('public.attach files')}}:</h4>
+                <ul>
+                    @foreach($bugFiles as $file)
+                        <li><a href="{{image($file)}}" title="" target="_blank"><i class="fal fa-file"></i>{{$file}}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
     <div class="er-box_1">
         <div class="row">
@@ -78,17 +81,20 @@
                         <span><img src="{{image($image)}}" alt="{{$image}}"> </span>
                     @endforeach
                 </div>
-                <div class="er-doc">
-                    <h4>{{__('public.attach files')}}:</h4>
-                    <ul>
-                        <?php $solutionFiles = is_array($bug->solution_files) ? $bug->solution_files : []?>
-                        @foreach($solutionFiles as $file)
-                            <li><a href="{{image($file)}}" title="" target="_blank"><i class="fal fa-file"></i>{{$file}}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+                <?php $solutionFiles = is_array($bug->solution_files) ? $bug->solution_files : []?>
+                @if(!empty($solutionFiles))
+                    <div class="er-doc">
+                        <h4>{{__('public.attach files')}}:</h4>
+                        <ul>
+                            @foreach($solutionFiles as $file)
+                                <li><a href="{{image($file)}}" title="" target="_blank"><i
+                                            class="fal fa-file"></i>{{$file}}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -96,47 +102,23 @@
         <h3>{{__('public.feedback')}}</h3>
         <div class="box_view">
             @foreach($bug->comments as $comment)
-
-                <div class="view_item">
-                    <span><img src="{{$comment->user->avatar ?? 'frontend/images/Avt.png'}}" alt="avatar"> </span>
-                    <div class="view_text">
-                        <p>{{$comment->content}}</p>
-                        <div class="er-gallery">
-                            <div class="er-images">
-                                @php
-                                    $images = is_array($comment->images) ? $comment->images : [];
-                                @endphp
-                                @foreach ($images as $image)
-                                    <span><img src="{{image($image)}}" alt="{{$image}}"> </span>
-                                @endforeach
-                            </div>
-                            <div class="er-doc">
-                                <h4>{{__('public.attach files')}}:</h4>
-                                <ul>
-                                    @php
-                                        $files = is_array($comment->files) ? $comment->files : [];
-                                    @endphp
-                                    @foreach($files as $file)
-                                        <li><a href="" title="{{$file}}" target="_blank"><i
-                                                    class="fal fa-file"></i>{{$file}}</a></li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('public.bug.comment',['comment' => $comment])
             @endforeach
 
-
         </div>
-        <div class="view_item">
-                <span><img src="frontend/images/Avt.png" alt=""> </span>
+        @if(auth()->check())
+            <div class="view_item">
+                <span><img src="{{auth()->user()->avatar}}" alt=""> </span>
                 <div class="view_cmt">
-                    <form method="POST" action="<?= route('comment.create')?>" class="form_modal" enctype="multipart/form-data">
+                    <form method="POST" action="<?= route('comment.create')?>" class="form_modal"
+                          enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="bug_id" value="{{$bug->id}}" >
-                        <textarea placeholder="Gửi góp ý của bạn" name="content"></textarea>
+                        <input type="hidden" name="bug_id" value="{{$bug->id}}">
+                        <textarea placeholder="{{__('public.send your feedback')}}" name="content"></textarea>
+                        <div class="text-danger mb-3" id="comment-errors"></div>
+                        <div class="text-info d-none" id="file-count-text">{{__('public.selected')}}<span
+                                id="file-count"> </span> file
+                        </div>
                         <div class="flex-end-between">
                             <div class="file-fake">
                                 <label class="relative">
@@ -144,11 +126,12 @@
                                     <span class="flex-center-center"><i class="fal fa-camera"></i> </span>
                                 </label>
                             </div>
-                            <button type="submit" class="btn-submit">Send <i
+                            <button type="submit" class="btn-submit">{{__('public.send')}} <i
                                     class="fal fa-long-arrow-right"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
+        @endif
     </div>
 </div>

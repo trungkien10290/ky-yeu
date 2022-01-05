@@ -23,7 +23,11 @@ class BugService
             $dates = explode(' - ', request('dates'));
             if ($dates) {
                 $from = Carbon::createFromDate($dates[0])->toDateTimeString();
-                $to = Carbon::createFromDate($dates[1])->toDateTimeString();
+                if (!empty($dates[1])) {
+                    $to =Carbon::createFromDate($dates[1])->toDateTimeString();
+                } else {
+                    $to = date('Y-m-d');
+                }
             }
             $query->whereBetween('created_at', [$from, $to]);
         }

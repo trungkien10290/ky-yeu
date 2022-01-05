@@ -1,19 +1,12 @@
 @extends('public.layout.app')
 @section('content')
     <section class="banner relative">
-        <div class="banner-social">
-            <div class="social">
-                <a href="" title="" class="fab fa-instagram"></a>
-                <a href="" title="" class="fab fa-twitter"></a>
-                <a href="" title="" class="fab fa-linkedin-in"></a>
-                <a href="" title="" class="fab fa-facebook-f"></a>
-            </div>
-        </div>
+        @include('public._block.banner_social')
         <div class="banner-i relative">
             <img src="frontend/images/banner-page.jpg" alt="">
             <div class="banner-page">
                 <div class="container">
-                    <h1 class="text-right">danh sách lỗi</h1>
+                    <h1 class="text-right">{{__('public.bug list')}}</h1>
                 </div>
             </div>
         </div>
@@ -25,9 +18,9 @@
                     <div class="row">
                         <div class="col-md-3">
                             <select name="project_id">
-                                <option value="">Tất cả</option>
+                                <option value="">{{__('public.all')}}</option>
                                 @foreach($projects as $project)
-                               
+
                                     <option value="{{$project->id}}"
                                             @if(request('project_id') == $project->id) selected @endif
                                     >{{$project->trans('title')}}</option>
@@ -36,7 +29,7 @@
                         </div>
                         <div class="col-md-3">
                             <select name="category_id">
-                                <option value="">Tất cả</option>
+                                <option value="">{{__('public.all')}}</option>
                                 @foreach($bugCategories as $category)
                                     <option value="{{$category->id}}"
                                             @if(request('category_id') == $category->id) selected @endif
@@ -50,7 +43,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="flex-center frm-flex">
-                                <input name="search" value="{{request('search')}}" type="text" placeholder="Tìm kiếm">
+                                <input name="search" value="{{request('search')}}" type="text" placeholder="{{__('public.search')}}">
                                 <button type="submit"><i class="fal fa-search"></i></button>
                             </div>
                         </div>
@@ -62,14 +55,14 @@
                     <table class="w-100">
                         <thead>
                         <tr>
-                            <th>Mã lỗi</th>
-                            <th>Mô tả lỗi</th>
-                            <th>TÀI LIỆU</th>
-                            <th>Nguyên nhân</th>
-                            <th>Hậu quả</th>
-                            <th>Giải pháp</th>
-                            <th>TÀI LIỆU</th>
-                            <th>Hành động</th>
+                            <th>{{__('public.error code')}}</th>
+                            <th>{{__('public.desc bug')}}</th>
+                            <th>{{__('public.reason')}}</th>
+                            <th>{{__('public.consequence')}}</th>
+                            <th>{{__('public.solution')}}</th>
+                            <th>{{__('public.document')}}</th>
+                            <th>{{__('public.action')}}</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -89,7 +82,7 @@
                                            data-fancybox="images_{{$bug->id}}"><img
                                                 src="{{image($bugImages[0] ?? '')}}" alt="Bug image"></a>
                                         <span>
-                                            <i class="fal fa-file"></i> {{$bug->bugFilesCount}}
+                                            <i class="fal fa-image"></i> {{$bug->bugFilesCount}}
                                         </span>
                                     </div>
                                     <div class="gl-hidden">
@@ -121,7 +114,7 @@
                                            data-fancybox="images_solution_{{$bug->id}}"><img
                                                 src="{{image($solutionImages[0] ?? '')}}" alt="Bug image"></a>
                                         <span>
-                                            <i class="fal fa-file"></i> {{$bug->bugFilesCount}}
+                                            <i class="fal fa-image"></i> {{$bug->bugFilesCount}}
                                         </span>
                                     </div>
                                     <div class="gl-hidden">
@@ -154,14 +147,6 @@
                         </div>
                         <div class="pagi">
                             {!! $listBugs->links() !!}
-                            {{--                            <ul class="flex-center-end">--}}
-                            {{--                                <li><a href="" title=""><i class="fal fa-angle-left"></i> </a></li>--}}
-                            {{--                                <li class="active"><a href="" title="">1</a></li>--}}
-                            {{--                                <li><a href="" title="">2</a></li>--}}
-                            {{--                                <li><a href="" title="">...</a></li>--}}
-                            {{--                                <li><a href="" title="">4</a></li>--}}
-                            {{--                                <li><a href="" title=""><i class="fal fa-angle-right"></i></a></li>--}}
-                            {{--                            </ul>--}}
                         </div>
                     </div>
                 </div>
@@ -188,9 +173,5 @@
                 }
             })
         }
-
-        $(function () {
-
-        })
     </script>
 @endpush
