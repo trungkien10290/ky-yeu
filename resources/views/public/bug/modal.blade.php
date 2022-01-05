@@ -94,9 +94,13 @@
                         <p>{{$comment->content}}</p>
                         <div class="er-gallery">
                             <div class="er-images">
-                                <span><img src="frontend/images/image-.jpg" alt=""> </span>
-                                <span><img src="frontend/images/image-1.jpg" alt=""> </span>
-                                <span><img src="frontend/images/image-2.jpg" alt=""> </span>
+                                @if ($comment->images)
+                                    @foreach ($comment->images as $image)
+                                    <span><img src="frontend/images/image-.jpg" alt=""> </span>
+                                    @endforeach
+                                @endif
+                                
+                                
                             </div>
                             <div class="er-doc">
                                 <h4>File đính kèm:</h4>
@@ -117,12 +121,13 @@
             <div class="view_item">
                 <span><img src="frontend/images/Avt.png" alt=""> </span>
                 <div class="view_cmt">
-                    <form>
-                        <textarea placeholder="Gửi góp ý của bạn"></textarea>
+                    <form method="POST" action="<?= route('comment.create')?>" class="form_modal" enctype="multipart/form-data">
+                        @csrf
+                        <textarea placeholder="Gửi góp ý của bạn" name="content"></textarea>
                         <div class="flex-end-between">
                             <div class="file-fake">
                                 <label class="relative">
-                                    <input type="file">
+                                    <input type="file" multiple name="files[]" id="files">
                                     <span class="flex-center-center"><i class="fal fa-camera"></i> </span>
                                 </label>
                             </div>

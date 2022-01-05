@@ -42,6 +42,7 @@
 <script type="text/javascript" src="frontend/js/daterangepicker.js"></script>
 <script type="text/javascript" src="frontend/js/jquery.fancybox.min.js"></script>
 <script type="text/javascript" src="frontend/js/private.js"></script>
+<script type="text/javascript" src="frontend/js/script.js"></script>
 
 @stack('js')
 </body>

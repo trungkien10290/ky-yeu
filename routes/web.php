@@ -22,5 +22,6 @@ Route::group(
         Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('login.logOut');
         Route::get('/bugs', [\App\Http\Controllers\BugController::class, 'index'])->name('bug.index');
         Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
+        Route::post('/comment/create', [\App\Http\Controllers\CommentController::class, 'create'])->name('comment.create');
     }
 );

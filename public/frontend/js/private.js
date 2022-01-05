@@ -72,7 +72,7 @@ $(document).ready(function() {
         $(this).closest('.modal-col').find('.col-have-content').css('z-index', '0');
         $(this).closest('.modal-col').find('select').prop('selectedIndex', 0);
     })
-    $('.btn-search').click(function () {
+    $('.btn-search').click(function() {
         $('.se-frm').toggleClass('show')
     })
     AOS.init({
@@ -82,5 +82,5 @@ $(document).ready(function() {
         }
     });
 
-    $('input[name="dates"]').daterangepicker();
+
 })
