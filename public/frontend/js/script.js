@@ -2,11 +2,11 @@ window.alert = function (message) {
     console.warn(message)
 }
 $(document).ready(function () {
-   initDaterangePicker();
+    initDaterangePicker();
 
 })
 
-function initDaterangePicker(){
+function initDaterangePicker() {
     let input = $('.date-range-picker');
     input.daterangepicker({
         ranges: {
@@ -24,13 +24,14 @@ function initDaterangePicker(){
             cancelLabel: 'Clear'
         }
     });
-    input.on('apply.daterangepicker', function(ev, picker) {
+    input.on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
     });
     input.on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
     });
 }
+
 $(document).on('change', '#files', function (e) {
     let text_element = $('#file-count-text');
     if (this.files.length) {
@@ -39,11 +40,16 @@ $(document).on('change', '#files', function (e) {
         text_element.addClass('d-none')
     }
 })
+
+let isLoading = false;
 $(document).on('submit', '.form_modal', function (e) {
     e.preventDefault();
+    if (isLoading) return;
+    isLoading = true;
     let _this = $(this);
     let url = _this.attr('action');
     var formData = new FormData(_this[0]);
+    _this.find('button[type="submit"]').prop('disabled', true);
     $.ajax({
         url: url,
         type: 'POST',
@@ -77,5 +83,9 @@ $(document).on('submit', '.form_modal', function (e) {
                 $('#comment-errors').html(html);
             }
         }
-    });
+    }).done(function () {
+        isLoading = false;
+        _this.find('button[type="submit"]').prop('disabled', false);
+
+    })
 })
