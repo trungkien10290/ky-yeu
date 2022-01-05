@@ -2,23 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BugService;
 use App\Services\CommentService;
-use Encore\Admin\Form\Field\Id;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
     protected $commentService;
+    protected $bugService;
 
-    public function __construct(CommentService $commentService)
+    public function __construct(CommentService $commentService,BugService $bugService)
     {
         $this->commentService = $commentService;
+        $this->bugService = $bugService;
     }
 
     public function create(Request $request)
     {
+        if(!$this->bugService->findOrFail($request->bugId)){
+            return [
+                'type' => 'warning',
+                'message' => 'Không tìm thấy lỗi',
+                'html' => '' 
+            ];
+        }
         $data['bug_id'] = $request->bugId;
         $data['content'] = $request->content;
+        if(!auth()->user()->id){
+            return [
+                'type' => 'warning',
+                'message' => 'Vui lòng đăng nhập để tiếp tục',
+                'html' => '' 
+            ];
+        }
         $data['user_id'] = auth()->user()->id;
         if (!empty($request->file('files'))){
             $files = [];
@@ -45,6 +61,10 @@ class CommentController extends Controller
         }
         $this->commentService->save($data);
         $assign['comment'] = $data;
-        return view('public.bug.comment',$assign);
+        return [
+            'type' => 'success',
+            'message' => '',
+            'html' => view('comment.blade.php',$assign)->render() 
+        ]; 
     }
 }

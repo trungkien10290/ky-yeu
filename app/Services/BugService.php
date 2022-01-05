@@ -32,4 +32,12 @@ class BugService
         }
         return $query->orderByDesc('id')->paginate(self::PAGINATE_LIMIT);
     }
+
+    public function findOrFail($id){
+        $checkId = Bug::findOrFail($id);
+        if($checkId){
+            return true;
+        }
+        return false;
+    }
 }

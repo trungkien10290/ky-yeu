@@ -33,7 +33,7 @@ $(document).on('submit', '.form_modal', function(e) {
         url: url,
         type: 'POST',
         data: formData,
-        dataType: 'html',
+        dataType: 'json',
         cache: false,
         contentType: false,
         processData: false,
@@ -41,7 +41,11 @@ $(document).on('submit', '.form_modal', function(e) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
-            $('.box-view').append(data);
+            if (data.html !== '') {
+                $('.box_view').append(data.html)
+            } else {
+
+            }
         },
         error: function(request, error) {
             alert("Request: " + JSON.stringify(request));
