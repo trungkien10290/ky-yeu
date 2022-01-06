@@ -25,11 +25,11 @@ phpcs:
     - php artisan test
 
 
-# staging:
-#   stage: deploy
-#   script:
-#     - *init_ssh
-#     - ./vendor/bin/envoy run deploy --server=dev
-#   when: manual
-#   only:
-#     - dev
+staging:
+  stage: deploy
+  script:
+    - *init_ssh
+    - ./vendor/bin/envoy run deploy --server=dev
+  when: manual
+  only:
+    - dev
