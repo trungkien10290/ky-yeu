@@ -24,7 +24,7 @@
 
 .er-tbl .desc p {
     white-space: break-spaces;
-    max-height: 4em;
+    max-height: calc(1.4em * 4);
     overflow: hidden;
     padding: 0;
     text-overflow: clip;
