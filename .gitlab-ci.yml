@@ -2,10 +2,7 @@ stages:
   - preparation
   - unitest
   - deloy
-cache:
-  paths:
-    - vendor/
-    - node_modules/
+
 .init_ssh: &init_ssh |
   eval $(ssh-agent -s)
   echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
@@ -13,16 +10,23 @@ cache:
   chmod 700 ~/.ssh
   [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
+cache:
+  paths:
+    - vendor/
+    - node_modules/
+    
 image: dungnt1312/php7.4
 phpcs:
   stage: preparation
   script:
     - composer install
     - ./vendor/bin/phpcs
+
 unitest:
   stage: unitest
   script:
     - php artisan test
+    
 staging:
   stage: deploy
   script:
