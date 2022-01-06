@@ -24,15 +24,21 @@ class BugService
             if ($dates) {
                 $from = Carbon::createFromDate($dates[0])->toDateTimeString();
                 if (!empty($dates[1])) {
-                    $to =Carbon::createFromDate($dates[1])->toDateTimeString();
+                    $to = Carbon::createFromDate($dates[1])->toDateTimeString();
                 } else {
                     $to = date('Y-m-d');
                 }
             }
-            $query->whereBetween('created_at', [$from, $to]);
+            $query->whereBetween('date', [$from, $to]);
         }
         if (request('search')) {
-            $query->where('desc_' . get_lang(), 'like', '%' . request('search') . '%');
+            $query->where(function ($query) {
+                $search = request('search');
+                if (is_numeric($search)) {
+                    $query->orWhere('id', $search);
+                }
+                $query->orwhere('desc_' . get_lang(), 'like', '%' . $search . '%');
+            });
         }
         return $query->orderByDesc('id')->paginate(self::PAGINATE_LIMIT);
     }

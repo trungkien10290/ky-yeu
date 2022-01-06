@@ -54,11 +54,11 @@ class BugController extends Controller
         $grid->column('category.type', __('Loại danh mục'));
         $grid->column('project.title_vi', __('Project'));
         $grid->column('desc_vi', __('Desc bug vi'));
-        $grid->column('comments_count', __('Comments count'));
-        $grid->column('date', __('Date'));
-        $grid->column('is_active', __('Is active'))->switch();
-        $grid->column('created_at', __('Created at'))->showDate();
-        $grid->column('updated_at', __('Updated at'))->showDate();
+        $grid->column('comments_count', __('Comments count'))->style('width:100px');
+        $grid->column('date', __('Date'))->style('width:100px');
+        $grid->column('is_active', __('Is active'))->switch()->style('width:100px');
+        $grid->column('created_at', __('Created at'))->showDate()->style('width:100px');
+        $grid->column('updated_at', __('Updated at'))->showDate()->style('width:100px');
 
         $grid->actions(function (Grid\Displayers\Actions $actions) {
             if (!is_super_admin()) {

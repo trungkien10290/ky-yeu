@@ -3,7 +3,9 @@ window.alert = function (message) {
 }
 $(document).ready(function () {
     initDaterangePicker();
-
+    $('#form-search-bug').on('change','select,.date-range-picker',function(){
+        $(this).closest('form').submit()
+    })
 })
 
 function initDaterangePicker() {
@@ -25,10 +27,10 @@ function initDaterangePicker() {
         }
     });
     input.on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY')).trigger('change');
     });
     input.on('cancel.daterangepicker', function (ev, picker) {
-        $(this).val('');
+        $(this).val('').trigger('change');
     });
 }
 

@@ -24,8 +24,16 @@
 
 .er-tbl .desc p {
     white-space: break-spaces;
+    max-height: 4em;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: clip;
+    line-height: 1.4em;
 }
 
 .view_text > p {
     white-space: break-spaces;
+}
+.pj-article > * {
+    max-width: 100%;
 }

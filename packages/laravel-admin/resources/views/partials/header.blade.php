@@ -22,9 +22,11 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                <li>
+                        <a target="_blank" href="{{ url('/') }}" class="">Trang chủ</a>
 
+                </li>
                 {!! Admin::getNavbar()->render() !!}
-
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
