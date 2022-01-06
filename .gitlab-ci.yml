@@ -1,6 +1,7 @@
 image: dungnt1312/php7.4
 
 stages:
+  - build
   - code_quality
   - deploy
 
@@ -17,12 +18,14 @@ cache:
     - vendor/
     - node_modules/
 
+Build:
+  stage: build
+  script:
+    - composer install
 Phpcs:
   stage: code_quality
   script:
-    - composer install
     - ./vendor/bin/phpcs
-    - php artisan test
 Unit test:
   stage: code_quality
   script:
