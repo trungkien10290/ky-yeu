@@ -15,7 +15,7 @@ cache:
 
 image: dungnt1312/php7.4
 phpcs:
-  stage: preparation
+  stage: phpcs
   script:
     - composer install
     - ./vendor/bin/phpcs
