@@ -1,5 +1,5 @@
 stages:
-  - phpcs
+  - preparation
   - unitest
   - deloy
 cache:
@@ -15,7 +15,7 @@ cache:
 
 image: dungnt1312/php7.4
 phpcs:
-  stage: phpcs
+  stage: preparation
   script:
     - composer install
     - ./vendor/bin/phpcs
