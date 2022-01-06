@@ -17,15 +17,18 @@ cache:
     - vendor/
     - node_modules/
 
-phpcs:
+Phpcs:
   stage: code_quality
   script:
     - composer install
     - ./vendor/bin/phpcs
     - php artisan test
+Unit test:
+  stage: code_quality
+  script:
+    - php artisan test
 
-
-staging:
+Deloy:
   stage: deploy
   script:
     - *init_ssh
