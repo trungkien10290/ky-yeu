@@ -1,14 +1,33 @@
 stages:
-  - preparation
-image: php:7.4
-composer:
+  - phpcs
+  - unitest
+  - deloy
+cache:
+  paths:
+    - vendor/
+    - node_modules/
+.init_ssh: &init_ssh |
+  eval $(ssh-agent -s)
+  echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+  [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+image: dungnt1312/php7.4
+phpcs:
   stage: preparation
   script:
-    - apt-get update -yqq
-    - apt-get install git zip zlib1g-dev libzip-dev libxml2-dev libpng-dev libjpeg-dev libghc-curl-dev libldb-dev libldap2-dev libpq-dev -yqq
-    - ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
-    - docker-php-ext-configure gd --enable-gd --with-jpeg
-    - docker-php-ext-install pdo pdo_mysql gd exif ldap
-    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.0.9
     - composer install
     - ./vendor/bin/phpcs
+unitest:
+  stage: unitest
+  script:
+    - php artisan test
+staging:
+  stage: deploy
+  script:
+    - *init_ssh
+    - ./vendor/bin/envoy run deploy --server=dev
+  when: manual
+  only:
+    - dev
