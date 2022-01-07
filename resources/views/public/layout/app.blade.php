@@ -27,15 +27,19 @@
     {!! setting('script_header') !!}
 </head>
 <body>
+@if(empty($hideHeader))
+    @include('public.layout.header')
+@endif
 
-@include('public.layout.header')
 <main>
     <script>
         let base_url = '{{url(get_lang())}}/'
     </script>
     @yield('content')
 </main>
-@include('public.layout.footer')
+@if(empty($hideFooter))
+    @include('public.layout.footer')
+@endif
 {!! setting('script_footer') !!}
 
 <!--Link js-->

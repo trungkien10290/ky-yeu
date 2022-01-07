@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     ['prefix' => '/{lang?}/', 'where' => ['lang' => 'vi|en']],
     function () {
-        Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
         Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login.index');
         Route::post('/login', [\App\Http\Controllers\AuthController::class, 'submitLogin'])->name('login.logIn');
-        Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('login.logOut');
-        Route::get('/bugs', [\App\Http\Controllers\BugController::class, 'index'])->name('bug.index');
-        Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
-        Route::post('/comment/create', [\App\Http\Controllers\CommentController::class, 'create'])->name('comment.create')->middleware('auth');
-        Route::get('{slug}__p{id}', [\App\Http\Controllers\ProjectController::class, 'show'])->whereNumber('id');
+
+        Route::middleware('auth')->group(function () {
+            Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+
+            Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('login.logOut');
+            Route::get('/bugs', [\App\Http\Controllers\BugController::class, 'index'])->name('bug.index');
+            Route::get('/bugs/{bug}/modal', [\App\Http\Controllers\BugController::class, 'modal'])->name('bug.modal');
+            Route::post('/comment/create', [\App\Http\Controllers\CommentController::class, 'create'])->name('comment.create');
+            Route::get('{slug}__p{id}', [\App\Http\Controllers\ProjectController::class, 'show'])->whereNumber('id');
+        });
     }
 );

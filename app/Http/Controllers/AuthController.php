@@ -17,7 +17,9 @@ class AuthController extends Controller
 
     public function login()
     {
-        return view('public.home.login');
+        $assign['hideHeader'] = 1;
+        $assign['hideFooter'] = 1;
+        return view('public.home.login', $assign);
     }
 
     public function submitLogin(Request $request)

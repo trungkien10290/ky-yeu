@@ -21,20 +21,23 @@ class Image
 
     public static function thumbs($image)
     {
-        if (url()->isValidUrl($image) || strpos($image, 'data:image') === 0) {
-            return $image;
+        if (!empty($image)) {
+            if (url()->isValidUrl($image) || strpos($image, 'data:image') === 0) {
+                return $image;
+            }
+            if (file_exists(public_path($image))) {
+//                $folder = $image = explode('/', $image);
+                $info = pathinfo($image);
+                $thumb = $info['dirname'] . '/' . 'thumbs/' . $info['filename'];
+                if (!empty($thumb) && file_exists(public_path($thumb))) {
+                    $image = $thumb;
+                }
+
+                return asset($image);
+            }
         }
 
-        if (file_exists(public_path($image))) {
-            $folder = $image = explode('/', $image);
-            $imageName = array_pop($folder);
-            $thumb = implode('/', $folder) . '/' . 'thumbs/' . $imageName;
-            if (file_exists(public_path($thumb))) {
-                $image = $thumb;
-            }
-            return asset($image);
-        } else {
-            return asset(self::NO_IMAGE);
-        }
+
+        return asset(self::NO_IMAGE);
     }
 }

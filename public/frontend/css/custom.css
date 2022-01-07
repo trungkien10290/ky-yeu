@@ -34,6 +34,12 @@
 .view_text > p {
     white-space: break-spaces;
 }
+
 .pj-article > * {
     max-width: 100%;
+}
+
+.pj-article img {
+    object-fit: contain;
+    height: auto;
 }

@@ -42,7 +42,6 @@ class CommentController extends Controller
         $grid->column('user.name', __('User'));
         $grid->column('bug.desc_vi', __('Bug'));
         $grid->column('content', __('Content'));
-        $grid->column('images', __('MultipleImage'))->image('', 100, 100);
         $grid->column('is_active', __('Is active'))->switch();
         $grid->column('created_at', __('Created at'))->showDate();
         $grid->column('updated_at', __('Updated at'))->showDate();
