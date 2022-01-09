@@ -88,7 +88,8 @@
                                         </span>
                                         </div>
                                         <div class="gl-hidden">
-                                            @foreach($bugImages as $image)
+                                            @foreach($bugImages as $key=>$image)
+                                                @php if($key === 0)  continue; @endphp
                                                 <a href="{{image($image)}}" data-fancybox="images_{{$bug->id}}"></a>
                                             @endforeach
                                         </div>
@@ -118,7 +119,8 @@
                                         </span>
                                         </div>
                                         <div class="gl-hidden">
-                                            @foreach($solutionImages as $image)
+                                            @foreach($solutionImages as $key=>$image)
+                                                @php if($key === 0)  continue; @endphp
                                                 <a href="{{image($image)}}"
                                                    data-fancybox="images_solution_{{$bug->id}}"></a>
                                             @endforeach
@@ -164,7 +166,7 @@
 @endsection
 @push('js')
     <script>
-        $('.er-tbl .desc').click(function(){
+        $('.er-tbl .desc').click(function () {
             let id = $(this).closest('tr').data('id');
             errorModal(id)
         })
