@@ -61,7 +61,7 @@
                                        title="{{$category->trans('title')}}">{{ $category->trans('title') }}</a></h4>
                                 <p>
                                     <span>{{$projectCategoryStatistic->getBugsCountActive(null,$category->id)}}</span>
-                                    lỗi</p>
+                                    {{__('public.error')}}</p>
                             </div>
                         </div>
                     </div>

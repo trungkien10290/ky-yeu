@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{get_lang()}}">
 <head>
     <base href="{{url('/')}}">
     <meta charset="utf-8">
@@ -13,6 +13,7 @@
     <link rel="icon" href="{{\App\Helpers\Seo::favicon()}}" sizes="32x32">
 
     <!--link css-->
+    <script src="/frontend/js/locale/{{get_lang()}}.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="frontend/css/bootstrap.min.css">

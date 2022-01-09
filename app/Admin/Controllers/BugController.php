@@ -39,7 +39,7 @@ class BugController extends Controller
         }
 
         $grid->filter(function (Grid\Filter $filter) {
-
+            $filter->like('desc_vi', 'Mô tả (tiếng việt)');
             $filter->where(function ($query) {
                 return $query->whereHas('category', function ($query) {
                     return $query->where('type', $this->input);

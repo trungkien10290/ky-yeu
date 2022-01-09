@@ -9,7 +9,7 @@
                             <div class="login-inner">
 
                                 <p><a href="" title=""><img src="{{public_logo()}}"> </a></p>
-                                <h4>Đăng nhập Nhật ký lỗi</h4>
+                                <h4>{{__('public.Login error log')}}</h4>
                                 @if($errors->any())
                                     <div class="text-danger">{{$errors->first()}}</div>
                                 @endif
@@ -17,14 +17,14 @@
                                       enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="frm-input">
-                                        <input type="text" name="username" placeholder="Địa chỉ email của bạn">
+                                        <input type="text" name="username" placeholder="{{__('public.Your email')}}">
                                         <span><i class="fal fa-envelope"></i> </span>
                                     </div>
                                     <div class="frm-input">
-                                        <input type="password" name="password" placeholder="Mật khẩu">
+                                        <input type="password" name="password" placeholder="{{__('public.Password')}}">
                                         <span><i class="fal fa-lock"></i></span>
                                     </div>
-                                    <button type="submit">Đăng nhập</button>
+                                    <button type="submit">{{__('public.Login')}}</button>
                                 </form>
                             </div>
                         </div>

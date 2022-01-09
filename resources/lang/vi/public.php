@@ -33,6 +33,18 @@ return [
     'send your feedback' => 'Gửi góp ý của bạn',
     'choose date' => 'Chọn ngày',
     'share this post' => 'Chia sẻ bài viết này',
-    'feedback more' => 'Góp ý thêm'
+    'feedback more' => 'Góp ý thêm',
+    'Today' => 'Hôm nay',
+    'Yesterday' => 'Hôm qua',
+    'Last 7 Days' => '7 ngày trước',
+    'Last 30 Days' => '30 ngày trước',
+    'This Month' => 'Tháng này',
+    'Last Month' => 'Tháng trước',
+    'Custom range' =>'Chọn ngày',
+    'Login error log' => 'Đăng nhập nhật ký lỗi',
+    'Login' => 'Đăng nhập',
+    'Your email' => 'Địa chỉ email của bạn',
+    'Password' => 'Mật khẩu',
+    'Introduction project' => '<span>giới thiệu <span>dự án</span></span>'
 
 ];

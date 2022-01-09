@@ -1,29 +1,45 @@
 window.alert = function (message) {
     console.warn(message)
 }
+window.locale = $('html').attr('lang')
+window.languages = {}
 $(document).ready(function () {
     initDaterangePicker();
-    $('#form-search-bug').on('change','select,.date-range-picker',function(){
+    $('#form-search-bug').on('change', 'select,.date-range-picker', function () {
         $(this).closest('form').submit()
     })
 })
 
+function lang(key) {
+    return i18n[key] ?? key;
+}
+
 function initDaterangePicker() {
     let input = $('.date-range-picker');
+    let ranges = {};
+    ranges[lang('Today')] = [moment(), moment()];
+    ranges[lang('Yesterday')] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')]
+    ranges[lang('Last 7 Days')] = [moment().subtract(6, 'days'), moment()]
+    ranges[lang('Last 30 Days')] = [moment().subtract(29, 'days'), moment()]
+    ranges[lang('This Month')] = [moment().startOf('month'), moment().endOf('month')]
+    ranges[lang('Last Month')] = [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     input.daterangepicker({
-        ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
+        ranges: ranges,
         "alwaysShowCalendars": true,
         "drops": "auto",
         autoUpdateInput: false,
         locale: {
-            cancelLabel: 'Clear'
+            cancelLabel: 'Clear',
+            "customRangeLabel": lang('Custom range'),
+            "daysOfWeek": [
+                "Su",
+                "Mo",
+                "Tu",
+                "We",
+                "Th",
+                "Fr",
+                "Sa"
+            ],
         }
     });
     input.on('apply.daterangepicker', function (ev, picker) {

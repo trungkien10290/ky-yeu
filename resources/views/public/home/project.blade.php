@@ -1,7 +1,7 @@
 <section class="projects">
     <div class="container">
         <div class="text-center projects-title" data-aos="fade-up" data-aos-duration="2000">
-            <span>giới thiệu <span>dự án</span></span></div>
+            {!!__('public.Introduction project') !!}</div>
     </div>
     <div class="pj-slider swiper" data-aos="fade-up" data-aos-duration="3000">
         <div class="swiper-wrapper">

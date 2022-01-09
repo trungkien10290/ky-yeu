@@ -22,13 +22,22 @@
     font-weight: 600;
 }
 
-.er-tbl .desc p {
+.er-tbl .desc{
     white-space: break-spaces;
     max-height: calc(1.4em * 4);
     overflow: hidden;
     padding: 0;
     text-overflow: clip;
     line-height: 1.4em;
+    transition: .3s;
+    color: white;
+    cursor: pointer;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.er-tbl .desc:hover{
+    color: #ffc20e;
 }
 
 .view_text > p {
@@ -41,5 +50,10 @@
 
 .pj-article img {
     object-fit: contain;
-    height: auto;
+    max-width: 100% !important;
+    height: auto !important;
+}
+.error-find select{
+    -webkit-appearance: auto;
+    appearance: auto;
 }

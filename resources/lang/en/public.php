@@ -2,14 +2,14 @@
 return [
     'required data' => 'Required data',
     'auth' => [
-        'failed' => 'Failed'
+        'failed' => 'Wrong account information or password'
     ],
     'keyword' => 'Keyword',
     'login' => 'Login',
     'logout' => 'Logout',
     'other category' => 'Other category',
     'error' => 'Error',
-    'project introduction' => 'Project introduction',
+    'project introduction' => 'Introduction project',
     'other projects' => 'Other projects',
     'bug detail' => 'Bug detail',
     'code' => 'Code',
@@ -30,8 +30,20 @@ return [
     'send' => 'Send',
     'selected' => 'Selected',
     'search' => 'Search',
-    'send your feedback' =>'Send your feedback',
-    'choose date' =>'Choose date',
-    'share this post' =>'Share this post',
-    'feedback more' => 'Feedback more'
+    'send your feedback' => 'Send your feedback',
+    'choose date' => 'Choose date',
+    'share this post' => 'Share this post',
+    'feedback more' => 'Feedback',
+    'Today' => 'Today',
+    'Yesterday' => 'Yesterday',
+    'Last 7 Days' => 'Last 7 Days',
+    'Last 30 Days' => 'Last 30 Days',
+    'This Month' => 'This Month',
+    'Last Month' => 'Last Month',
+    'Custom range' => 'Custom range',
+    'Login error log' => 'Login error logs',
+    'Login' => 'Login',
+    'Your email' => 'Your email',
+    'Password' => 'Password',
+    'Introduction project' => '<span>Introduction <span>project</span></span>'
 ];

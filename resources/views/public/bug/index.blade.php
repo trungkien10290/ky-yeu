@@ -70,12 +70,10 @@
                         </thead>
                         <tbody>
                         @foreach($listBugs as $bug)
-                            <tr>
+                            <tr data-id="{{$bug->id}}">
                                 <td><span class="number">{{$bug->id}}</span></td>
                                 <td>
-                                    <div class="desc">
-                                        <p>{{$bug->trans('desc')}}</p>
-                                    </div>
+                                    <div class="desc">{{$bug->trans('desc')}}</div>
                                 </td>
                                 <td>
                                     <?php $bugImages = is_array($bug->bug_images) ? $bug->bug_images : []; ?>
@@ -97,19 +95,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="desc">
-                                        <p>{{$bug->trans('reason')}}</p>
+                                    <div class="desc">{{$bug->trans('reason')}}</div>
+                                </td>
+                                <td>
+                                    <div class="desc">{{$bug->trans('consequence')}}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="desc">
-                                        <p>  {{$bug->trans('consequence')}}</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="desc">
-                                        <p> {{$bug->trans('solution')}}</p>
-                                    </div>
+                                    <div class="desc">{{$bug->trans('solution')}}</div>
                                 </td>
                                 <td>
                                     <?php $solutionImages = is_array($bug->solution_images) ? $bug->solution_images : []; ?>
@@ -171,6 +164,11 @@
 @endsection
 @push('js')
     <script>
+        $('.er-tbl .desc').click(function(){
+            let id = $(this).closest('tr').data('id');
+            errorModal(id)
+        })
+
         function errorModal(bug_id) {
             let url = base_url + `bugs/${bug_id}/modal`
             $.ajax({

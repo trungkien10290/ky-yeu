@@ -14,8 +14,8 @@
                     <button class="btn-search"><i class="fal fa-search"></i></button>
                 </div>
 
-                <a href="{{$urlLangChange ?? url_change_lang()}}" class="language"
-                   title="">{{get_lang()}}</a>
+                <a href="{{$urlLangChange ?? url_change_lang()}}" class="language text-uppercase"
+                   title="{{lang_change()}}">{{lang_change()}}</a>
                 <div class="user flex-center">
                     @if (auth()->check())
 
