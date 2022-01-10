@@ -3,8 +3,8 @@
     </button>
     <h2 class="text-center">{{__('public.bug detail')}}</h2>
     <div class="er-tq mgb-20 flex-center-between">
-        <div class="er-p"><span>{{__('public.unit')}}: </span>{{$bug->project->title_vi ?? ''}}</div>
-        <div class="er-p"><span>{{__('public.category')}}:</span>{{$bug->category->title_vi ?? ''}}</div>
+        <div class="er-p"><span>{{__('public.unit')}}: </span>{{!empty($bug->project) ? $bug->project->trans('title') : ''}}</div>
+        <div class="er-p"><span>{{__('public.category')}}:</span>{{!empty($bug->category) ? $bug->category->trans('title') : ''}}</div>
         <div class="er-p"><span>{{__('public.code')}}:</span>{{$bug->id}}</div>
         <div class="er-p"><span>{{__('public.created date')}}</span>: </span>{{date('d/m/Y',strtotime($bug->date))}}
         </div>
