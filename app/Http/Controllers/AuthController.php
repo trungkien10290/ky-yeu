@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -24,19 +26,30 @@ class AuthController extends Controller
 
     public function submitLogin(Request $request)
     {
-        try {
-            $request->validate([
-                'username' => 'required',
-                'password' => 'required'
-            ]);
-        } catch (\Throwable $exception) {
-            return redirect()->back()->withErrors(['error' => __('public.required data')]);
-        }
-        $credentials = [
-            'uid' => $request->get('username'),
-            'password' => $request->get('password'),
-        ];
-        if (Auth::attempt($credentials)) {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $username = $request->get('email');
+        $pass = $request->get('password');
+
+        $connection = new \LdapRecord\Connection([
+            'hosts' => [env('LDAP_HOST')],
+        ]);
+        $check = $connection->auth()->attempt($username, $pass);
+        if ($check) {
+            $user = User::where('email', $username)->first();
+            $name = explode('@', $username)[0];
+            $name = Str::ucfirst($name);
+            if (!$user) {
+                User::create([
+                    'email' => $username,
+                    'password' => bcrypt($pass),
+                    'name' => $name
+                ]);
+            }
+            Auth::login($user);
             $request->session()->regenerate();
             return redirect(route('home.index'));
         } else {

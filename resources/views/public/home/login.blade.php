@@ -17,7 +17,7 @@
                                       enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="frm-input">
-                                        <input type="text" name="username" placeholder="{{__('public.Your email')}}">
+                                        <input type="text" name="email" placeholder="{{__('public.Your email')}}">
                                         <span><i class="fal fa-envelope"></i> </span>
                                     </div>
                                     <div class="frm-input">
