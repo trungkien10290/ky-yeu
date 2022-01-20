@@ -36,6 +36,8 @@ class AuthController extends Controller
 
         $connection = new \LdapRecord\Connection([
             'hosts' => [env('LDAP_HOST')],
+            'port' => env('LDAP_PORT'),
+            'base_dn' => env('LDAP_BASE_DN')
         ]);
         $check = $connection->auth()->attempt($username, $pass);
         if ($check) {
